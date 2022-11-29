@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :address, :zipcode, :city, presence: true
   validate :one_sport
 
+  has_one_attached :avatar
+
+  LEVELS = %i[débutant intermédiaire confirmé]
+
   def one_sport
     errors.add(:sport, "Vous devez choisir au moins un sport") unless runner || surfer
   end

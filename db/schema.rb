@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_133224) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_133724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_133224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_itineraries_on_user_id"
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string "location"
+    t.string "spot_difficulty"
+    t.string "wave_type"
+    t.string "wave_direction"
+    t.string "bottom"
+    t.string "wave_height_infos"
+    t.string "tide_conditions"
+    t.string "danger"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
