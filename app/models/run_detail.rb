@@ -1,5 +1,6 @@
 class RunDetail < ApplicationRecord
   belongs_to :itinerary, optional: true
+  has_many :events
 
   validates :type, :distance, :pace, :duration, :location, presence: true
 

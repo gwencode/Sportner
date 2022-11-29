@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :favorite_spots
   has_many :itineraries
+  has_many :organized_events, class_name: "Event"
   has_many :participations
+  has_many :participated_events, through: :participations, source: :event
   has_many :reviews
 
   validates :first_name, :last_name, :address, :zipcode, :city, presence: true

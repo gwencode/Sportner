@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_151556) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_153032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_151556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_itineraries_on_user_id"
+  end
+
+  create_table "meteos", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.datetime "report_datetime"
+    t.string "weather"
+    t.float "temperature"
+    t.integer "wind_km"
+    t.integer "wind_kt"
+    t.integer "wind_direction"
+    t.float "wave_height"
+    t.integer "wave_period"
+    t.integer "wave_direction"
+    t.integer "sea_temperature"
+    t.integer "coef"
+    t.string "previous_tide_type"
+    t.time "previous_tide_time"
+    t.string "next_tide_type"
+    t.time "next_tide_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_meteos_on_event_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -133,6 +155,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_151556) do
   add_foreign_key "events", "users"
   add_foreign_key "favorite_spots", "users"
   add_foreign_key "itineraries", "users"
+  add_foreign_key "meteos", "events"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
   add_foreign_key "reviews", "events"
