@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :favorite_spots
   has_many :itineraries
+  has_many :participations
 
   validates :first_name, :last_name, :address, :zipcode, :city, presence: true
   validate :one_sport

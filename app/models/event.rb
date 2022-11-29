@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   belongs_to :spot, optional: true
   belongs_to :run_detail, optional: true
 
+  has_many :participations
+
   validates :event_type, :name, :date, :meeting_point, :difficulty, presence: true
 
   DIFFICULTIES = %i[débutant intermédiaire confirmé]
