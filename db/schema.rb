@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_143628) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_151253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_143628) do
     t.string "difficulty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
     t.index ["run_detail_id"], name: "index_events_on_run_detail_id"
     t.index ["spot_id"], name: "index_events_on_spot_id"
     t.index ["user_id"], name: "index_events_on_user_id"
@@ -72,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_143628) do
     t.bigint "itinerary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
     t.index ["itinerary_id"], name: "index_run_details_on_itinerary_id"
   end
 
@@ -86,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_143628) do
     t.string "danger"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
   end
 
   create_table "users", force: :cascade do |t|
