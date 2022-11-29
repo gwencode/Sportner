@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :favorite_spots
   has_many :itineraries
   has_many :participations
+  has_many :reviews
 
   validates :first_name, :last_name, :address, :zipcode, :city, presence: true
   validate :one_sport

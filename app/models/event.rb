@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :run_detail, optional: true
 
   has_many :participations
+  has_many :reviews
 
   validates :event_type, :name, :date, :meeting_point, :difficulty, presence: true
 
