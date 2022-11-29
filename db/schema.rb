@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_133724) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_135511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_133724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_itineraries_on_user_id"
+  end
+
+  create_table "run_details", force: :cascade do |t|
+    t.string "type"
+    t.float "distance"
+    t.string "pace"
+    t.integer "duration"
+    t.integer "elevation"
+    t.string "location"
+    t.text "live_itinerary"
+    t.bigint "itinerary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["itinerary_id"], name: "index_run_details_on_itinerary_id"
   end
 
   create_table "spots", force: :cascade do |t|
@@ -71,4 +85,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_133724) do
 
   add_foreign_key "favorite_spots", "users"
   add_foreign_key "itineraries", "users"
+  add_foreign_key "run_details", "itineraries"
 end
