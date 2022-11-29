@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :favorite_spots
+  has_many :itineraries
 
   validates :first_name, :last_name, :address, :zipcode, :city, presence: true
   validate :one_sport
