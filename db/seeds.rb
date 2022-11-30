@@ -130,6 +130,7 @@ event1 = Event.new(
   difficulty: "intermédiaire",
   run_detail_id: RunDetail.last.id
 )
+
 event1.organizer = users[1]
 event1.save!
 events << event1
@@ -144,9 +145,11 @@ event2 = Event.new(
   difficulty: "débutant",
   spot_id: spots[3].id
 )
+
 event2.organizer = users[0]
 event2.save!
 events << event2
+
 event3 = Event.new(
   event_type: "running",
   name: "Course à Rennes",
