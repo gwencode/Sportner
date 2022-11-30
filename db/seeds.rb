@@ -71,7 +71,7 @@ run_details1 = RunDetail.new(
   run_type: "sortie longue",
   distance: 18,
   pace: "4:40",
-  duration: 8640, #en secondes, 1h24
+  duration: 84, #en min, 1h24
   location: "Rennes"
 )
 
