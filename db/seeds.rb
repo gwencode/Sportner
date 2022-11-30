@@ -75,7 +75,7 @@ run_details1 = RunDetail.new(
   location: "Rennes"
 )
 
-run_detail1.save!
+run_details1.save!
 
 puts "1 run details created"
 
