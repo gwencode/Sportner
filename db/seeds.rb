@@ -39,7 +39,7 @@ puts "_______________"
 
 puts "Creating events"
 event1 = Event.new(
-  event_type: "Running",
+  event_type: "running",
   name: "Sortie longue",
   date: DateTime.now + 7,
   description: "Sortie longue le long de la Vilaine à plusieurs pour se motiver!",
@@ -51,7 +51,7 @@ event1.organizer = users[1]
 event1.save!
 
 event2 = Event.new(
-  event_type: "Surf",
+  event_type: "surf",
   name: "Session à Quiberon",
   date: DateTime.now + 10,
   description: "Session surf à Quiberon au départ de Vannes",
