@@ -6,5 +6,5 @@ class RunDetail < ApplicationRecord
 
   TYPES = ["footing", "sortie longue", "VMA", "allure spécifique", "fractionné", "trail", "côtes", "marche athlétique", "parcours d'obstacles"]
 
-  has_many_attached :photos
+  # has_many_attached :photos
 end
