@@ -2,16 +2,16 @@ require "open-uri"
 require "nokogiri"
 
 puts "cleaning DB..."
-puts "destroying events..."
-Event.destroy_all
-puts "destroying reviews..."
-Review.destroy_all
 puts "destroying participations..."
 Participation.destroy_all
+puts "destroying reviews..."
+Review.destroy_all
 puts "destroying favorite_spots..."
 FavoriteSpot.destroy_all
 puts "destroying itineraries..."
 Itinerary.destroy_all
+puts "destroying events..."
+Event.destroy_all
 puts "destroying run_details..."
 RunDetail.destroy_all
 puts "destroying spots..."
@@ -44,11 +44,11 @@ end
 
 puts "Create favorite spots..."
 
-FavoriteSpot.create!(sport: "surf", city: "Plouharnel", radius: 3, user_id: users[0].id)
-FavoriteSpot.create!(sport: "running", city: "Rennes", radius: 1, user_id: users[0].id)
-FavoriteSpot.create!(sport: "surf", city: "Plomer", radius: 3, user_id: users[1].id)
-FavoriteSpot.create!(sport: "running", city: "Rennes", radius: 1, user_id: users[1].id)
-FavoriteSpot.create!(sport: "running", city: "Vannes", radius: 3, user_id: users[5].id)
+FavoriteSpot.create!(sport: "surf", city_spot: "Plouharnel", radius: 3, user_id: users[0].id)
+FavoriteSpot.create!(sport: "running", city_spot: "Rennes", radius: 1, user_id: users[0].id)
+FavoriteSpot.create!(sport: "surf", city_spot: "Plomer", radius: 3, user_id: users[1].id)
+FavoriteSpot.create!(sport: "running", city_spot: "Rennes", radius: 1, user_id: users[1].id)
+FavoriteSpot.create!(sport: "running", city_spot: "Vannes", radius: 3, user_id: users[5].id)
 
 puts "Create spots..."
 
@@ -91,7 +91,7 @@ end
 
 spots = []
 spots_data.each do |s|
-  spot = User.create!(s.first)
+  spot = Spot.create!(s.first)
   # file = File.open("db/fixtures/#{u.last}")
   # user.avatar.attach(io: file, filename: u.last)
   # user.save!
@@ -101,7 +101,7 @@ end
 puts "Creating run_details..."
 
 RunDetail.create!(
-  type: "fractionné",
+  run_type: "fractionné",
   distance: 4,
   pace: "4:40",
   duration: 20,
@@ -109,7 +109,7 @@ RunDetail.create!(
   location: "9 rue des dames, 35000 Rennes"
 )
 RunDetail.create!(
-  type: "sortie longue",
+  run_type: "sortie longue",
   distance: 18,
   pace: "6:00",
   duration: 100,
@@ -170,15 +170,15 @@ Participation.create!(event_id: events[0].id, user_id: users[5].id)
 Participation.create!(event_id: events[1].id, user_id: users[1].id)
 Participation.create!(event_id: events[1].id, user_id: users[4].id)
 Participation.create!(event_id: events[1].id, user_id: users[6].id)
-Participation.create!(event_id: events[3].id, user_id: users[0].id)
-Participation.create!(event_id: events[3].id, user_id: users[1].id)
-Participation.create!(event_id: events[3].id, user_id: users[2].id)
+Participation.create!(event_id: events[2].id, user_id: users[0].id)
+Participation.create!(event_id: events[2].id, user_id: users[1].id)
+Participation.create!(event_id: events[2].id, user_id: users[2].id)
 
 puts "Creating meteos..."
 
 Meteo.create(
   event_id: events[0].id,
-  report_datetime: Datetime.now,
+  report_datetime: DateTime.now,
   weather: "Journée globalement ensoleillée",
   temperature: "10",
   wind_km: "12",
@@ -186,7 +186,7 @@ Meteo.create(
 )
 Meteo.create(
   event_id: events[1].id,
-  report_datetime: Datetime.now,
+  report_datetime: DateTime.now,
   weather: "Journée partiellement nuageuse",
   temperature: "15",
   wind_km: "16",
@@ -204,7 +204,7 @@ Meteo.create(
 )
 Meteo.create(
   event_id: events[2].id,
-  report_datetime: Datetime.now,
+  report_datetime: DateTime.now,
   weather: "Journée globalement ensoleillée",
   temperature: "15",
   wind_km: "9",
@@ -214,7 +214,7 @@ Meteo.create(
 puts "Creating reviews..."
 
 Review.create!(
-  event_id: events[3].id,
+  event_id: events[2].id,
   user_id: users[0].id,
   rating_event: 3,
   rating_difficulty: 2,
@@ -222,7 +222,7 @@ Review.create!(
   content: ""
 )
 Review.create!(
-  event_id: events[3].id,
+  event_id: events[2].id,
   user_id: users[1].id,
   rating_event: 3,
   rating_difficulty: 1,
@@ -230,7 +230,7 @@ Review.create!(
   content: "Petite sortie sympa"
 )
 Review.create!(
-  event_id: events[3].id,
+  event_id: events[2].id,
   user_id: users[2].id,
   rating_event: 1,
   rating_difficulty: 3,
