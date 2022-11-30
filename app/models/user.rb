@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :reviews
 
   validates :first_name, :last_name, presence: true
-  validates :address, :zipcode, :city, presence: true, on: :update
+  validates :address, presence: true, on: :update
   validate :one_sport, on: :update
 
   # has_one_attached :avatar
