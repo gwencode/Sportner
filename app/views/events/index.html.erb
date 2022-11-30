@@ -1,1 +1,30 @@
-Find me at app/views/events/index
+<p>Add map here</p>
+<p>Add filters sports and date here</p>
+<h2>Evénements</h2>
+<%# Add cards %>
+<div class="">
+  <% @events.each do |event| %>
+    <%= link_to event_path(event), class: "text-decoration-none" do %>
+      <h3><%= event.name %></h3>
+      <p> <%= event.difficulty %></p>
+      <% if event.event_type == "Running" %>
+        <p><%= event.run_detail.pace %>/km</p>
+        <p><%= event.run_detail.distance %>km</p>
+      <% end %>
+      <% if current_user%>
+        <p><%= event.meeting_point %></p>
+      <% else %>
+        <p><%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path , class: "text-decoration-none" %></p>
+      <% end %>
+
+      <p><%= event.date.strftime("%kh%M") %></p>
+      <% if event.event_type == "Surf" %>
+        <% if event.car_pooling == true %>
+          <p>icône blablacar</p>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+

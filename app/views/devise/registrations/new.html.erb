@@ -1,52 +1,87 @@
-<h2>Sign up</h2>
+<div class="container text-center">
+  <h2>Créer ton compte</h2>
+  <div class="form_sport d-flex justify-content-around">
+          <div class="my-4 d-flex flex-column">
+              <label for="run">Run</label>
+              <input type="checkbox" id="Run">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
+              <label for="Débutant">Débutant</label>
+              <input type="checkbox" id="Débutant">
 
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                label: "Prénom",
-                input_html: { autocomplete: "first-name" }%>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                label: "Nom",
-                input_html: { autocomplete: "last-name" }%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                label: "Mot de passe",
-                hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                label: "Confirmez mot de passe",
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :address,
-                required: true,
-                autofocus: true,
-                label: "Adresse",
-                input_html: { autocomplete: "address" }%>
-    <%= f.input :zipcode,
-                required: true,
-                autofocus: true,
-                label: "Code postal",
-                input_html: { autocomplete: "zipcode" }%>
-    <%= f.input :city,
-                required: true,
-                autofocus: true,
-                label: "Ville",
-                input_html: { autocomplete: "city" }%>
-  </div>
+              <label for="Intermédiaire">Intermédiaire</label>
+              <input type="checkbox" id="Intermédiaire">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+              <label for="Confirmé">Confirmé</label>
+              <input type="checkbox" id="Confirmé">
+          </div>
+            <div class="my-4 d-flex flex-column">
+              <label for="surf">Surf</label>
+              <input type="checkbox" id="surf">
 
-<%= render "devise/shared/links" %>
+              <label for="Débutant">Débutant</label>
+              <input type="checkbox" id="Débutant">
+
+              <label for="Intermédiaire">Intermédiaire</label>
+              <input type="checkbox" id="Intermédiaire">
+
+              <label for="Confirmé">Confirmé</label>
+              <input type="checkbox" id="Confirmé">
+          </div>
+      </div>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+     <div class="name d-flex justify-content-between">
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  placeholder: "Prénom",
+                  input_html: { autocomplete: "first-name" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  placeholder: "Nom",
+                  input_html: { autocomplete: "last-name" }%>
+      </div>
+      <%= f.input :birthday,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  placeholder: "birthday",
+                  input_html: { autocomplete: "birthday" }%>
+      <%= f.input :address,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  placeholder: "Adresse",
+                  input_html: { autocomplete: "address" }%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  placeholder: "Email",
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  label: false,
+                  placeholder: "Mot de passe",
+                  hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  label: false,
+                  placeholder: "Confirmes ton mot de passe",
+                  input_html: { autocomplete: "new-password" } %>
+
+    </div>
+
+    <div class="form-actions btn btn-primary">
+      <%= f.button :submit, "Je crée mon compte" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

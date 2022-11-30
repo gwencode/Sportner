@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   root to: "pages#home"
 
   get "events/map", to: "events#map"
@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :my_events, only: :index
   post "events/:id/duplicate", to: "events#duplicate"
   resources :itineratie, only: :create
-  resource :places, only: :index
+  resources :places, only: :index
 end

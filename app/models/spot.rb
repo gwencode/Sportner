@@ -3,5 +3,5 @@ class Spot < ApplicationRecord
 
   has_many :events
 
-  has_many_attached :photos
+  # has_many_attached :photos
 end
