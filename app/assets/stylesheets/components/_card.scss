@@ -62,3 +62,8 @@
   align-items: center;
   color: $black800;
 }
+
+.card-event .card-event-infos .card-event-end a {
+ text-decoration: none !important;
+ color: $black800 !important;
+}
