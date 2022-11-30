@@ -12,6 +12,9 @@ Event.destroy_all
 puts "Destroying users"
 User.destroy_all
 
+puts "Destroying run_details"
+RunDetail.destroy_all
+
 puts "Creating users"
 users = []
 user_data = [
@@ -51,8 +54,8 @@ event2 = Event.new(
   event_type: "Surf",
   name: "Session à Quiberon",
   date: DateTime.now + 10,
-  description: "Session surf à Quiberon au départ de Rennes",
-  meeting_point: "Place de la République, 35000 Rennes",
+  description: "Session surf à Quiberon au départ de Vannes",
+  meeting_point: "Le Port, 56000 Vannes",
   car_pooling: true,
   passengers: 2,
   difficulty: "débutant",
@@ -61,3 +64,24 @@ event2.organizer = User.first
 event2.save!
 
 puts "2 events created"
+
+puts "Creating a run details at 1st event"
+
+run_details1 = RunDetail.new(
+  run_type: "sortie longue",
+  distance: 18,
+  pace: "4:40",
+  duration: 8640, #en secondes, 1h24
+  location: "Rennes"
+)
+
+run_detail1.save!
+
+puts "1 run details created"
+
+puts "Linking run details and 1st event"
+
+event1.run_detail = run_details1
+event1.save!
+
+puts "Linking done"

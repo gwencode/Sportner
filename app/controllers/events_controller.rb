@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show map]
 
   def index
+    @events = Event.all
   end
 
   def show
