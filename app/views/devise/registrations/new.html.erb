@@ -11,8 +11,8 @@
               <label for="Intermédiaire">Intermédiaire</label>
               <input type="checkbox" id="Intermédiaire">
 
-              <label for="Expert">Expert</label>
-              <input type="checkbox" id="Expert">
+              <label for="Confirmé">Confirmé</label>
+              <input type="checkbox" id="Confirmé">
           </div>
             <div class="my-4 d-flex flex-column">
               <label for="surf">Surf</label>
@@ -24,8 +24,8 @@
               <label for="Intermédiaire">Intermédiaire</label>
               <input type="checkbox" id="Intermédiaire">
 
-              <label for="Expert">Expert</label>
-              <input type="checkbox" id="Expert">
+              <label for="Confirmé">Confirmé</label>
+              <input type="checkbox" id="Confirmé">
           </div>
       </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
@@ -58,18 +58,6 @@
                   label: false,
                   placeholder: "Adresse",
                   input_html: { autocomplete: "address" }%>
-      <%= f.input :zipcode,
-                  required: true,
-                  autofocus: true,
-                  label: false,
-                  placeholder: "Code postal",
-                  input_html: { autocomplete: "zipcode" }%>
-      <%= f.input :city,
-                  required: true,
-                  autofocus: true,
-                  label: false,
-                  placeholder: "Ville",
-                  input_html: { autocomplete: "city" }%>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
@@ -85,13 +73,13 @@
       <%= f.input :password_confirmation,
                   required: true,
                   label: false,
-                  placeholder: "Confirmez mot de passe",
+                  placeholder: "Confirmes ton mot de passe",
                   input_html: { autocomplete: "new-password" } %>
 
     </div>
 
     <div class="form-actions btn btn-primary">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Je crée mon compte" %>
     </div>
   <% end %>
 
