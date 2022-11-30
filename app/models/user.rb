@@ -10,10 +10,11 @@ class User < ApplicationRecord
   has_many :participated_events, through: :participations, source: :event
   has_many :reviews
 
-  validates :first_name, :last_name, :address, :zipcode, :city, presence: true
-  validate :one_sport
+  validates :first_name, :last_name, presence: true
+  validates :address, :zipcode, :city, presence: true, on: :update
+  validate :one_sport, on: :update
 
-  has_one_attached :avatar
+  # has_one_attached :avatar
 
   LEVELS = %i[débutant intermédiaire confirmé]
 
