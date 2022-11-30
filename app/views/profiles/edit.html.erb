@@ -1,1 +1,34 @@
-Find me at app/views/profiles/edit
+<div class="container text-center">
+ <h2>Créer ton compte</h2>
+  <div class="d-flex justify-content-around">
+    <%= simple_form_for @user, url: profiles_path do |f|%>
+      <div class="d-flex flex-column">
+        <%= f.input :runner, as: :radio_buttons, label: "Je suis coureur" %>
+        <br>
+
+        <input type="radio" id="run_debutant" value="débutant" name="user[run_level]">
+        <label for="run_debutant">Débutant</label>
+
+        <input type="radio" id="run_intermediaire" value="intermédiaire" name="user[run_level]">
+        <label for="run_intermediaire">Intermédiaire</label>
+
+        <input type="radio" id="run_confirme" value="confirmé" name="user[run_level]">
+        <label for="run_confirme">Confirmé</label>
+      </div>
+      <div class="d-flex flex-column">
+        <%= f.input :surfer, as: :radio_buttons, label: "Je suis surfeur" %>
+
+        <input type="radio" id="surf_debutant" value="débutant" name="user[surf_level]">
+        <label for="surf_debutant">Débutant</label>
+
+        <input type="radio" id="surf_intermediaire" value="intermédiaire" name="user[surf_level]">
+        <label for="surf_intermediaire">Intermédiaire</label>
+
+        <input type="radio" id="surf_confirme" value="confirmé" name="user[surf_level]">
+        <label for="surf_confirme">Confirmé</label>
+      </div>
+
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
