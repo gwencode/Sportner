@@ -12,7 +12,7 @@ class Event < ApplicationRecord
 
   validates :event_type, :name, :date, :meeting_point, :difficulty, presence: true
 
-  EVENT_TYPES = ["course à pied", "surf"]
+  EVENT_TYPES = ["Running", "Surf"]
   DIFFICULTIES = %i[débutant intermédiaire confirmé]
 
   # has_many_attached :photos
