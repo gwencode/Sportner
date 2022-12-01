@@ -20,7 +20,12 @@ export default class extends Controller {
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
   }
-
+  toggleFullMap(e) {
+    console.log(this.element)
+    this.element.classList.toggle('full-height')
+    this.#addMarkersToMap()
+    this.#fitMapToMarkers()
+  }
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
