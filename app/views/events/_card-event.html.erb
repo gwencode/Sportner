@@ -22,7 +22,11 @@
         <p class="small card-event-adress">
           <%= raw("<i class='fa-solid fa-location-pin'></i>") %>
           <% if current_user %>
-            <%= event.meeting_point %>
+            <% if event.event_type == "running" %>
+              <%= event.run_detail.location %>
+            <% else %>
+              <%= event.spot.location %>
+          <% end %>
           <% else %>
             <%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path %>
           <% end %>
