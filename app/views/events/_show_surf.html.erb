@@ -1,0 +1,36 @@
+<div class="card-show">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-show-infos">
+    <div>
+      <h2><%= @event.name %></h2>
+    </div>
+    <div class="card-show-elements">
+      <p>
+      <i class="fa-solid fa-clock"></i></i> <%= @event.date.hour %>h<%= @event.date.min %>
+      </p>
+      <p>
+      <i class="fa-solid fa-calendar-check"></i></i> <%= @event.date.day %>/<%= @event.date.month %>/<%= @event.date.year %>
+      </p>
+      <p>
+      <i class="fa-solid fa-users"></i> <%= @event.participations.count %>/<%= @event.max_people %>
+      </p>
+    </div>
+    <div class="card-show-elements">
+      <p>
+      <% if current_user %>
+        <i class="fa-solid fa-location-pin"></i> <%= @event.meeting_point %>
+      <% else %>
+        Veuillez vous connecter pour accéder à l'adresse de l'évennement
+      <% end %>
+      </p>
+    </div>
+    <div class="card-show-user">
+    <p>Par <b><%= @event.organizer.first_name %></b> </p>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+    </div>
+  </div>
+</div>
+<div class="card-desc">
+  <h2>Description</h2>
+  <p><%= @event.description %></p>
+</div>
