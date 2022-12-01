@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   LEVELS = %i[débutant intermédiaire confirmé]
+  SPORTS = ["running", "surf"]
 
   def one_sport
     errors.add(:sport, "Vous devez choisir au moins un sport") unless runner || surfer

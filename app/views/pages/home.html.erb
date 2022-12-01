@@ -1,15 +1,21 @@
 <div class="container text-center">
-  <%= image_tag ''%>
-  <h2>Trouve ton partenaire de sport autour de chez toi </h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-  <input type="text" class="form-control" placeholder="Ton adresse">
-  <div class="my-4">
-    <label for="surf">Surf</label>
-    <input type="checkbox" id="surf">
-
-    <label for="run">Run</label>
-    <input type="checkbox" id="Run">
+  <div class="d-flex">
+  <%= image_tag 'sportnerhome.svg'%>
   </div>
+  <h2>Trouve ton <div>partenaire de sport</div> autour de chez toi </h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+  <div class="my-4">
+    <%# <%= simple_form_for @user do |f| %> 
+    <%# <%= f.button :checkbox %> 
+    <%# <%= f.button :checkbox %> 
+    <%# <% end %> 
+    <label for="surf" class="surfLabel">Surf</label>
+    <input type="checkbox" id="surf" class="surfCheckbox">
+
+    <label for="run" class="runLabel">Run</label>
+    <input type="checkbox" id="run" class="runCheckbox">
+  </div>
+  <input type="text" class="form-control" placeholder="Rentre ton adresse">
   <div>
     <a class="btn btn-primary">Découvrir les événements</a>
   </div>
