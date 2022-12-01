@@ -10,14 +10,14 @@ puts "destroying favorite_spots..."
 FavoriteSpot.destroy_all
 puts "destroying itineraries..."
 Itinerary.destroy_all
+puts "destroying meteos..."
+Meteo.destroy_all
 puts "destroying events..."
 Event.destroy_all
 puts "destroying run_details..."
 RunDetail.destroy_all
 puts "destroying spots..."
 Spot.destroy_all
-puts "destroying meteos..."
-Meteo.destroy_all
 puts "destroying users..."
 User.destroy_all
 puts "...cleaning done!"
