@@ -6,7 +6,7 @@
   <% @events.each do |event| %>
 
       <div class="card-event">
-        <%= cl_image_tag event.organizer.avatar.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
         <%= link_to event_path(event), class: "text-decoration-none" do %>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class ="card-image" />
           <div class="card-event-infos">
