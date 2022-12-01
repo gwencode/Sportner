@@ -36,19 +36,26 @@ user_data = [
 ]
 user_data.each do |u|
   user = User.create!(u.first)
+  sleep 1
   file = File.open("db/fixtures/#{u.last}")
   user.avatar.attach(io: file, filename: u.last)
   user.save!
+  sleep 1
   users << user
 end
 
 puts "Create favorite spots..."
 
 FavoriteSpot.create!(sport: "surf", city_spot: "Plouharnel", radius: 3, user_id: users[0].id)
+sleep 1
 FavoriteSpot.create!(sport: "running", city_spot: "Rennes", radius: 1, user_id: users[0].id)
+sleep 1
 FavoriteSpot.create!(sport: "surf", city_spot: "Plomer", radius: 3, user_id: users[1].id)
+sleep 1
 FavoriteSpot.create!(sport: "running", city_spot: "Rennes", radius: 1, user_id: users[1].id)
+sleep 1
 FavoriteSpot.create!(sport: "running", city_spot: "Vannes", radius: 3, user_id: users[5].id)
+sleep 1
 
 puts "Create spots..."
 
@@ -89,9 +96,11 @@ list_href.each do |ref|
   }]
 end
 
+sleep 1
 spots = []
 spots_data.each do |s|
   spot = Spot.create!(s.first)
+  sleep 1
   # file = File.open("db/fixtures/#{u.last}")
   # user.avatar.attach(io: file, filename: u.last)
   # user.save!
@@ -108,15 +117,16 @@ RunDetail.create!(
   elevation: 3,
   location: "9 rue des dames, 35000 Rennes"
 )
+sleep 1
 RunDetail.create!(
   run_type: "sortie longue",
   distance: 18,
   pace: "6:00",
   duration: 100,
   elevation: 12,
-  location: "9 rue des dames, 35000 Rennes"
+  location: "Quai Eric Tabarly, 35000 Rennes"
 )
-
+sleep 1
 puts "Creating events..."
 
 events = []
@@ -126,28 +136,30 @@ event1 = Event.new(
   date: DateTime.now + 7,
   description: "Sortie longue le long de la Vilaine à plusieurs pour se motiver!",
   max_people: 20,
-  meeting_point: "Place de la République, 35000 Rennes",
+  meeting_point: "111 Rue de Lorient, 35000 Rennes",
   difficulty: "intermédiaire",
   run_detail_id: RunDetail.last.id
 )
 
 event1.organizer = users[1]
 event1.save!
+sleep 1
 events << event1
 event2 = Event.new(
   event_type: "surf",
   name: "Session à Quiberon",
   date: DateTime.now + 10,
-  description: "Session surf à Quiberon au départ de Rennes",
-  meeting_point: "Place de la République, 35000 Rennes",
+  description: "Session surf à Quiberon au départ de Vannes",
+  meeting_point: "Quai Bernard Moitessier, 56000 Vannes",
   car_pooling: true,
   passengers: 2,
   difficulty: "débutant",
-  spot_id: spots[3].id
+  spot_id: Spot.find_by(location: "Saint Pierre Quiberon - Port Blanc").id
 )
 
 event2.organizer = users[0]
 event2.save!
+sleep 1
 events << event2
 
 event3 = Event.new(
@@ -157,11 +169,12 @@ event3 = Event.new(
   description: "Petite run dans le centre historique de Rennes",
   meeting_point: "Place de la République, 35000 Rennes",
   max_people: 8,
-  difficulty: "débutant",
+  difficulty: "confirmé",
   run_detail_id: RunDetail.first.id
 )
 event3.organizer = users[5]
 event3.save!
+sleep 1
 events << event3
 
 puts "Creating participation..."

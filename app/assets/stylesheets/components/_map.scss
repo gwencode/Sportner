@@ -1,0 +1,36 @@
+.mapboxgl-popup {
+  border: 0.8px;
+  border-color: $black900;
+  border-radius: 20px;
+}
+
+.map {
+  transition:.5s;
+}
+
+.mapboxgl-canvas {
+  width: 100vw !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.mapboxgl-ctrl-logo, .mapboxgl-ctrl-attrib {
+  display:none !important;
+}
+
+.mapboxgl-ctrl-top-right {
+  right: 7%;
+  bottom: 8px;
+}
+
+.image-popup {
+  width: 100%;
+  object-fit: cover;
+}
+.full-height {
+  height:80vh !important;
+}
+.mapboxgl-popup-content {
+  width: 200px;
+  height: 150px;
+}
