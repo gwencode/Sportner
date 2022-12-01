@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "events/map", to: "events#map"
 
   resources :events  do
-    resources :participation, only: :create
+    resources :participations, only: :create
     resources :reviews, only: :create
 
   end
