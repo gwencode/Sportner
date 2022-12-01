@@ -5,5 +5,5 @@ class FavoriteSpot < ApplicationRecord
   geocoded_by :city_spot
   after_validation :geocode, if: :will_save_change_to_city_spot?
 
-  SPORTS = ["course à pied", "surf"]
+  SPORTS = ["running", "surf"]
 end
