@@ -1,3 +1,13 @@
+h2 {
+  margin-top: 12px !important;
+}
+
+.sand-underline {
+  text-decoration: underline $sand;
+  text-decoration-thickness: 6px;
+  // box-shadow: 10px 5px 5px $sand;
+}
+
 .card-event {
   overflow: hidden;
   margin: 16px auto;
@@ -56,8 +66,18 @@
 .card-event .card-event-infos .card-event-middle {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: $black600;
-  gap: 16px;
+
+  p.small {
+    color: $black800;
+  }
+
+  .run-infos {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
 }
 
 .card-event .card-event-infos .card-event-middle i {
