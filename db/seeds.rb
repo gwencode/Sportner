@@ -136,7 +136,7 @@ event1 = Event.new(
   date: DateTime.now + 7,
   description: "Sortie longue le long de la Vilaine à plusieurs pour se motiver!",
   max_people: 20,
-  meeting_point: "Place de la République, 35000 Rennes",
+  meeting_point: "111 Rue de Lorient, 35000 Rennes",
   difficulty: "intermédiaire",
   run_detail_id: RunDetail.last.id
 )
@@ -169,7 +169,7 @@ event3 = Event.new(
   description: "Petite run dans le centre historique de Rennes",
   meeting_point: "Place de la République, 35000 Rennes",
   max_people: 8,
-  difficulty: "débutant",
+  difficulty: "confirmé",
   run_detail_id: RunDetail.first.id
 )
 event3.organizer = users[5]
