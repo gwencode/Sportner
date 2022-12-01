@@ -1,30 +1,42 @@
 <p>Add map here</p>
-<p>Add filters sports and date here</p>
-<h2>Evénements</h2>
-<%# Add cards %>
-<div class="">
+<div class="container">
+  <p>Add filters sports and date here</p>
+  <h2 class="h2-black900">Evénements</h2>
+  <%# Add cards %>
   <% @events.each do |event| %>
     <%= link_to event_path(event), class: "text-decoration-none" do %>
-      <h3><%= event.name %></h3>
-      <p> <%= event.difficulty %></p>
-      <% if event.event_type == "Running" %>
-        <p><%= event.run_detail.pace %>/km</p>
-        <p><%= event.run_detail.distance %>km</p>
-      <% end %>
-      <% if current_user%>
-        <p><%= event.meeting_point %></p>
-      <% else %>
-        <p><%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path , class: "text-decoration-none" %></p>
-      <% end %>
-
-      <p><%= event.date.strftime("%kh%M") %></p>
-      <% if event.event_type == "Surf" %>
-        <% if event.car_pooling == true %>
-          <p>icône blablacar</p>
-        <% end %>
-      <% end %>
+      <div class="card-event">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-event-infos">
+            <div class="card-event-title">
+              <h3><%= event.name %></h3>
+              <p class="tag"><%= event.difficulty.upcase %></p>
+            </div>
+            <div class="card-event-middle">
+              <% if event.event_type == "running" %>
+                <p><%= raw("<i class='fa-solid fa-person-running'></i>") %> <%= event.run_detail.pace %>/km</p>
+                <p><%= raw("<i class='fa-solid fa-arrows-left-right'></i>") %> <%= event.run_detail.distance %>km</p>
+              <% end %>
+              <% if event.event_type == "surf" && event.car_pooling == true %>
+                <p><%= raw("<i class='fa-solid fa-car'></i>") %> Covoiturage</p>
+              <% else %><p class="text-white">Texte caché</p>
+              <% end %>
+            </div>
+            <div class="card-event-end">
+              <p class="small">
+                <%= raw("<i class='fa-solid fa-location-pin'></i>") %>
+                <% if current_user %>
+                  <%= event.meeting_point %>
+                <% else %>
+                  <%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path %>
+                <% end %>
+              </p>
+              <p class="small"><%= raw("<i class='fa-solid fa-clock'></i>") %> <%= event.date.strftime("%kh%M") %></p>
+            </div>
+          </div>
+      </div>
     <% end %>
   <% end %>
-</div>
 
+</div>
 
