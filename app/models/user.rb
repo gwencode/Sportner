@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :address, presence: true, on: :update
   validate :one_sport, on: :update
 
-  # has_one_attached :avatar
+  has_one_attached :avatar
 
   LEVELS = %i[débutant intermédiaire confirmé]
 
