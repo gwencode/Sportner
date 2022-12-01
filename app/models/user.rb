@@ -14,6 +14,9 @@ class User < ApplicationRecord
   validates :address, presence: true, on: :update
   validate :one_sport, on: :update
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   has_one_attached :avatar
 
   LEVELS = %i[débutant intermédiaire confirmé]

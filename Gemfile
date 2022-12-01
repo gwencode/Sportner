@@ -77,4 +77,5 @@ group :test do
   gem "webdrivers"
 end
 
+gem "geocoder"
 gem "cloudinary"
