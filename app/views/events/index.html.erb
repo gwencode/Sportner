@@ -2,44 +2,8 @@
 <div class="container">
   <p>Add filters sports and date here</p>
   <h2 class="h2-black900">Evénements</h2>
-
   <% @events.each do |event| %>
-
-      <div class="card-event">
-        <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
-        <%= link_to event_path(event), class: "text-decoration-none" do %>
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class ="card-image" />
-          <div class="card-event-infos">
-            <div class="card-event-title">
-              <h3><%= event.name %></h3>
-              <p class="tag"><%= event.difficulty.upcase %></p>
-            </div>
-            <div class="card-event-middle">
-              <% if event.event_type == "running" %>
-                <p><%= raw("<i class='fa-solid fa-person-running'></i>") %> <%= event.run_detail.pace %>/km</p>
-                <p><%= raw("<i class='fa-solid fa-arrows-left-right'></i>") %> <%= event.run_detail.distance %>km</p>
-              <% end %>
-              <% if event.event_type == "surf" && event.car_pooling == true %>
-                <p><%= image_tag "icons/car-pooling.svg" %> Covoiturage</p>
-              <% else %><p class="text-white">Texte caché</p>
-              <% end %>
-            </div>
-          <% end %>
-            <div class="card-event-end">
-              <p class="small card-event-adress">
-                <%= raw("<i class='fa-solid fa-location-pin'></i>") %>
-                <% if current_user %>
-                  <%= event.meeting_point %>
-                <% else %>
-                  <%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path %>
-                <% end %>
-              </p>
-              <p class="small"><%= raw("<i class='fa-solid fa-clock'></i>") %> <%= event.date.strftime("%kh%M") %></p>
-            </div>
-          </div>
-      </div>
-
+    <%= render "card-event", event: event %>
   <% end %>
-
 </div>
 
