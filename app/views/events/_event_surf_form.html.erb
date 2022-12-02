@@ -1,0 +1,14 @@
+<div class="container">
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :event_type %>
+    <%= f.input :name %>
+    <%= f.input :date %>
+    <%= f.input :description %>
+    <%= f.input :max_people %>
+    <%= f.input :car_pooling %>
+    <%= f.input :passengers %>
+    <%= f.input :spot_id %>
+    <%= f.input :difficulty %>
+</div>
+    <%= f.submit "Publie l'event", class: "btn btn-fullwide" %>
+  <% end %>

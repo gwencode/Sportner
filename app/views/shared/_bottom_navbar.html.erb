@@ -1,4 +1,4 @@
-<div class="bottom-bar fixed-bottom ps-4 pe-4">
+<div class="bottom-bar ps-4 pe-4">
   <% if request.path == root_path %>
     <%= link_to raw("<i class='fa-solid fa-house page'></i>"), root_path%>
     <% else %>
@@ -10,17 +10,17 @@
      <%= link_to raw("<i class='fa-sharp fa-solid fa-calendar-check'></i>"), my_events_path%>
   <% end %>
   <% if request.path == new_event_path %>
-     <%= link_to raw("<i class='fa-solid fa-plus d-none'></i>"), new_event_path%> 
+     <%= link_to raw("<i class='fa-solid fa-plus d-none'></i>"), new_event_path%>
      <% else %>
      <%= link_to raw("<i class='fa-solid fa-plus'></i>"), new_event_path%>
   <% end %>
   <% if request.path == '#' %>
-     <%= link_to raw("<i class='fa-solid fa-comment page'></i>"), root_path%> 
+     <%= link_to raw("<i class='fa-solid fa-comment page'></i>"), root_path%>
      <% else %>
      <%= link_to raw("<i class='fa-solid fa-comment'></i>"), root_path%>
   <% end %>
   <% if request.path == events_map_path%>
-     <%= link_to raw("<i class='fa-solid fa-location-dot page'></i>"), events_map_path%> 
+     <%= link_to raw("<i class='fa-solid fa-location-dot page'></i>"), events_map_path%>
      <% else %>
      <%= link_to raw("<i class='fa-solid fa-location-dot'></i>"), events_map_path%>
   <% end %>
