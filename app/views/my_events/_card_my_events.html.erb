@@ -1,4 +1,8 @@
-<div class="card-event">
+<% if event.event_type == "running"  %>
+  <div class="card-event run">
+<% else %>
+  <div class="card-event surf">
+<% end %>
   <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
     <%= cl_image_tag event.photos.first.key, class: "card-image" %>
