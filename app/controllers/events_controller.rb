@@ -20,20 +20,20 @@ class EventsController < ApplicationController
     @events = Event.all
     @spots = Spot.all
     # @run_details = RunDetail.all
-    @markers_events = @events.geocoded.map do |event|
+    @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
         info_window: render_to_string(partial: "info_window", locals: {event: event})
       }
     end
-    @markers_spots = @spots.geocoded.map do |spot|
-      {
-        lat: spot.latitude,
-        lng: spot.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {spot: spot})
-      }
-    end
+    # @markersspots = @spots.geocoded.map do |spot|
+    #   {
+    #     lat: spot.latitude,
+    #     lng: spot.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: {spot: spot})
+    #   }
+    # end
   end
 
   def new
