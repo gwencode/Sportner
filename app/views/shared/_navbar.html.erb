@@ -4,9 +4,8 @@
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "logo.svg" %>
       <% end %>
-        <ul class="navbar-nav me-auto">
-    </div>
-          <% if user_signed_in? %>
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
           <li class="nav-item dropdown" style="list-style: none">
             <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

@@ -4,8 +4,11 @@
 
 import { application } from "./application"
 
-import SportsController from "./sports_controller"
-application.register("sports", SportsController)
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import SportsController from "./sports_controller"
+application.register("sports", SportsController)
