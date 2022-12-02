@@ -3,7 +3,11 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @organized_events = current_user.organized_events
+    if current_user
+      @organized_events = current_user.organized_events
+    else
+      @organized_events =  nil
+    end
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,

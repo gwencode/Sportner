@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $primary-surf;
+  z-index:99999;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,6 +10,10 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.dropdown-menu {
+  position:absolute !important;
 }
 
 .dropdown-menu.show {

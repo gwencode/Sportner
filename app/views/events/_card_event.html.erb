@@ -1,5 +1,5 @@
 <div class="card-event">
-  <% if organized_events.include?(event) %>
+  <% if organized_events && organized_events.include?(event) %>
     <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar-organizer" %>
   <% else %>
     <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>

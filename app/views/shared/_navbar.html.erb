@@ -1,26 +1,26 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-text">
   <div class="container-fluid d-flex">
-    <div class="d-flex">
+    <div class="d-flex w-100 justify-content-between">
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "logo.svg" %>
       <% end %>
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown" style="list-style: none">
-            <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Mon profil", profile_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Mes évènements", my_events_path, class: "dropdown-item" %>
-              <%= link_to "La carte", events_map_path, class: "dropdown-item" %>
-              <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item" style="list-style: none">
-            <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown" style="list-style: none">
+              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Mon profil", profile_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Mes évènements", my_events_path, class: "dropdown-item" %>
+                <%= link_to "La carte", events_map_path, class: "dropdown-item" %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item" style="list-style: none">
+              <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
     </div>
   </div>
 </div>
