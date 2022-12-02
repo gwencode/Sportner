@@ -5,8 +5,14 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-<div class="bg-white">
-  <h2>Add filters sports and date here</h2>
+<div class="filters-events">
+  <div class="d-flex gap-2">
+    <button class="btn-small select"><p>Running</p></button>
+    <button class="btn-small"><p>Surf</p></button>
+  </div>
+  <div class="calendar">
+    Add calendar here
+  </div>
 </div>
 <div class="container">
   <h2 class="h2-black900">Evénements</h2>
