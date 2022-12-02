@@ -5,12 +5,10 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    p params
     @user = User.find(params[:id])
   end
 
   def update
-    p user_params
     @user = User.find(current_user.id)
 
     if user_params[:run_level].empty? && user_params[:surf_level].empty?
