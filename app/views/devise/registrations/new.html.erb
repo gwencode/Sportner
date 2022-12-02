@@ -1,33 +1,6 @@
 <div class="container text-center">
   <h2>Créer ton compte</h2>
-  <div class="form_sport d-flex justify-content-around">
-          <div class="my-4 d-flex flex-column">
-              <label for="run">Run</label>
-              <input type="checkbox" id="Run">
 
-              <label for="Débutant">Débutant</label>
-              <input type="checkbox" id="Débutant">
-
-              <label for="Intermédiaire">Intermédiaire</label>
-              <input type="checkbox" id="Intermédiaire">
-
-              <label for="Confirmé">Confirmé</label>
-              <input type="checkbox" id="Confirmé">
-          </div>
-            <div class="my-4 d-flex flex-column">
-              <label for="surf">Surf</label>
-              <input type="checkbox" id="surf">
-
-              <label for="Débutant">Débutant</label>
-              <input type="checkbox" id="Débutant">
-
-              <label for="Intermédiaire">Intermédiaire</label>
-              <input type="checkbox" id="Intermédiaire">
-
-              <label for="Confirmé">Confirmé</label>
-              <input type="checkbox" id="Confirmé">
-          </div>
-      </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 

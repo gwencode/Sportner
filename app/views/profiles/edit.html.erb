@@ -1,1 +1,25 @@
-Find me at app/views/profiles/edit
+<div class="container text-center">
+ <h2>Créer ton compte</h2>
+ <p>Sélectionner un sport</p>
+  <div class="d-flex justify-content-around">
+    <div data-controller="sports">
+      <%= simple_form_for @user, input_html: {class: "form-edit"}, url: profiles_path do |f|%>
+        <div class="d-flex flex-column">
+          <%= f.input :runner, as: :radio_buttons, label: "Course", input_html: { "data-action" => "click->sports#displayRunLevel"} %>
+          <br>
+            <div id="level_runner" class="desc" data-sports-target="runLevel">
+              <%= f.input :run_level, as: :radio_buttons, collection: ['Débutant', 'Intermédiaire', 'Confirmer']  %>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+          <%= f.input :surfer, as: :radio_buttons, label: "Surf", input_html: { "data-action" => "click->sports#displaySurfLevel"} %>
+            <div id="level_surfer" class="desc" data-sports-target="surfLevel">
+              <%= f.input :surf_level, as: :radio_buttons, collection: ['Débutant', 'Intermédiaire', 'Confirmer']  %>
+          </div>
+        </div>
+
+      <%= f.submit  %>
+      <% end %>
+    </div>
+  </div>
+</div>

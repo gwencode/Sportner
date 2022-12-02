@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import SportsController from "./sports_controller"
+application.register("sports", SportsController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
