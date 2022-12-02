@@ -29,10 +29,10 @@ class User < ApplicationRecord
   end
 
   def need_surf_level
-    errors.add(:surf_level, "Vous devez définir votre niveau") unless surfer && surf_level
+    errors.add(:surf_level, "Vous devez définir votre niveau") if surfer && surf_level.nil?
   end
 
   def need_run_level
-    errors.add(:run_level, "Vous devez définir votre niveau") unless runner && run_level
+    errors.add(:run_level, "Vous devez définir votre niveau") if runner && run_level.nil?
   end
 end

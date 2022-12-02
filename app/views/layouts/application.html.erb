@@ -13,10 +13,15 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" unless current_page?(root_path) %>
-    <%= render "shared/bottom_navbar" unless current_page?(root_path)%>
-    <%= render "shared/flashes" %>
-
-    <%= yield %>
+    <div class="app-grid">
+      <div>
+        <%= render "shared/navbar" unless current_page?(root_path) %>
+        <%= render "shared/flashes" %>
+      </div>
+      <div style="overflow-y:scroll">
+        <%= yield %>
+      </div>
+      <%= render "shared/bottom_navbar" unless current_page?(root_path)%>
+    </div>
   </body>
 </html>

@@ -1,1 +1,7 @@
-Find me at app/views/events/new
+  <h2 class="text-center">Créé ton event</h2>
+  <div class="d-flex justify-content-center gap-3">
+    <button class="btn-small select"><p>Running</p></button>
+    <button class="btn-small"><p>Surf</p></button>
+  </div>
+  <%= render "event_surf_form" %>
+  <%= render "event_run_form"  %>
