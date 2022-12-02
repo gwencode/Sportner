@@ -1,7 +1,7 @@
 <div class="container text-center">
- <h2>Créer ton compte</h2>
- <p>Sélectionner un sport</p>
-  <div class="d-flex justify-content-around">
+ <h2 class="m-3">Créer ton compte</h2>
+ <p>Sélectionner un sport :</p>
+  <div class="d-flex justify-content-around mt-2">
     <div data-controller="sports">
       <%= simple_form_for @user, input_html: {class: "form-edit"}, url: profile_path, method: :put do |f|%>
         <div class="d-flex flex-column">
@@ -17,8 +17,7 @@
               <%= f.input :surf_level, as: :radio_buttons, collection: ['Débutant', 'Intermédiaire', 'Confirmer']  %>
           </div>
         </div>
-
-      <%= f.submit  %>
+           <button type="submit" class="btn btn-primary">C'est partit !</button>
       <% end %>
     </div>
   </div>
