@@ -8,6 +8,17 @@
   justify-content: center;
   color: white;
 }
+.btn-75wide {
+  width: 75%;
+  height: 60px;
+  background-color: $primary-surf;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  color: white;
+}
 
 .btn-fullwide:hover {
   background-color: white;
