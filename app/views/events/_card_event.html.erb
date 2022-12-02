@@ -5,7 +5,7 @@
     <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
   <% end %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class ="card-image" />
+    <%= cl_image_tag event.photos.first.key, class: "card-image" %>
     <div class="card-event-infos">
       <div class="card-event-title">
         <h3><%= event.name %></h3>

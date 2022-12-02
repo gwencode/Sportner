@@ -18,5 +18,5 @@ class Event < ApplicationRecord
   EVENT_TYPES = ["running", "surf"]
   DIFFICULTIES = %i[débutant intermédiaire confirmé]
 
-  # has_many_attached :photos
+  has_many_attached :photos
 end
