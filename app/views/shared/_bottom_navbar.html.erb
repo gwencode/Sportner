@@ -2,7 +2,7 @@
   <% if request.path == root_path %>
     <%= link_to raw("<i class='fa-solid fa-house page'></i>"), root_path%>
     <% else %>
-    <%= link_to raw("<i class='fa-solid fa-house'></i>"), root_path%>
+    <%= link_to raw("<i class='fa-solid fa-house'></i>"), events_path%>
   <% end %>
   <% if request.path == my_events_path%>
      <%= link_to raw("<i class='fa-sharp fa-solid fa-calendar-check page'></i>"), my_events_path%>
