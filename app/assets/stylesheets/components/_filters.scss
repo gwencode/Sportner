@@ -1,12 +1,26 @@
-.btn-small {
+.filters-events {
+  padding: 8px 16px 8px 16px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center !important;
+}
+
+.filters-my-events {
   margin: 8px 0px 8px 0px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-small {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px 9px 8px 10px;
   width: 70px;
   height: 41px;
-  background-color: white;
+  background-color: transparent;
   border: 1px solid $black900;
   border-radius: 160px;
   color: $black900;
