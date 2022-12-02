@@ -1,0 +1,67 @@
+.card-show {
+  overflow: hidden;
+  background: white;  // couleur de fond derriere la photo de l'event et du titre et infos de l'event
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.card-show > img {
+  height: 185px;
+  width: 100%;
+  object-fit: cover;
+}
+.card-show h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+.card-show p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 2px 0;
+  color: black;
+}
+
+.card-show .card-show-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.card-show-infos .card-show-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: auto;
+  height: 40px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; //couleur de fond de la zone par user + photot (avatar)
+  border-radius: 20px;
+  gap: 8px;
+}
+
+.card-show-elements {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.card-desc {
+  margin: 4px 16px;
+}
+.card-desc h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+.card-desc p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 2px 0;
+  color: black;
+}

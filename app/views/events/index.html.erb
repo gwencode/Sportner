@@ -1,30 +1,17 @@
-<p>Add map here</p>
-<p>Add filters sports and date here</p>
-<h2>Evénements</h2>
-<%# Add cards %>
-<div class="">
+<div style="width: 100%; height: 300px;"
+  data-controller="map"
+  class="map"
+  data-action="click->map#toggleFullMap"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<div class="bg-white">
+  <h2>Add filters sports and date here</h2>
+</div>
+<div class="container">
+  <h2 class="h2-black900">Evénements</h2>
   <% @events.each do |event| %>
-    <%= link_to event_path(event), class: "text-decoration-none" do %>
-      <h3><%= event.name %></h3>
-      <p> <%= event.difficulty %></p>
-      <% if event.event_type == "Running" %>
-        <p><%= event.run_detail.pace %>/km</p>
-        <p><%= event.run_detail.distance %>km</p>
-      <% end %>
-      <% if current_user%>
-        <p><%= event.meeting_point %></p>
-      <% else %>
-        <p><%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path , class: "text-decoration-none" %></p>
-      <% end %>
-
-      <p><%= event.date.strftime("%kh%M") %></p>
-      <% if event.event_type == "Surf" %>
-        <% if event.car_pooling == true %>
-          <p>icône blablacar</p>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render "card_event", event: event %>
   <% end %>
 </div>
-
 

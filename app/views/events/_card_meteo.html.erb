@@ -1,0 +1,22 @@
+<div class="card-meteo">
+  <div class="info-adresse">
+    <% if @event.event_type == "running" %>
+      <%= @event.run_detail.location %>
+    <% else %>
+      <%= @event.spot.location %>
+    <% end %>
+  </div>
+  <div class="info-meteo">
+    <div class="info-temps">
+      <%= @event.meteos.first.weather %>
+    </div>
+    <div class="info-temperature">
+      <i class="fa-solid fa-temperature-half"></i>
+      <%= @event.meteos.first.temperature %>°C
+    </div>
+    <div class="info-vent">
+      <i class="fa-solid fa-location-arrow" style="rotate: <%= @event.meteos.first.wind_direction + 315 %>deg"></i>
+      <%= @event.meteos.first.wind_km %>km/h
+    </div>
+  </div>
+</div>

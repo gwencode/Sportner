@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get "events/map", to: "events#map"
 
   resources :events  do
-    resources :participation, only: :create
+    resources :participations, only: :create
     resources :reviews, only: :create
   end
 
-  resource :profiles, only: %i[edit update]
+  resources :profiles, only: %i[show edit update]
+
   resources :my_events, only: :index
   post "events/:id/duplicate", to: "events#duplicate"
   resources :itineratie, only: :create

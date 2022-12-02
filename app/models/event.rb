@@ -12,7 +12,10 @@ class Event < ApplicationRecord
 
   validates :event_type, :name, :date, :meeting_point, :difficulty, presence: true
 
-  EVENT_TYPES = ["Running", "Surf"]
+  geocoded_by :meeting_point
+  after_validation :geocode, if: :will_save_change_to_meeting_point?
+
+  EVENT_TYPES = ["running", "surf"]
   DIFFICULTIES = %i[débutant intermédiaire confirmé]
 
   # has_many_attached :photos
