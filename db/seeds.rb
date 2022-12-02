@@ -140,7 +140,8 @@ event1 = Event.new(
   difficulty: "intermédiaire",
   run_detail_id: RunDetail.last.id
 )
-# event1.photos.attach(io: file, filename: "sortie-longue-vilaine.jpg")
+file = File.open("db/fixtures/sortie-longue-vilaine.jpg")
+event1.photos.attach(io: file, filename: "sortie-longue-vilaine.jpg")
 
 event1.organizer = users[1]
 event1.save!
@@ -157,7 +158,8 @@ event2 = Event.new(
   difficulty: "débutant",
   spot_id: Spot.find_by(location: "Saint Pierre Quiberon - Port Blanc").id
 )
-# event2.photos.attach(io: file, filename: "surf-port-blanc.jpg")
+file = File.open("db/fixtures/surf-port-blanc.jpg")
+event2.photos.attach(io: file, filename: "surf-port-blanc.jpg")
 
 event2.organizer = users[0]
 event2.save!
@@ -174,7 +176,8 @@ event3 = Event.new(
   difficulty: "confirmé",
   run_detail_id: RunDetail.first.id
 )
-# event3.photos.attach(io: file, filename: "centre-rennes.jpg")
+file = File.open("db/fixtures/centre-rennes.jpg")
+event3.photos.attach(io: file, filename: "centre-rennes.jpg")
 
 event3.organizer = users[5]
 event3.save!
