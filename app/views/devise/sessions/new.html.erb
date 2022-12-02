@@ -1,5 +1,5 @@
 <div class="container text-center">
-  <h2>Connectez-vous pour continuer</h2>
+  <h2 class="m-4">Connectez-vous pour continuer</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
     <div class="form-inputs">
@@ -17,12 +17,9 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Je me connecte" %>
-    </div>
+     <button type="submit" class="btn btn-primary m-3">Je me connecte</button>
   <% end %>
    <h3>Vous n'avez pas de compte ?</h3>
-    <div class="btn btn-primary">
      <%= render "devise/shared/links" %>
-   </div>
+
 </div>
