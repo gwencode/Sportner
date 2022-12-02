@@ -1,0 +1,19 @@
+.form-control {
+  background-color: transparent !important;
+  font-size: 14px;
+}
+
+.calendar {
+  display: flex;
+  justify-content: flex-end;
+  width: 7%;
+}
+
+.calendar i {
+  color: $black900;
+  font-size: 22px;
+}
+
+button#btn-search {
+  background-color: transparent !important;
+}
