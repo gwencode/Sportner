@@ -2,17 +2,24 @@
   <div class="d-flex">
   <%= image_tag 'sportnerhome.svg'%>
   </div>
-  <h2>Trouve ton <div>partenaire de sport</div> autour de chez toi </h2>
+  <h2>Trouve ton <div class="sand-underline">partenaire de sport</div> autour de chez toi </h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
   <div class="my-4">
-    <label for="surf" class="surfLabel">Surf</label>
-    <input type="checkbox" id="surf" class="surfCheckbox">
 
-    <label for="run" class="runLabel">Run</label>
-    <input type="checkbox" id="run" class="runCheckbox">
-  </div>
-  <input type="text" class="form-control" placeholder="Rentre ton adresse">
-  <div>
-    <a class="btn btn-primary">Découvrir les événements</a>
+    <%= simple_form_for @event do |f|%>
+    <%= f.input :event_type,
+            label: "Choisis ton ou tes sports !",
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'event_type-wrapper',
+            item_wrapper_class: 'event_type-item',  
+            input_html: {class: 'event_type-selector'},
+            collection: Event::EVENT_TYPES%>
+
+    <%= f.input :meeting_point, 
+            placeholder: "Rentre ton adresse",
+            label: "" %>
+            <% end %>
+    <%= link_to "Découvrir les événements", events_path,  class: 'btn btn-75wide' %>
   </div>
 </div>
