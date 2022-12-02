@@ -16,8 +16,8 @@
 </div>
 <div class="container">
   <h2 class="h2-black900">Evénements</h2>
-  <% @events.each do |event| %>
-    <%= render "card_event", event: event %>
+  <% @events.each do |event, organized_events| %>
+    <%= render "card_event", event: event, organized_events: @organized_events %>
   <% end %>
 </div>
 
