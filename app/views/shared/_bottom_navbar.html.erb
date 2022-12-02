@@ -1,6 +1,6 @@
 <div class="bottom-bar ps-4 pe-4">
-  <% if request.path == root_path %>
-    <%= link_to raw("<i class='fa-solid fa-house page'></i>"), root_path%>
+  <% if request.path == events_path %>
+    <%= link_to raw("<i class='fa-solid fa-house page'></i>"), events_path%>
     <% else %>
     <%= link_to raw("<i class='fa-solid fa-house'></i>"), events_path%>
   <% end %>
