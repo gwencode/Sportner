@@ -3,7 +3,7 @@
  <p>Sélectionner un sport</p>
   <div class="d-flex justify-content-around">
     <div data-controller="sports">
-      <%= simple_form_for @user, input_html: {class: "form-edit"}, url: profiles_path do |f|%>
+      <%= simple_form_for @user, input_html: {class: "form-edit"}, url: profile_path, method: :put do |f|%>
         <div class="d-flex flex-column">
           <%= f.input :runner, as: :radio_buttons, label: "Course", input_html: { "data-action" => "click->sports#displayRunLevel"} %>
           <br>
