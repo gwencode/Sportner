@@ -18,6 +18,14 @@ h2 {
   position: relative;
 }
 
+.card-event.run {
+  border: 1px solid $sand;
+}
+
+.card-event.surf {
+  border: 1px solid $primary-surf;
+}
+
 .card-event .card-image {
   width: 80px;
   height:100%;
@@ -41,7 +49,7 @@ h2 {
   height: 22px;
   border-radius: 50px;
   border: solid;
-  border-color: $sand;
+  border-color: $black900;
   border-width: 2px;
 }
 
@@ -49,7 +57,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 6px 12px;
+  padding: 6px 10px;
   background: white;
   width: 100%
 }
