@@ -10,8 +10,24 @@
     <button class="btn-small run select"><p>Running</p></button>
     <button class="btn-small surf"><p>Surf</p></button>
   </div>
+  <form class="form-difficulty row row-cols-lg-auto g-2 align-items-center m-0">
+    <%= form_with url: events_path, method: :get, class: "" do |f| %>
+      <div class="form-difficulty-select col-9 m-0 p-0">
+        <%= select_tag :query,
+          options_for_select(Event::DIFFICULTIES, params[:query]),
+          class: "form-control",
+          prompt: "Difficulté"
+        %>
+      </div>
+      <div class="form-difficulty-submit col-3 m-0">
+        <%= button_tag type: 'submit', class: "", id: "btn-search" do %>
+          <i class='fa-solid fa-magnifying-glass'></i>
+        <% end %>
+      </div>
+    <% end %>
+  </form>
   <div class="calendar">
-    Add calendar here
+    <%= date_field_tag 'date', nil, placeholder: '' %>
   </div>
 </div>
 <div class="container">
