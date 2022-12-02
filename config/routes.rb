@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :events  do
     resources :participations, only: :create
     resources :reviews, only: :create
-
   end
 
   resources :profiles, only: %i[show edit update]
+
   resources :my_events, only: :index
   post "events/:id/duplicate", to: "events#duplicate"
   resources :itineratie, only: :create
