@@ -13,6 +13,9 @@
   </head>
 
   <body>
+  <% if current_page?(root_path) %>
+    <%= yield %>
+  <% else %>
     <div class="app-grid">
       <div>
         <%= render "shared/navbar" unless current_page?(root_path) %>
@@ -23,5 +26,6 @@
       </div>
       <%= render "shared/bottom_navbar" unless current_page?(root_path)%>
     </div>
+  <% end %>
   </body>
 </html>
