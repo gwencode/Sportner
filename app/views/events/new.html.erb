@@ -1,7 +1,15 @@
   <h2 class="text-center">Créer ton event</h2>
   <div class="d-flex justify-content-center gap-3">
-    <button class="btn-small run select"><p>Running</p></button>
-    <button class="btn-small surf"><p>Surf</p></button>
+    <button class="btn-small run select"
+            data-controller="run-filters"
+            data-action="click->run-filters#filter"
+            data-run-filters-target="run">
+            <p>Running</p></button>
+    <button class="btn-small surf",
+            data-controller="surf-filters"
+            data-action="click->surf-filters#filter"
+            data-surf-filters-target="surf">
+            <p>Surf</p></button>
   </div>
   <%= render "event_surf_form" %>
   <%= render "event_run_form"  %>
