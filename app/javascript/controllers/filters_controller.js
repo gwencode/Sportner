@@ -1,13 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["surf"]
+  static targets = ["run", "surf"]
   connect() {
-    console.log("Hello from surf toggle controller")
   }
 
-  filter() {
-    console.log("Test surf toggle")
+  runfilter() {
+    this.runTarget.classList.toggle("select")
+  }
+
+  surffilter() {
     this.surfTarget.classList.toggle("select")
   }
 }

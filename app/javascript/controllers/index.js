@@ -13,8 +13,5 @@ application.register("map", MapController)
 import SportsController from "./sports_controller"
 application.register("sports", SportsController)
 
-import RunFiltersController from "./run_filters_controller"
-application.register("run-filters", RunFiltersController)
-
-import SurfFiltersController from "./surf_filters_controller"
-application.register("surf-filters", SurfFiltersController)
+import FiltersController from "./filters_controller"
+application.register("filters", FiltersController)
