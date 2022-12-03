@@ -7,8 +7,16 @@
 </div>
 <div class="filters-events">
   <div class="d-flex gap-2">
-    <button class="btn-small run select"><p>Running</p></button>
-    <button class="btn-small surf"><p>Surf</p></button>
+    <button class="btn-small run select"
+            data-controller="run-filters"
+            data-action="click->run-filters#filter"
+            data-run-filters-target="run">
+            <p>Running</p></button>
+    <button class="btn-small surf",
+            data-controller="surf-filters"
+            data-action="click->surf-filters#filter"
+            data-surf-filters-target="surf">
+            <p>Surf</p></button>
   </div>
   <form class="form-difficulty row row-cols-lg-auto g-2 align-items-center m-0">
     <%= form_with url: events_path, method: :get, class: "" do |f| %>
