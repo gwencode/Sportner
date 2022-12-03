@@ -3,8 +3,16 @@
     <h2 class="h2-black900 text-center"> Mes événements</h2>
   </div>
   <div class="filters-my-events">
-    <button class="btn-small run select"><p>Running</p></button>
-    <button class="btn-small surf"><p>Surf</p></button>
+    <button class="btn-small run select"
+            data-controller="run-filters"
+            data-action="click->run-filters#filter"
+            data-run-filters-target="run">
+            <p>Running</p></button>
+    <button class="btn-small surf select",
+            data-controller="surf-filters"
+            data-action="click->surf-filters#filter"
+            data-surf-filters-target="surf">
+            <p>Surf</p></button>
   </div>
 
   <div>
