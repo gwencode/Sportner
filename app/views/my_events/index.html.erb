@@ -2,32 +2,32 @@
   <div class="sand-underline">
     <h2 class="h2-black900 text-center"> Mes événements</h2>
   </div>
-  <div class="filters-my-events">
-    <button class="btn-small run select"
-            data-controller="run-filters"
-            data-action="click->run-filters#filter"
-            data-run-filters-target="run">
-            <p>Running</p></button>
-    <button class="btn-small surf select",
-            data-controller="surf-filters"
-            data-action="click->surf-filters#filter"
-            data-surf-filters-target="surf">
-            <p>Surf</p></button>
-  </div>
+  <div data-controller="filters">
+    <div class="filters-my-events">
+      <button class="btn-small run select"
+                data-filters-target="run"
+                data-action="click->filters#runfilter">
+                <p>Running</p></button>
+        <button class="btn-small surf"
+                data-filters-target="surf"
+                data-action="click->filters#surffilter">
+                <p>Surf</p></button>
+    </div>
 
-  <div>
-    <p>A venir</p>
-  </div>
-  <% next_events = @events.where("date >= ?", Date.today) %>
-  <% next_events.each do |event| %>
-    <%= render "card_my_events", event: event %>
-  <% end %>
+    <div>
+      <p>A venir</p>
+    </div>
+    <% next_events = @events.where("date >= ?", Date.today) %>
+    <% next_events.each do |event| %>
+      <%= render "card_my_events", event: event %>
+    <% end %>
 
-  <div>
-    <p>Passés</p>
+    <div>
+      <p>Passés</p>
+    </div>
+    <% past_events = @events.where("date < ?", Date.today) %>
+    <% past_events.each do |event| %>
+      <%= render "card_my_events", event: event %>
+    <% end %>
   </div>
-  <% past_events = @events.where("date < ?", Date.today) %>
-  <% past_events.each do |event| %>
-    <%= render "card_my_events", event: event %>
-  <% end %>
 </div>
