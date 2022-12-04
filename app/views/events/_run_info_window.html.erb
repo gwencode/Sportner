@@ -1,0 +1,11 @@
+<div class="">
+  <%# <%= link_to run_detail_path(run_detail), class: "text-decoration-none" do  %>
+      <h3 class="text-center mt-3"><%= run.location %></h3>
+        <div class="row align-items-center mx-1 mb-0">
+          <p><%= "Type :"%> <%=run.run_type %></p>
+          <p><%= "Distance :"%> <%=run.distance %></p>
+          <% unless run.elevation.nil? %>
+            <p><%= "Elevation :"%><%=run.elevation %></p>
+          <% end %>
+    <%# <% end %>
+</div>
