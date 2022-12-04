@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container event-surf-form">
   <%= simple_form_for @event, data: { controller: 'flatpickr' } do |f| %>
     <%= f.hidden_field :event_type, value: "surf" %>
     <%= f.input :name, label: "Nom de ton event" %>
@@ -15,6 +15,7 @@
     </div>
     <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Choisi ton spot" %>
     <%= f.input :difficulty, collection: Event::DIFFICULTIES %>
+    <%= f.input :meeting_point, label: "Point de RDV", placeholder: "adresse,XXXX Ville" %>
 </div>
     <%= f.submit "Publie l'event", class: "btn btn-fullwide" %>
   <% end %>
