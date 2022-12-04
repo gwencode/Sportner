@@ -2,7 +2,7 @@
   <%= simple_form_for @event, data: { controller: 'flatpickr' } do |f| %>
     <%= f.hidden_field :event_type, value: "surf" %>
     <%= f.input :name, label: "Nom de ton event" %>
-    <%= f.input :date, label: "Date de l'event", as: :string, input_html: { data: { flatpickr_target: "Date" } } %>
+    <%= f.input :date, label: "Date de l'event", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
     <%= f.input :description, label: "Dis-nous tout sur ton event" %>
     <%= f.input :max_people, label: "Nbre max de participants" %>
     <div class="row">

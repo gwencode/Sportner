@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show map]
 
   def index
+    @event = Event.new
     if params[:query].present?
       @events = Event.where(difficulty: params[:query])
     else
