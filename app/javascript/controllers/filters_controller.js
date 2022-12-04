@@ -4,10 +4,11 @@ export default class extends Controller {
   static targets = ["runbtn", "surfbtn",
                     "runcard", "surfcard",
                     "rangedate",
-                    "runform", "surfform"]
+                    "runform", "surfform",
+                    "runbtndisable"]
   connect() {
     console.log("Hello from filter controler")
-    this.runbtnTarget.setAttribute("disabled", "")
+    this.runbtndisableTarget.setAttribute("disabled", "")
   }
 
   runfilter() {
