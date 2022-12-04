@@ -1,2 +1,9 @@
-<%# <%= cl_image_tag event.organizer.avatar.key, class: "image-popup"%>
-<h3><%= event.name %></h3>
+<div class="">
+  <%= link_to event_path(event), class: "text-decoration-none" do  %>
+      <h3 class="text-center mt-3"><%= event.name %></h3>
+        <div class="row align-items-center mx-1 mb-0">
+          <p><%= raw("<i class='fa-solid fa-calendar'></i>")%> <%=event.date.strftime("%kh%M") %></p>
+          <p><%= "Difficulté :"%> <%=event.difficulty %></p>
+    <% end %>
+</div>
+
