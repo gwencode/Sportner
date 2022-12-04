@@ -1,13 +1,12 @@
 .infos_profil {
   font-size: 16px;
-  background-color: lightblue;
-  border: 5px solid $primary-surf;
-  border-radius: 8px;
+  margin-top: 36px;
+  border-top: 1px solid $black600;
+  border-bottom: 1px solid $black600;
   padding: 15px;
 }
 .bonus_infos {
   color: $black800;
-
 }
 
 .surf_and_run {

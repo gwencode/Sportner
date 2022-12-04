@@ -1,12 +1,14 @@
 <div class="container">
-  <h2 class="text-center m-3">Mon profil</h2>
+  <h2 class="text-center m-3 sand-underline">Mes infos</h2>
    <div class="infos_profil">
-   <h3 class="text-center"> <%= @user.first_name %>  <%= @user.last_name%></h3>
+    <p class="bonus_infos">Prénom<%= link_to "Modifier", edit_profile_path, class: 'text-decoration-none'%> <br> </p><%= @user.first_name%>
+    <p class="bonus_infos">Nom de famille <br> </p><%= @user.last_name%>
     <p class="bonus_infos">E-MAIL <br> </p><%= @user.email%>
     <p class="bonus_infos">ADRESSE <br> </p><%= @user.address%>
+    <p class="bonus_infos">DATE DE NAISSANCE <br> </p><%= @user.birthday%>
   </div>
-    <h2 class="text-center m-3">Mes sports</h2>
-   <div class="surf_and_run">
+    <h2 class="text-center m-3 sand-underline">Mes sports</h2>
+   <div class="infos_profil">
     <div class="surf_profil">
     <p class="bonus_infos">Surf <br> </p>
       <% if @user.surfer == true%>
@@ -26,6 +28,4 @@
         <%end%>
       </div>
   </div>
-        <%= link_to "Editer mon profil", edit_profile_path,  class: 'btn btn-fullwide mt-4' %>
-        <%= link_to "Voir les événements", events_path,  class: 'btn btn-fullwide mt-4' %>
 </div>
