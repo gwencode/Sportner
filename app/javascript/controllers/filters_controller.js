@@ -5,14 +5,10 @@ export default class extends Controller {
                     "runcard", "surfcard",
                     "rangedate",
                     "runform", "surfform",
-                    "runbtndisable",
                     "futurbtn", "pastbtn",
                     "myfuturevents", "mypastevents"]
   connect() {
     console.log("Hello from filter controler")
-    // voir avec Lomig comment ajouter un if si on se trouve sur telle page
-    this.runbtndisableTarget.setAttribute("disabled", "")
-    // this.futurbtndisableTarget.setAttribute("disabled", "")
   }
 
   runfilter() {
@@ -72,7 +68,7 @@ export default class extends Controller {
     this.futurbtnTarget.classList.remove("temporal-disable");
     this.pastbtnTarget.classList.add("temporal-disable");
   }
-  
+
   myPastEventsDisplay() {
     console.log(this.pastbtnTarget)
 

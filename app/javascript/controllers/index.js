@@ -15,3 +15,9 @@ application.register("sports", SportsController)
 
 import FiltersController from "./filters_controller"
 application.register("filters", FiltersController)
+
+import PlacesController from "./places_controller"
+application.register("places", PlacesController)
+
+import ButtonDisableController from "./button_disable_controller"
+application.register("button-disable", ButtonDisableController)

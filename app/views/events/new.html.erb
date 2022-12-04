@@ -2,8 +2,10 @@
 <div data-controller="filters">
 	<div class="d-flex justify-content-center gap-3">
 		<button class="btn-small run select"
+						data-controller="button-disable"
+            data-button-disable-target="btndisable"
+
 						data-filters-target="runbtn"
-						data-filters-target="runbtndisable"
 						data-action="click->filters#formRunDisplay">
 						<p>Running</p></button>
 		<button class="btn-small surf"
