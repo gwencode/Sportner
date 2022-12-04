@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post "events/:id/duplicate", to: "events#duplicate"
   resources :itineratie, only: :create
   resources :places, only: :index
+  resources :spots, only: :show
 end
