@@ -1,11 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["runbtn", "surfbtn", "runcard", "surfcard", "rangedate"]
+  static targets = ["runbtn", "surfbtn",
+                    "runcard", "surfcard",
+                    "rangedate",
+                    "runform", "surfform"]
   connect() {
     console.log("Hello from filter controler")
-    console.log(this.runcardTargets)
-    console.log(this.surfcardTargets)
+    this.runbtnTarget.setAttribute("disabled", "")
   }
 
   runfilter() {
@@ -29,5 +31,32 @@ export default class extends Controller {
     // const enddate = dates.last.first.split("-");
     // console.log(startdate);
     // console.log(enddate);
+  }
+
+  formRunDisplay() {
+    console.log(this.runbtnTarget)
+    this.runbtnTarget.classList.add("select");
+    this.surfbtnTarget.classList.remove("select");
+
+    this.runbtnTarget.setAttribute("disabled", "")
+    this.surfbtnTarget.removeAttribute("disabled", "")
+
+    this.runformTarget.classList.remove("d-none");
+    this.surfformTarget.classList.add("d-none");
+
+
+  }
+
+  formSurfDisplay() {
+    console.log(this.surfbtnTarget)
+    this.surfbtnTarget.classList.add("select");
+    this.runbtnTarget.classList.remove("select");
+
+    this.surfbtnTarget.setAttribute("disabled", "")
+    this.runbtnTarget.removeAttribute("disabled", "")
+
+    this.surfformTarget.classList.remove("d-none");
+    this.runformTarget.classList.add("d-none");
+
   }
 }

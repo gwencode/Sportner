@@ -3,13 +3,17 @@
 	<div class="d-flex justify-content-center gap-3">
 		<button class="btn-small run select"
 						data-filters-target="runbtn"
-						data-action="click->filters#runfilter">
+						data-action="click->filters#formRunDisplay">
 						<p>Running</p></button>
-		<button class="btn-small surf select"
+		<button class="btn-small surf"
 						data-filters-target="surfbtn"
-						data-action="click->filters#surffilter">
+						data-action="click->filters#formSurfDisplay">
 						<p>Surf</p></button>
   </div>
-  <%= render "event_surf_form" %>
-  <%= render "event_run_form"  %>
+	<div data-filters-target="runform">
+	  <%= render "event_run_form"  %>
+	</div>
+	<div class="d-none" data-filters-target="surfform">
+  	<%= render "event_surf_form" %>
+	</div>
 </div>
