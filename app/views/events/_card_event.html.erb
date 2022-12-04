@@ -24,6 +24,7 @@
           <p><%= image_tag "icons/car-pooling.svg" %> Covoiturage</p>
         <% else %><p class="text-white">Texte caché</p>
         <% end %>
+        <p class="small"><%= raw("<i class='fa-solid fa-calendar-check'></i>") %> <%= event.date.strftime("%d/%m/%y") %></p>
       </div>
     <% end %>
       <div class="card-event-end">
