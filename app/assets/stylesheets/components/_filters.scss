@@ -61,3 +61,16 @@
     border-bottom: solid $black400;
   }
 }
+
+.btn-place {
+  color: $primary-surf;
+  background-color: transparent;
+  font-weight: 450;
+  border: none;
+  border-bottom: solid;
+  width: 25%;
+  &.place-disable {
+    color: $black600;
+    border-bottom: solid $black400;
+  }
+}
