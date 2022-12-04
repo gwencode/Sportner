@@ -34,7 +34,6 @@ export default class extends Controller {
   }
 
   formRunDisplay() {
-    console.log(this.runbtnTarget)
     this.runbtnTarget.classList.add("select");
     this.surfbtnTarget.classList.remove("select");
 
@@ -43,12 +42,9 @@ export default class extends Controller {
 
     this.runformTarget.classList.remove("d-none");
     this.surfformTarget.classList.add("d-none");
-
-
   }
 
   formSurfDisplay() {
-    console.log(this.surfbtnTarget)
     this.surfbtnTarget.classList.add("select");
     this.runbtnTarget.classList.remove("select");
 
@@ -57,6 +53,5 @@ export default class extends Controller {
 
     this.surfformTarget.classList.remove("d-none");
     this.runformTarget.classList.add("d-none");
-
   }
 }
