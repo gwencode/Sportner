@@ -7,6 +7,9 @@ import { application } from "./application"
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
+import SpotsMapController from "./spots_map_controller"
+application.register("spots-map", SpotsMapController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 
