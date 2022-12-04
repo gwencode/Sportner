@@ -8,15 +8,15 @@
   </div>
   <div class="info-meteo">
     <div class="info-temps">
-      <%= @event.meteos.first.weather %>
+      <%= @event.meteos.first.weather unless @event.meteos.nil? %>
     </div>
     <div class="info-temperature">
       <i class="fa-solid fa-temperature-half"></i>
-      <%= @event.meteos.first.temperature %>°C
+      <%= @event.meteos.first.temperature unless @event.meteos.nil? %>°C
     </div>
     <div class="info-vent">
-      <i class="fa-solid fa-location-arrow" style="rotate: <%= @event.meteos.first.wind_direction + 315 %>deg"></i>
-      <%= @event.meteos.first.wind_km %>km/h
+      <i class="fa-solid fa-location-arrow" style="rotate: <%= @event.meteos.first.wind_direction + 315 unless @event.meteos.nil?%>deg"></i>
+      <%= @event.meteos.first.wind_km unless @event.meteos.nil? %>km/h
     </div>
   </div>
 </div>

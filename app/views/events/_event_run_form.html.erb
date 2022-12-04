@@ -1,7 +1,7 @@
 <div class="container even-run-form">
   <%= link_to "Détails de ma run", new_run_detail_path, class: "btn btn-fullwide" %>
   <%= simple_form_for @event, data: { controller: 'flatpickr' } do |f| %>
-    <%= f.hidden_field :event_type, value: "run" %>
+    <%= f.hidden_field :event_type, value: "running" %>
     <%= f.hidden_field :run_detail_id, value: RunDetail.last.id %>
     <%= f.input :name, label: "Nom de ton event" %>
     <%= f.input :date, label: "Date de l'event", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
