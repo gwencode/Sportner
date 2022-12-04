@@ -5,10 +5,14 @@ export default class extends Controller {
                     "runcard", "surfcard",
                     "rangedate",
                     "runform", "surfform",
-                    "runbtndisable"]
+                    "runbtndisable",
+                    "futurbtn", "pastbtn",
+                    "myfuturevents", "mypastevents"]
   connect() {
     console.log("Hello from filter controler")
+    // voir avec Lomig comment ajouter un if si on se trouve sur telle page
     this.runbtndisableTarget.setAttribute("disabled", "")
+    // this.futurbtndisableTarget.setAttribute("disabled", "")
   }
 
   runfilter() {
@@ -54,5 +58,30 @@ export default class extends Controller {
 
     this.surfformTarget.classList.remove("d-none");
     this.runformTarget.classList.add("d-none");
+  }
+
+  myFuturEventsDisplay() {
+    console.log(this.futurbtnTarget)
+
+    this.futurbtnTarget.setAttribute("disabled", "")
+    this.pastbtnTarget.removeAttribute("disabled", "")
+
+    this.myfutureventsTarget.classList.remove("d-none");
+    this.mypasteventsTarget.classList.add("d-none");
+
+    this.futurbtnTarget.classList.remove("temporal-disable");
+    this.pastbtnTarget.classList.add("temporal-disable");
+  }
+  myPastEventsDisplay() {
+    console.log(this.pastbtnTarget)
+
+    this.pastbtnTarget.setAttribute("disabled", "")
+    this.futurbtnTarget.removeAttribute("disabled", "")
+
+    this.mypasteventsTarget.classList.remove("d-none");
+    this.myfutureventsTarget.classList.add("d-none");
+
+    this.futurbtnTarget.classList.add("temporal-disable");
+    this.pastbtnTarget.classList.remove("temporal-disable");
   }
 }

@@ -48,3 +48,16 @@
   border: 3px solid $light-blue;
   border-radius: 160px;
 }
+
+.btn-temporal {
+  color: $primary-surf;
+  background-color: transparent;
+  font-weight: 450;
+  border: none;
+  border-bottom: solid;
+  width: 35%;
+  &.temporal-disable {
+    color: $black600;
+    border-bottom: solid $black400;
+  }
+}
