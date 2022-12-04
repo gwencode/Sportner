@@ -1,7 +1,7 @@
 <% if event.event_type == "running"  %>
-  <div class="card-event run">
+  <div class="card-event run" data-filters-target="runcard">
 <% else %>
-  <div class="card-event surf">
+  <div class="card-event surf" data-filters-target="surfcard">
 <% end %>
   <% if organized_events && organized_events.include?(event) %>
     <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar-organizer" %>
