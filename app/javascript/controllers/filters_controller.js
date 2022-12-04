@@ -72,6 +72,7 @@ export default class extends Controller {
     this.futurbtnTarget.classList.remove("temporal-disable");
     this.pastbtnTarget.classList.add("temporal-disable");
   }
+  
   myPastEventsDisplay() {
     console.log(this.pastbtnTarget)
 
