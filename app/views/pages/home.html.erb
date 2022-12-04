@@ -1,27 +1,27 @@
-<div class="w-100">
-<%= image_tag 'sportnerhome.svg'%>
+<div class="wallpaper">
+  <%= image_tag 'sportnerhome.svg'%>
 </div>
-<div class="container text-center">
-  <div class="d-flex">
-  </div>
-  <h2>Trouve ton <div class="sand-underline">partenaire de sport</div> autour de chez toi </h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-  <div class="my-4">
-
-    <%= simple_form_for @event do |f|%>
-    <%= f.input :event_type,
-            label: "Choisis ton ou tes sports !",
-            as: :check_boxes,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'event_type-wrapper',
-            item_wrapper_class: 'event_type-item',  
-            input_html: {class: 'event_type-selector'},
-            collection: Event::EVENT_TYPES%>
-
-    <%= f.input :meeting_point, 
-            placeholder: "Rentre ton adresse",
-            label: "" %>
-            <% end %>
-    <%= link_to "Découvrir les événements", events_path,  class: 'btn btn-fullwide' %>
-  </div>
+<div class="container text-center d-flex flex-wrap justify-content-center mt-5">
+    <h1>Trouve ton <div class="sand-underline">partenaire de sport</div> autour de chez toi </h1>
+    <div class="my-4">
+      <%= simple_form_for @event do |f|%>
+      <div class="mt-4">
+        <%= f.input :event_type,
+                label: "",
+                as: :check_boxes,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'event_type-wrapper',
+                item_wrapper_class: 'event_type-item',  
+                input_html: {class: 'event_type-selector'},
+                collection: Event::EVENT_TYPES%>
+        </div>
+      <div class="mt-2">
+        <%= f.input :meeting_point, 
+                placeholder: "Rentre ton adresse",
+                label: "" %>
+                <% end %>
+      </div>
+      <div class="mt-5">
+      <%= link_to "Découvrir les événements", events_path,  class: 'btn btn-fullwide' %>
+      </div>
 </div>
