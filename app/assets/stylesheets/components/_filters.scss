@@ -1,5 +1,5 @@
 .filters-events {
-  padding: 8px 16px 8px 16px;
+  padding: 12px 16px 12px 16px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -17,16 +17,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 9px 8px 10px;
+  padding: 8px 8px 8px 8px;
   width: 70px;
   height: 41px;
   background-color: transparent;
-  border: 1px solid $black900;
-  border-radius: 160px;
   color: $black900;
 }
 
-.btn-small.select {
+.btn-small.surf {
+  border: 2px solid $primary-surf;
+  border-radius: 160px;
+}
+
+.btn-small.run {
+  border: 2px solid $light-blue;
+  border-radius: 160px;
+}
+
+
+.btn-small.surf.select {
   background-color: $black900;
   color: white;
+  border: 3px solid $primary-surf;
+  border-radius: 160px;
+}
+
+.btn-small.run.select {
+  background-color: $black900;
+  color: white;
+  border: 3px solid $light-blue;
+  border-radius: 160px;
 }

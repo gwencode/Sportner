@@ -12,3 +12,6 @@ application.register("map", MapController)
 
 import SportsController from "./sports_controller"
 application.register("sports", SportsController)
+
+import FiltersController from "./filters_controller"
+application.register("filters", FiltersController)

@@ -2,11 +2,15 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show map]
 
   def index
-    @events = Event.all
+    if params[:query].present?
+      @events = Event.where(difficulty: params[:query])
+    else
+      @events = Event.all
+    end
     if current_user
       @organized_events = current_user.organized_events
     else
-      @organized_events =  nil
+      @organized_events = nil
     end
     @markers = @events.geocoded.map do |event|
       {
