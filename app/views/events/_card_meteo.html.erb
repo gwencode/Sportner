@@ -1,5 +1,9 @@
+<div id="meteo-title">
+  <h2>Meteo</h2>
+</div>
 <div class="card-meteo">
   <div class="info-adresse">
+    <i class="fa-solid fa-circle-half-stroke"></i>
     <% if @event.event_type == "running" %>
       <%= @event.run_detail.location %>
     <% else %>
@@ -8,15 +12,15 @@
   </div>
   <div class="info-meteo">
     <div class="info-temps">
-      <%= @event.meteos.first.weather %>
+      <%= @event.meteos.first.weather unless @event.meteos.empty? %>
     </div>
     <div class="info-temperature">
       <i class="fa-solid fa-temperature-half"></i>
-      <%= @event.meteos.first.temperature %>°C
+      <%= @event.meteos.first.temperature unless @event.meteos.empty? %>°C
     </div>
     <div class="info-vent">
-      <i class="fa-solid fa-location-arrow" style="rotate: <%= @event.meteos.first.wind_direction + 315 %>deg"></i>
-      <%= @event.meteos.first.wind_km %>km/h
+      <i class="fa-solid fa-location-arrow" style="rotate: <%= @event.meteos.first.wind_direction + 315 unless @event.meteos.empty?%>deg"></i>
+      <%= @event.meteos.first.wind_km unless @event.meteos.empty? %>km/h
     </div>
   </div>
 </div>

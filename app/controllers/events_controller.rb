@@ -68,13 +68,15 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = Event.new.tap(&:build_run_detail)
   end
 
   def create
     @event = Event.new(event_params)
     @event.organizer = current_user
     if @event.save!
+      participation = Participation.new(event: @event, user: current_user)
+      participation.save
       redirect_to event_path(@event), success: "Evenement créé 👍"
     else
       render :new, status: :unprocessable_entity
@@ -94,13 +96,23 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:event_type,
-                                  :name, :date,
+                                  :name,
+                                  :date,
                                   :description,
                                   :max_people,
                                   :meeting_point,
                                   :car_pooling,
                                   :passengers,
-                                  :difficulty)
+                                  :spot_id,
+                                  :run_detail_id,
+                                  :difficulty,
+                                  photos: [],
+                                  run_detail_attributes: %i[run_type
+                                                            distance
+                                                            pace
+                                                            duration
+                                                            elevation
+                                                            location])
   end
 
   def set_weather_data

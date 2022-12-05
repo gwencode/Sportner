@@ -5,7 +5,16 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
   static targets = [ "Date", "Calendar" ]
   connect() {
-    flatpickr(this.CalendarTarget, { mode: "range" })
-    flatpickr(this.DateTarget, { })
+    console.log("hello")
+    if (this.hasCalendarTarget) {
+      flatpickr(this.CalendarTarget, { mode: "range" })
+    }
+    if (this.hasDateTarget) {
+      flatpickr(this.DateTarget, {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        minDate: "today",
+      })
+    }
   }
 }

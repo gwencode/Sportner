@@ -1,5 +1,6 @@
 <div class="card-show">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <%= cl_image_tag @event.photos.first.key unless @event.photos.empty? %>
+  <%= image_tag('sportnerhome.svg') if @event.photos.empty? %>
   <div class="card-show-infos">
     <div>
       <h2><%= @event.name %></h2>
@@ -9,7 +10,7 @@
       <i class="fa-solid fa-person-running"></i> <%= @event.run_detail.pace %>/km
       </p>
       <p>
-      <i class="fa-solid fa-arrows-left-right"></i> <%= @event.run_detail.distance %>
+      <i class="fa-solid fa-arrows-left-right"></i> <%= @event.run_detail.distance %> km
       </p>
       <p>
       <i class="fa-solid fa-users"></i> <%= @event.participations.count %>/<%= @event.max_people %>
@@ -41,7 +42,7 @@
     </div>
     <div class="card-show-user">
     <p>Par <b><%= @event.organizer.first_name %></b> </p>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+    <%= cl_image_tag @event.organizer.avatar.key, class: "avatar-bordered" %>
     </div>
   </div>
 </div>
