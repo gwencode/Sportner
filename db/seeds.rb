@@ -147,9 +147,9 @@ rd4 = RunDetail.create!(
 
 rd5 = RunDetail.create!(
   run_type: "allure spécifique",
-  distance: 7,
+  distance: 6,
   pace: "3:30",
-  duration: 25,
+  duration: 35,
   elevation: 20,
   location: "Av. de Büdingen, 22600 Loudéac"
 )
@@ -287,7 +287,7 @@ event6 = Event.new(
   event_type: "running",
   name: "Course en allure spécifique",
   date: DateTime.now - 5,
-  description: "Course en allure spécifique, n'hésiter pas à venir ambiance bonne enfant !",
+  description: "Entraînement à allure spécifique, 6 x 1km à 3:30/km, récupération 2min entre chaque intervalle",
   meeting_point: "Av. de Büdingen, 22600 Loudéac",
   max_people: 30,
   difficulty: "intermédiaire",
