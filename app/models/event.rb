@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   has_many :participants, through: :participations, source: :user
   has_many :reviews
   has_many :meteos
+  has_many_attached :photos
 
   has_one :itinerary, through: :run_detail
 
@@ -19,6 +20,4 @@ class Event < ApplicationRecord
 
   EVENT_TYPES = ["running", "surf"]
   DIFFICULTIES = %i[débutant intermédiaire confirmé]
-
-  has_many_attached :photos
 end

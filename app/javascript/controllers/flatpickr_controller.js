@@ -13,6 +13,7 @@ export default class extends Controller {
       flatpickr(this.DateTarget, {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
+        minDate: "today",
       })
     }
   }

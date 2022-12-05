@@ -51,10 +51,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    # raise
     @event = Event.new(event_params)
     @event.organizer = current_user
     if @event.save!
+      participation = Participation.new(event: @event, user: current_user)
+      participation.save
       redirect_to event_path(@event), success: "Evenement créé 👍"
     else
       render :new, status: :unprocessable_entity
@@ -84,7 +85,7 @@ class EventsController < ApplicationController
                                   :spot_id,
                                   :run_detail_id,
                                   :difficulty,
-                                  :photos,
+                                  photos: [],
                                   run_detail_attributes: %i[run_type
                                                             distance
                                                             pace
