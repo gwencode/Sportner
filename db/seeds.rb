@@ -249,9 +249,9 @@ events << event3
 
 event4 = Event.new(
   event_type: "running",
-  name: "Course détente à Vitrés",
+  name: "Course détente à Vitré",
   date: DateTime.now - 10,
-  description: "Petite sortie nature à vitré",
+  description: "Petite sortie nature à Vitré",
   meeting_point: "14 Rue Frain de la Gaulayrie, 35500 Vitré",
   max_people: 10,
   difficulty: "débutant",
