@@ -13,6 +13,11 @@ class EventsController < ApplicationController
     else
       @organized_events = nil
     end
+    if params[:meeting_point].present?
+      @events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
+    else
+      @events = Event.all
+    end
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
