@@ -1,10 +1,15 @@
 .infos_profil {
   font-size: 16px;
-  margin-top: 36px;
-  border-top: 1px solid $black600;
   border-bottom: 1px solid $black600;
-  padding: 15px;
+  padding: 8px 16px 24px 16px;
 }
+
+.sports_profil {
+  font-size: 16px;
+  padding: 8px 16px 24px 16px;
+}
+
+
 .bonus_infos {
   color: $black800;
 }

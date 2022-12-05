@@ -17,3 +17,18 @@
 button#btn-search {
   background-color: transparent !important;
 }
+
+// Pour customiser les label des form devise
+// .form-inputs {
+//   label {
+//   }
+// }
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.back-link {
+  color: $black600;
+}
