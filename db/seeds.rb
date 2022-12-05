@@ -114,7 +114,7 @@ rd1 = RunDetail.create!(
   distance: 4,
   pace: "4:40",
   duration: 20,
-  elevation: 3,
+  elevation: 10,
   location: "9 rue des dames, 35000 Rennes"
 )
 
@@ -123,69 +123,69 @@ rd2 = RunDetail.create!(
   distance: 18,
   pace: "6:00",
   duration: 100,
-  elevation: 12,
+  elevation: 120,
   location: "Quai Eric Tabarly, 35000 Rennes"
 )
 
 rd3 = RunDetail.create!(
   run_type: "footing",
   distance: 10,
-  pace: "8:00",
-  duration: 60,
-  elevation: 5,
+  pace: "5:30",
+  duration: 55,
+  elevation: 100,
   location: "14 Rue Frain de la Gaulayrie, 35500 Vitré"
 )
 
 rd4 = RunDetail.create!(
   run_type: "VMA",
-  distance: 20,
-  pace: "10:00",
-  duration: 50,
-  elevation: 1,
+  distance: 6,
+  pace: "4:00",
+  duration: 24,
+  elevation: 10,
   location: "2-24 Rue Vieille Voie, 44110 Châteaubriant"
 )
 
 rd5 = RunDetail.create!(
   run_type: "allure spécifique",
-  distance: 35,
-  pace: "13:00",
-  duration: 50,
+  distance: 7,
+  pace: "3:30",
+  duration: 25,
   elevation: 20,
   location: "Av. de Büdingen, 22600 Loudéac"
 )
 
 rd6 = RunDetail.create!(
   run_type: "trail",
-  distance: 38,
-  pace: "11:00",
-  duration: 120,
-  elevation: 7,
+  distance: 24,
+  pace: "6:00",
+  duration: 144,
+  elevation: 600,
   location: "72-90 Rte d'Ernée, 35300 Fougères"
 )
 
 rd7 = RunDetail.create!(
   run_type: "marche athlétique",
-  distance: 34,
+  distance: 30,
   pace: "10:00",
-  duration: 130,
-  elevation: 9,
+  duration: 300,
+  elevation: 150,
   location: "15-11 Rue Léon Jouhaux, 29000 Quimper"
 )
 rd8 = RunDetail.create!(
   run_type: "parcours d'obstacles",
-  distance: 5,
-  pace: "8:00",
-  duration: 45,
-  elevation: 1,
+  distance: 4,
+  pace: "4:00",
+  duration: 16,
+  elevation: 80,
   location: "La Bidois, 35490 Romazy"
 )
 
 rd9 = RunDetail.create!(
   run_type: "côtes",
-  distance: 5,
-  pace: "10:00",
-  duration: 40,
-  elevation: 30,
+  distance: 7,
+  pace: "6:00",
+  duration: 42,
+  elevation: 500,
   location: "2 Rue Goasnou, 22970 Ploumagoar"
 )
 sleep 1
