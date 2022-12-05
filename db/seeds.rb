@@ -269,7 +269,7 @@ event5 = Event.new(
   event_type: "running",
   name: "Séance d'entrainement",
   date: DateTime.now + 6,
-  description: "Séance d'entrainement au vue du tourmoi des trois chènes",
+  description: "Séance d'entrainement en préparation de la course Tout Betton Court",
   meeting_point: "2-24 Rue Vieille Voie, 44110 Châteaubriant",
   max_people: 5,
   difficulty: "confirmé",
