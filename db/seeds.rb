@@ -431,7 +431,7 @@ event13 = Event.new(
   event_type: "surf",
   name: "Session a Aber",
   date: DateTime.new(2022, 12, 9, 11),
-  description: "Spot dificile, faite attention",
+  description: "Spot dificile, faites attention",
   meeting_point: "13-25 Bon Plaisir, 29870 Landéda",
   car_pooling: true,
   passengers: 4,
