@@ -10,6 +10,8 @@ class Event < ApplicationRecord
 
   has_one :itinerary, through: :run_detail
 
+  accepts_nested_attributes_for :run_detail
+
   validates :event_type, :name, :date, :meeting_point, :difficulty, presence: true
 
   geocoded_by :meeting_point

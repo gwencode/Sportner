@@ -30,6 +30,7 @@ h2 {
   width: 80px;
   height:100%;
   object-fit:cover;
+  object-position: center;
 }
 
 .card-event .card-avatar {
@@ -124,4 +125,3 @@ h2 {
  text-decoration: none !important;
  color: $black800 !important;
 }
-

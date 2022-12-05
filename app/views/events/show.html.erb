@@ -1,10 +1,12 @@
-<% if @event.event_type == "running" %>
-  <%= render "show_run" %>
-<% else %>
-  <%= render "show_surf" %>
-<% end %>
-<%= render "card_meteo" %>
-<% if @event.participants.include?(current_user) %>
-<% else %>
-  <%= link_to "Participer", event_participations_path(@event.id), data: { turbo_method: :post } ,class: "btn-fullwide btn-bottom-0" %>
-<% end %>
+<div>
+  <% if @event.event_type == "running" %>
+    <%= render "show_run" %>
+  <% else %>
+    <%= render "show_surf" %>
+  <% end %>
+  <%= render "card_meteo" %>
+  <% if @event.participants.include?(current_user) %>
+  <% else %>
+    <%= link_to "Participer", event_participations_path(@event.id), data: { turbo_method: :post } ,class: "btn-fullwide btn-bottom-50" %>
+  <% end %>
+</div>
