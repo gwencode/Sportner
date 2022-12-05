@@ -4,9 +4,10 @@ class EventsController < ApplicationController
   def index
     @event = Event.new
     if params[:query].present?
-      @events = Event.where(difficulty: params[:query])
+      level_events = Event.where(difficulty: params[:query])
+      @events = level_events.where("date > ?", DateTime.now)
     else
-      @events = Event.all
+      @events = Event.where("date > ?", DateTime.now)
     end
     if current_user
       @organized_events = current_user.organized_events

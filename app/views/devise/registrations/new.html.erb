@@ -5,19 +5,23 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.input :avatar, as: :file,
+                  required: true,
+                  autofocus: true,
+                  label: "Photo de profil" %>
      <div class="name d-flex justify-content-between">
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  label: false,
-                  placeholder: "Prénom",
-                  input_html: { autocomplete: "first-name" }%>
-      <%= f.input :last_name,
-                  required: true,
-                  autofocus: true,
-                  label: false,
-                  placeholder: "Nom",
-                  input_html: { autocomplete: "last-name" }%>
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "Prénom",
+                    input_html: { autocomplete: "first-name" }%>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "Nom",
+                    input_html: { autocomplete: "last-name" }%>
       </div>
       <%= f.input :birthday,
                   required: true,
