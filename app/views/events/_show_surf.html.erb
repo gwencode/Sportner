@@ -12,7 +12,7 @@
       <i class="fa-solid fa-calendar-check"></i></i> <%= @event.date.day %>/<%= @event.date.month %>/<%= @event.date.year %>
       </p>
       <p>
-      <i class="fa-solid fa-users"></i> <%= @event.participations.count %>/<%= @event.max_people %>
+      <i class="fa-solid fa-users"></i> <%= @event.participations.count %><% if @event.max_people %>/<%= @event.max_people %><% end %>
       </p>
     </div>
     <div class="card-show-elements">

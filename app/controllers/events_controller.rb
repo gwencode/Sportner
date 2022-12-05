@@ -3,22 +3,26 @@ class EventsController < ApplicationController
 
   def index
     @event = Event.new
+
+    if params[:meeting_point].present?
+      events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
+    else
+      events = Event.all
+    end
+
     if params[:query].present?
-      level_events = Event.where(difficulty: params[:query])
+      level_events = events.where(difficulty: params[:query])
       @events = level_events.where("date > ?", DateTime.now)
     else
-      @events = Event.where("date > ?", DateTime.now)
+      @events = events.where("date > ?", DateTime.now)
     end
+
     if current_user
       @organized_events = current_user.organized_events
     else
       @organized_events = nil
     end
-    if params[:meeting_point].present?
-      @events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
-    else
-      @events = Event.all
-    end
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,

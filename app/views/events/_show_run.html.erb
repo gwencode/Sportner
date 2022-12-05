@@ -13,7 +13,7 @@
       <i class="fa-solid fa-arrows-left-right"></i> <%= @event.run_detail.distance %> km
       </p>
       <p>
-      <i class="fa-solid fa-users"></i> <%= @event.participations.count %>/<%= @event.max_people %>
+      <i class="fa-solid fa-users"></i> <%= @event.participations.count %><% if @event.max_people %>/<%= @event.max_people %><% end %>
       </p>
       <p>
       <% if @event.run_detail.duration < 60 %>
