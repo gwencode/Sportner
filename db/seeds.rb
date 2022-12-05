@@ -68,6 +68,7 @@ html_fileb = URI.open(urlb).read
 html_docb = Nokogiri::HTML(html_fileb)
 
 spots_data = []
+spots_photos_url = []
 list_href = []
 html_doca.search(".wanna-tabzonespot-item-title").each do |a|
   list_href << a.attribute("href").value
@@ -94,16 +95,34 @@ list_href.each do |ref|
     tide_conditions: doc.at('span.wanna-item-label:contains("Condition de marée")').next_sibling&.text&.strip,
     danger: doc.at('h5:contains("Dangers")').next_sibling&.text&.strip
   }]
+  photo_tag = doc.search(".wanna-photovideo-cell-img img")
+  if photo_tag == []
+    photo_url = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
+  elsif photo_tag[0].nil?
+    photo_url = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
+  else
+    photo_sub_url = photo_tag[0].attributes["src"].value
+    photo_url = "https://fr.wannasurf.com/#{photo_sub_url}"
+  end
+  spots_photos_url << photo_url
 end
+
+puts "printing spots_photos_url"
+puts ""
+p spots_photos_url
+puts ""
 
 sleep 1
 spots = []
-spots_data.each do |s|
+spots_data.each_with_index do |s, index|
   spot = Spot.create!(s.first)
   sleep 1
   # file = File.open("db/fixtures/#{u.last}")
   # user.avatar.attach(io: file, filename: u.last)
   # user.save!
+  photo = URI.open(spots_photos_url[index])
+  spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
+  spot.save!
   spots << spot
 end
 
