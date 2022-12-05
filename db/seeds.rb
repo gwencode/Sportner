@@ -248,7 +248,7 @@ Participation.create(event: event2, user: event2.organizer)
 
 event3 = Event.new(
   event_type: "running",
-  name: "10km nocture à Vitré",
+  name: "10km nocture",
   date: DateTime.new(2022, 12, 10, 10),
   description: "Sortie nature à Vitré en soirée, pensez à votre lampe frontale 😉",
   meeting_point: "14 Rue Frain de la Gaulayrie, 35500 Vitré",
@@ -305,7 +305,7 @@ Participation.create(event: event5, user: event5.organizer)
 
 event6 = Event.new(
   event_type: "running",
-  name: "Course à Fougères",
+  name: "Trail en forêt",
   date: DateTime.new(2022, 12, 23, 14),
   description: "Trail assez difficile pour éliminer avant les fêtes, venez motivés et bien équipés !",
   meeting_point: "72-90 Rte d'Ernée, 35300 Fougères",
@@ -362,7 +362,7 @@ Participation.create(event: event8, user: event8.organizer)
 
 event9 = Event.new(
   event_type: "running",
-  name: "Course à Ploumagoar",
+  name: "Entraînement côtes",
   date: DateTime.new(2022, 12, 14, 12, 45),
   description: "Entraînement côtes, plusieurs pentes raides et escaliers.",
   meeting_point: "2 Rue Goasnou, 22970 Ploumagoar",
@@ -405,7 +405,7 @@ Participation.create(event: event10, user: event10.organizer)
 
 event11 = Event.new(
   event_type: "surf",
-  name: "Session au Cap Fréhel",
+  name: "Session à Fréhel",
   date: DateTime.new(2022, 12, 12, 9),
   description: "Session surf au Cap Fréhel au départ de la gare de Rennes",
   meeting_point: "19 Place de la Gare, 35005 Rennes",
