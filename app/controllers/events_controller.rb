@@ -67,7 +67,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = Event.new(name: "coucou")
   end
 
   def create
