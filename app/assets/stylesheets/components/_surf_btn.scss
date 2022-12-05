@@ -36,19 +36,19 @@
   background-color: $primary-surf;
 }
 
-label[for=event_event_type_running] {
+label[for=event_type_running] {
   background-image: image-url('run.svg') !important;
 }
 
-label[for=event_event_type_surf] {
+label[for=event_type_surf] {
   background-image: image-url('surf.svg') !important;
 }
 
-#event_event_type_running:checked + label {
+#event_type_running:checked + label {
   background-image: image-url('run-white.svg') !important;
 }
 
-#event_event_type_surf:checked + label {
+#event_type_surf:checked + label {
   background-image: image-url('surf-white.svg') !important;
 }
 
@@ -61,4 +61,10 @@ label[for=event_event_type_surf] {
 
 abbr {
   display: none;
+}
+
+.address-input {
+  text-align: center;
+  width: 90%;
+  height: 40px;
 }
