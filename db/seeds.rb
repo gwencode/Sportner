@@ -57,7 +57,7 @@ sleep 1
 FavoriteSpot.create!(sport: "running", city_spot: "Vannes", radius: 3, user_id: users[5].id)
 sleep 1
 
-puts "Create spots..."
+puts "Scraping spots..."
 
 urla = "https://fr.wannasurf.com/spot/Europe/France/Brittany_South/index.html"
 html_filea = URI.open(urla).read
@@ -107,8 +107,7 @@ list_href.each do |ref|
   spots_photos_url << photo_url
 end
 
-puts "printing spots_photos_url"
-puts ""
+puts "Creating spots"
 
 sleep 1
 spots = []
