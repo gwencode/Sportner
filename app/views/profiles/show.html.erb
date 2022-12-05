@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="text-center m-3 sand-underline">Mes infos</h2>
    <div class="infos_profil">
-    <p class="bonus_infos">Prénom<%= link_to "Modifier", edit_profile_path, class: 'text-decoration-none'%> <br> </p><%= @user.first_name%>
+    <p class="bonus_infos">Prénom<%= link_to "Modifier", edit_user_registration_path, class: 'text-decoration-none'%> <br> </p><%= @user.first_name%>
     <p class="bonus_infos">Nom de famille <br> </p><%= @user.last_name%>
     <p class="bonus_infos">E-MAIL <br> </p><%= @user.email%>
     <p class="bonus_infos">ADRESSE <br> </p><%= @user.address%>
