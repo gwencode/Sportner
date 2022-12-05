@@ -57,7 +57,7 @@ sleep 1
 FavoriteSpot.create!(sport: "running", city_spot: "Vannes", radius: 3, user_id: users[5].id)
 sleep 1
 
-puts "Create spots..."
+puts "Scraping spots..."
 
 urla = "https://fr.wannasurf.com/spot/Europe/France/Brittany_South/index.html"
 html_filea = URI.open(urla).read
@@ -107,10 +107,7 @@ list_href.each do |ref|
   spots_photos_url << photo_url
 end
 
-puts "printing spots_photos_url"
-puts ""
-p spots_photos_url
-puts ""
+puts "Creating spots"
 
 sleep 1
 spots = []
@@ -214,7 +211,7 @@ events = []
 event1 = Event.new(
   event_type: "running",
   name: "Sortie longue",
-  date: DateTime.now + 7,
+  date: DateTime.new(2022, 12, 11, 15),
   description: "Sortie longue le long de la Vilaine à plusieurs pour se motiver!",
   max_people: 20,
   meeting_point: "111 Rue de Lorient, 35000 Rennes",
@@ -232,7 +229,7 @@ events << event1
 event2 = Event.new(
   event_type: "surf",
   name: "Session à Quiberon",
-  date: DateTime.now + 7,
+  date: DateTime.new(2022, 12, 17, 8, 30),
   description: "Session surf à Quiberon au départ de Vannes",
   meeting_point: "Quai Bernard Moitessier, 56000 Vannes",
   car_pooling: true,
@@ -251,7 +248,7 @@ events << event2
 event3 = Event.new(
   event_type: "running",
   name: "Course à Rennes",
-  date: DateTime.now + 10,
+  date: DateTime.new(2022, 12, 15, 12, 30),
   description: "Petite run dans le centre historique de Rennes",
   meeting_point: "Place de la République, 35000 Rennes",
   max_people: 8,
@@ -269,7 +266,7 @@ events << event3
 event4 = Event.new(
   event_type: "running",
   name: "Course détente à Vitré",
-  date: DateTime.now - 10,
+  date: DateTime.new(2022, 12, 5, 18),
   description: "Petite sortie nature à Vitré",
   meeting_point: "14 Rue Frain de la Gaulayrie, 35500 Vitré",
   max_people: 10,
@@ -287,7 +284,7 @@ events << event4
 event5 = Event.new(
   event_type: "running",
   name: "Séance d'entrainement",
-  date: DateTime.now + 6,
+  date: DateTime.new(2022, 12, 14, 14),
   description: "Séance d'entrainement en préparation de la course Tout Betton Court",
   meeting_point: "2-24 Rue Vieille Voie, 44110 Châteaubriant",
   max_people: 5,
@@ -305,7 +302,7 @@ events << event5
 event6 = Event.new(
   event_type: "running",
   name: "Course en allure spécifique",
-  date: DateTime.now - 5,
+  date: DateTime.new(2022, 12, 4, 16, 15),
   description: "Entraînement à allure spécifique, 6 x 1km à 3:30/km, récupération 2min entre chaque intervalle",
   meeting_point: "Av. de Büdingen, 22600 Loudéac",
   max_people: 30,
@@ -323,7 +320,7 @@ events << event6
 event7 = Event.new(
   event_type: "surf",
   name: "Session au Cap frehel",
-  date: DateTime.now + 3,
+  date: DateTime.new(2022, 12, 11, 8),
   description: "Session surf au Cap frehel au départ de Plévenon",
   meeting_point: "Rue Notre Dame, 22240 Plévenon",
   car_pooling: true,
@@ -342,7 +339,7 @@ events << event7
 event8 = Event.new(
   event_type: "running",
   name: "Course à Fougères",
-  date: DateTime.now - 1,
+  date: DateTime.new(2022, 12, 9, 16),
   description: "Course difficile vener motiver et bien équiper !",
   meeting_point: "72-90 Rte d'Ernée, 35300 Fougères",
   max_people: 7,
@@ -360,7 +357,7 @@ events << event8
 event9 = Event.new(
   event_type: "surf",
   name: "Session a Les Rosaires",
-  date: DateTime.now - 3,
+  date: DateTime.new(2022, 12, 8, 11),
   description: "Session détente n'oublier votre pique-nique !",
   meeting_point: "2D Rue de la Croix Lormel, 22190 Plérin",
   car_pooling: true,
@@ -379,7 +376,7 @@ events << event9
 event10 = Event.new(
   event_type: "running",
   name: "Marche athlétique",
-  date: DateTime.now + 8,
+  date: DateTime.new(2022, 8, 16, 8),
   description: "Vener experimenter la marche athlétique pour la premère foir à Quimper.",
   meeting_point: "15-11 Rue Léon Jouhaux, 29000 Quimper",
   max_people: 10,
@@ -397,7 +394,7 @@ events << event10
 event11 = Event.new(
   event_type: "running",
   name: "Parcours d'obstacles",
-  date: DateTime.now - 4,
+  date: DateTime.new(2022, 9, 6, 5),
   description: "Parcours d'obstacles à la campagne, ramener des affaires de rechange.",
   meeting_point: "La Bidois, 35490 Romazy",
   max_people: 15,
@@ -415,7 +412,7 @@ events << event11
 event12 = Event.new(
   event_type: "running",
   name: "Course à Ploumagoar",
-  date: DateTime.now - 6,
+  date: DateTime.new(2022, 12, 4, 9),
   description: "Parcours difficile soyer motiver et corectement équiper.",
   meeting_point: "2 Rue Goasnou, 22970 Ploumagoar",
   max_people: 5,
@@ -430,6 +427,43 @@ event12.save!
 sleep 1
 events << event12
 
+event13 = Event.new(
+  event_type: "surf",
+  name: "Session a Aber",
+  date: DateTime.new(2022, 12, 9, 11),
+  description: "Spot dificile, faites attention",
+  meeting_point: "13-25 Bon Plaisir, 29870 Landéda",
+  car_pooling: true,
+  passengers: 4,
+  difficulty: "confirmer",
+  spot_id: Spot.find_by(location: "Aber wrac'h point").id
+)
+file = File.open("db/fixtures/photo-aber.jpeg")
+event13.photos.attach(io: file, filename: "photo-aber.jpeg")
+
+event13.organizer = users[2]
+event13.save!
+sleep 1
+events << event13
+
+event14 = Event.new(
+  event_type: "surf",
+  name: "Session à Tregana",
+  date: DateTime.new(2022, 8, 3, 14),
+  description: "Session de surf à Tregana, spot très agréable. Départ de Brest !",
+  meeting_point: "Château de Brest, Bd de la Marine, 29200 Brest",
+  car_pooling: true,
+  passengers: 2,
+  difficulty: "débutant",
+  spot_id: Spot.find_by(location: "Tregana").id
+)
+file = File.open("db/fixtures/photo-tregana.jpg")
+event14.photos.attach(io: file, filename: "photo-tregana.jpg")
+
+event14.organizer = users[6]
+event14.save!
+sleep 1
+events << event14
 
 
 
@@ -446,7 +480,7 @@ Participation.create!(event_id: events[1].id, user_id: users[6].id)
 Participation.create!(event_id: events[2].id, user_id: users[0].id)
 Participation.create!(event_id: events[2].id, user_id: users[1].id)
 Participation.create!(event_id: events[2].id, user_id: users[2].id)
-Participation.create!(event_id: events[10].id, user_id: users[1].id)
+Participation.create!(event_id: events[14].id, user_id: users[1].id)
 Participation.create!(event_id: events[11].id, user_id: users[1].id)
 Participation.create!(event_id: events[8].id, user_id: users[1].id)
 Participation.create!(event_id: events[9].id, user_id: users[1].id)
