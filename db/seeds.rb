@@ -211,7 +211,7 @@ events = []
 event1 = Event.new(
   event_type: "running",
   name: "Sortie longue",
-  date: DateTime.new(2022, 12, 20, 12),
+  date: DateTime.new(2022, 12, 11, 15),
   description: "Sortie longue le long de la Vilaine à plusieurs pour se motiver!",
   max_people: 20,
   meeting_point: "111 Rue de Lorient, 35000 Rennes",
@@ -229,7 +229,7 @@ events << event1
 event2 = Event.new(
   event_type: "surf",
   name: "Session à Quiberon",
-  date: DateTime.new(2022, 12, 16, 6),
+  date: DateTime.new(2022, 12, 17, 8, 30),
   description: "Session surf à Quiberon au départ de Vannes",
   meeting_point: "Quai Bernard Moitessier, 56000 Vannes",
   car_pooling: true,
@@ -248,7 +248,7 @@ events << event2
 event3 = Event.new(
   event_type: "running",
   name: "Course à Rennes",
-  date: DateTime.new(2022, 12, 15, 10),
+  date: DateTime.new(2022, 12, 15, 12, 30),
   description: "Petite run dans le centre historique de Rennes",
   meeting_point: "Place de la République, 35000 Rennes",
   max_people: 8,
@@ -266,7 +266,7 @@ events << event3
 event4 = Event.new(
   event_type: "running",
   name: "Course détente à Vitré",
-  date: DateTime.new(2022, 12, 5, 8),
+  date: DateTime.new(2022, 12, 5, 18),
   description: "Petite sortie nature à Vitré",
   meeting_point: "14 Rue Frain de la Gaulayrie, 35500 Vitré",
   max_people: 10,
@@ -302,7 +302,7 @@ events << event5
 event6 = Event.new(
   event_type: "running",
   name: "Course en allure spécifique",
-  date: DateTime.new(2022, 12, 4, 16),
+  date: DateTime.new(2022, 12, 4, 16, 15),
   description: "Entraînement à allure spécifique, 6 x 1km à 3:30/km, récupération 2min entre chaque intervalle",
   meeting_point: "Av. de Büdingen, 22600 Loudéac",
   max_people: 30,
@@ -357,7 +357,7 @@ events << event8
 event9 = Event.new(
   event_type: "surf",
   name: "Session a Les Rosaires",
-  date: DateTime.new(2022, 12, 9, 11),
+  date: DateTime.new(2022, 12, 8, 11),
   description: "Session détente n'oublier votre pique-nique !",
   meeting_point: "2D Rue de la Croix Lormel, 22190 Plérin",
   car_pooling: true,
