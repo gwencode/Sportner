@@ -63,15 +63,19 @@
 
     <h2 class="text-center m-3 sand-underline">Mettre à jour mes sports</h2>
     <div data-controller="sports">
-      <div class="d-flex flex-column">
-        <%= f.input :runner, as: :radio_buttons, label: "Course", input_html: { "data-action" => "click->sports#displayRunLevel"} %>
-        <br>
-        <div id="level_runner" class="desc" data-sports-target="runLevel">
-          <%= f.input :run_level, as: :radio_buttons, collection: User::LEVELS  %>
+      <div class="d-flex">
+        <div>
+          <%= f.input :runner, as: :radio_buttons,
+                      label: "Course",
+                      input_html: { "data-action" => "click->sports#displayRunLevel"} %>
+          <div id="level_runner" class="desc" data-sports-target="runLevel">
+            <%= f.input :run_level, as: :radio_buttons, collection: User::LEVELS  %>
+          </div>
         </div>
-      </div>
-      <div class="d-flex flex-column">
-        <%= f.input :surfer, as: :radio_buttons, label: "Surf", input_html: { "data-action" => "click->sports#displaySurfLevel"} %>
+      <div>
+        <%= f.input :surfer, as: :radio_buttons,
+                    label: "Surf",
+                    input_html: { "data-action" => "click->sports#displaySurfLevel"} %>
         <div id="level_surfer" class="desc" data-sports-target="surfLevel">
           <%= f.input :surf_level, as: :radio_buttons, collection: User::LEVELS %>
         </div>
