@@ -4,14 +4,26 @@
 
 import { application } from "./application"
 
+import ButtonDisableController from "./button_disable_controller"
+application.register("button-disable", ButtonDisableController)
+
+import DisableHomeController from "./disable_home_controller"
+application.register("disable-home", DisableHomeController)
+
+import FiltersController from "./filters_controller"
+application.register("filters", FiltersController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import PlacesController from "./places_controller"
+application.register("places", PlacesController)
+
 import SportsController from "./sports_controller"
 application.register("sports", SportsController)
 
-import FiltersController from "./filters_controller"
-application.register("filters", FiltersController)
+import SpotsMapController from "./spots_map_controller"
+application.register("spots-map", SpotsMapController)

@@ -1,4 +1,6 @@
 class RunDetail < ApplicationRecord
+  require "json"
+  require "open-uri"
   belongs_to :itinerary, optional: true
   has_many :events
 

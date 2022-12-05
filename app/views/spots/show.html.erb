@@ -1,0 +1,29 @@
+<div class="container" data-controller="places">
+  <h2 class="h2-black900 text-center mb-3"> <%= @spot.location %></h2>
+  <div class="d-flex justify-content-around mb-3">
+    <button class="btn-place"
+            data-controller="button-disable"
+            data-button-disable-target="btndisable"
+
+            data-places-target="infobtn"
+            data-action="click->places#infoDisplay">
+            <p>Informations</p></button>
+    <button class="btn-place place-disable"
+            data-places-target="meteobtn"
+            data-action="click->places#meteoDisplay">
+            <p>Météo</p></button>
+    <button class="btn-place place-disable"
+            data-places-target="photosbtn"
+            data-action="click->places#photosDisplay">
+            <p>Photos</p></button>
+  </div>
+  <div class="info" data-places-target="info">
+    <%= render "spot_info"  %>
+  </div>
+  <div class="meteo d-none" data-places-target="meteo">
+    <%= render "spot_meteo"  %>
+  </div>
+  <div class="photos d-none" data-places-target="photos">
+    <%= render "spot_photos"  %>
+  </div>
+</div>

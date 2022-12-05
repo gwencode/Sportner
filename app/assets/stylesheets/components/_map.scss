@@ -1,6 +1,6 @@
 .mapboxgl-popup {
   border: 0.8px;
-  border-color: $black900;
+  border: $black900;
   border-radius: 20px;
 }
 
@@ -33,4 +33,6 @@
 .mapboxgl-popup-content {
   width: 200px;
   height: 150px;
+  border-radius: 16px !important;
+
 }

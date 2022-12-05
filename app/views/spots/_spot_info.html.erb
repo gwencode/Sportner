@@ -1,0 +1,43 @@
+<div class="d-flex">
+  <div class="gauche col-6">
+    <p class="strong spot_subtitle" >Diffulté du spot</p>
+    <p class="spot_description"><%= @spot.spot_difficulty %></p>
+  </div>
+  <div class="droite col-6">
+    <p class="strong spot_subtitle">Type de vague</p>
+    <p class="spot_description"><%= @spot.wave_type %></p>
+  </div>
+</div>
+
+<div class="d-flex">
+  <div class="gauche col-6">
+    <p class="strong spot_subtitle">Direction des vagues</p>
+    <p class="spot_description"><%= @spot.wave_direction %></p>
+  </div>
+  <div class="droite col-6">
+    <p class="strong spot_subtitle">Type de fond</p>
+    <p class="spot_description"><%= @spot.bottom %></p>
+  </div>
+</div>
+
+<div class="d-flex">
+  <div class="droite col-6">
+    <p class="strong spot_subtitle">Marée</p>
+    <p class="spot_description"><%= @spot.tide_conditions %></p>
+  </div>
+  <div class="gauche col-6">
+    <p class="strong spot_subtitle">Danger</p>
+    <p class="spot_description">
+      <% if @spot.danger == "" %> Aucun danger
+      <% else %> <%= @spot.danger %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<div class="d-flex">
+  <div class="gauche col-12">
+    <p class="strong spot_subtitle">Taille des vagues</p>
+    <p class="spot_description"><%= @spot.wave_height_infos %></p>
+  </div>
+</div>

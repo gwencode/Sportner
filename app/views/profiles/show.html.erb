@@ -1,1 +1,40 @@
-<%= @user.first_name%>
+<div class="container">
+  <h2 class="text-center m-3 sand-underline">Mes infos</h2>
+  <div class="infos_profil d-flex justify-content-between">
+    <div>
+      <p class="bonus_infos">Prénom<br> </p><%= @user.first_name%>
+      <p class="bonus_infos">Nom de famille <br> </p><%= @user.last_name%>
+      <p class="bonus_infos">E-MAIL <br> </p><%= @user.email%>
+      <p class="bonus_infos">ADRESSE <br> </p><%= @user.address%>
+      <p class="bonus_infos">DATE DE NAISSANCE <br> </p><%= @user.birthday%>
+    </div>
+    <div>
+      <%= link_to "Modifier", edit_user_registration_path, class: 'text-decoration-none'%>
+    </div>
+  </div>
+  <h2 class="text-center m-3 sand-underline">Mes sports</h2>
+  <div class="sports_profil">
+    <div class="run_profil">
+      <p class="bonus_infos">Course <br> </p>
+      <% if @user.runner == true%>
+        <%= "Vous êtes un runnner"%> <%= @user.run_level%><br>
+        <div class="text-center">
+          <%= "XP :"%> <%= @user.run_xp%>
+        </div>
+      <% else %>
+        <%= link_to "Devenez Runner", edit_profile_path,  class: 'btn btn-fullwide' %>
+      <%end%>
+    </div>
+    <div class="surf_profil mt-2">
+    <p class="bonus_infos">Surf <br> </p>
+      <% if @user.surfer == true%>
+        <%= "Vous êtes un surfeur"%> <%= @user.surf_level%><br>
+        <div class="text-center"><%= "XP :"%>
+          <%= @user.surf_xp%>
+        </div>
+      <% else %>
+        <%= link_to "Devenez Surfeur", edit_profile_path,  class: 'btn btn-fullwide' %>
+      <%end%>
+    </div>
+  </div>
+</div>

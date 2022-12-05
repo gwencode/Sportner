@@ -11,7 +11,7 @@
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Mon profil", profile_path(current_user), class: "dropdown-item" %>
                 <%= link_to "Mes évènements", my_events_path, class: "dropdown-item" %>
-                <%= link_to "La carte", events_map_path, class: "dropdown-item" %>
+                <%= link_to "Carte des spots", spots_map_path, class: "dropdown-item" %>
                 <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
             </li>

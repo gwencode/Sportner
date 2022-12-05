@@ -1,0 +1,13 @@
+TEMPERATURE <%= @temp_c %>°C <br>
+TEMPERATURE DE L'EAU <%= @watertemp_c %><br>
+VENT <%= @windspeedkmph %><br>
+DIRECTION DU VENT <%= @winddirdegree %><br>
+DIRECTION DU VENT POUR LES ANGLAIS <%= @winddir16point %><br>
+TAILLE DES VAGUES <%= @swellheight_m %><br>
+PERIODE <%= @swellperiod_secs %><br>
+DIRECTION HOULE <%= @swelldir16point %><br>
+MAREES DE LA JOURNEE:<br>
+<%= @tide[0][1] %><%= @tide[0][0] %> <br>
+<%= @tide[1][1] %><%= @tide[1][0] %><br>
+<%= @tide[2][1] %><%= @tide[2][0] %><br>  
+<%= @tide[3][1] %><%= @tide[3][0] %>

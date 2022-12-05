@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "events/map", to: "events#map"
+  get "spots/map", to: "spots#map"
 
   resources :events do
     resources :participations, only: :create
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
   post "events/:id/duplicate", to: "events#duplicate"
   resources :itineratie, only: :create
   resources :places, only: :index
+  resources :spots, only: %i[index show]
 end

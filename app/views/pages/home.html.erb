@@ -4,24 +4,29 @@
 <div class="container text-center d-flex flex-wrap justify-content-center mt-5">
     <h1>Trouve ton <div class="sand-underline">partenaire de sport</div> autour de chez toi </h1>
     <div class="my-4">
-      <%= simple_form_for @event do |f|%>
+      <%= form_with url: events_path, method: :get, data: {controller: "disable-home"} do |f|%>
       <div class="mt-4">
-        <%= f.input :event_type,
-                label: "Sélectionne ton ou tes sports !",
-                as: :check_boxes,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'event_type-wrapper',
-                item_wrapper_class: 'event_type-item',  
-                input_html: {class: 'event_type-selector'},
-                collection: Event::EVENT_TYPES%>
+        <div class="mt-2">
+          <%= label_tag(:event_type, "Sélectionne ton ou tes sports !", class: 'mb-2') %>
+          <div class="event_type-wrapper">
+            <% Event::EVENT_TYPES.each do |event| %>
+              <div class="event_type-item">
+                <%= check_box(:event_type, event, include_hidden: false, class: "event_type-selector", data: { disable_home_target: "checkbox", action: "change->disable-home#verifyCheckbox" })%>
+                <%= label_tag("event_type[#{event}]", event) %>
+                <label class="form-check-label collection_check_boxes" for="event_event_type_running">running</label>
+              </div>
+            <% end %>
+          </div>
         </div>
-      <div class="mt-2">
-        <%= f.input :meeting_point, 
-                placeholder: "Rentre ton adresse",
-                label: "" %>
-                <% end %>
-      </div>
-      <div class="mt-5">
-      <%= link_to "Découvrir les événements", events_path,  class: 'btn btn-fullwide' %>
-      </div>
+        <div class="mt-5">
+          <div class="mt-1">
+            <%= f.text_field :meeting_point, 
+                  placeholder: "Rentre ton adresse", class: 'address-input' %>
+          </div>
+          <div class="mt-5">
+            <%= f.submit 'Découvrir les événements', class: 'btn btn-fullwide', data: { disable_home_target: "button"}%>
+            <% end %>
+          </div>
+        </div>
+        
 </div>
