@@ -38,7 +38,7 @@
       </div>
       <div class="calendar">
         <%= simple_form_for @event, data: { controller: 'flatpickr' } do |f| %>
-          <%= f.input :date, label: "", placeholder: "Date",  as: :string, input_html: { data: { filters_target: "rangedate", action: "change->filters#datefilter", flatpickr_target: "Calendar" }} %>
+          <%= f.input :date, label: "", placeholder: "Date",  as: :string, input_html: { data: { filters_target: "rangedate", action: "change->filters#datefilter ", flatpickr_target: "Calendar" }} %>
         <% end %>
       </div>
     </div>
@@ -50,4 +50,3 @@
       <% end %>
   </div>
 </div>
-
