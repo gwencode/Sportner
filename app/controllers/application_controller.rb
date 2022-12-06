@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def default_url_options
-    { host: ENV["http://www.sportner.me/"] || "localhost:3000" }
+    { host: ENV["www.sportner.me"] || "localhost:3000" }
   end
 
   def configure_permitted_parameters
