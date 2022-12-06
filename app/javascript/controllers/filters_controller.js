@@ -23,15 +23,13 @@ export default class extends Controller {
 
   datefilter() {
     // console.log(this.rangedateTarget.value.split());
-    const dates = this.rangedateTarget.value.split();
+    const dates = this.rangedateTarget.value.split(' to ');
+
     console.log(dates);
-    // console.log(dates[0].split("-"));
-    // const startdate = dates[0].split("-");
-    // console.log(startdate)
-    // console.log(startdate.class)
-    // const enddate = dates.last.first.split("-");
-    // console.log(startdate);
-    // console.log(enddate);
+    const startdate = dates[0];
+    const enddate = dates[1];
+    console.log(startdate);
+    console.log(enddate);
   }
 
   formRunDisplay() {

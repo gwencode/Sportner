@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container event-surf-form">
   <%= simple_form_for @event, data: { controller: 'flatpickr', controller:"preview-input"} do |f| %>
 
     <%= f.hidden_field :event_type, value: "surf" %>
@@ -17,8 +16,9 @@
     </div>
     <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Choisi ton spot" %>
     <%= f.input :difficulty, collection: Event::DIFFICULTIES %>
+    <%= f.input :meeting_point, label: "Point de RDV", placeholder: "adresse,XXXX Ville" %>
 
-      <div class="mt-3">
+    <div class="mt-3">
         <p>Ajoutez des photos</p>
     </div>
     <div class="d-flex">
@@ -33,19 +33,20 @@
       <div>
         <%= image_tag("icone-photo.jpg", :width=>90, :height=>90, class:"event_photo m-2", data:{"preview-input-target": :image2, action: "click->preview-input#openFile2"})%>
       </div>
-    <%= f.input :photos, as: :file,
+      <%= f.input :photos, as: :file,
                     required: false,
                     autofocus: true,
                     input_html: {data: {"preview-input-target": :input2, action: "change->preview-input#changeImage2"},class:"d-none"},
                     label: false %>
-                     <div><%= image_tag("icone-photo.jpg", :width=>90, :height=>90, class:"event_photo m-2", data:{"preview-input-target": :image3, action: "click->preview-input#openFile3"})%>
-                     </div>
-    <%= f.input :photos, as: :file,
+      <div>
+        <%= image_tag("icone-photo.jpg", :width=>90, :height=>90, class:"event_photo m-2", data:{"preview-input-target": :image3, action: "click->preview-input#openFile3"})%>
+      </div>
+      <%= f.input :photos, as: :file,
                     required: false,
                     autofocus: true,
                     input_html: {data: {"preview-input-target": :input3, action: "change->preview-input#changeImage3"},class:"d-none"},
                     label: false %>
-        </div>
+  </div>
 </div>
-    <%= f.submit "Publie l'event", class: "btn btn-fullwide" %>
+    <%= f.submit "Allons surfer", class: "btn btn-fullwide" %>
   <% end %>

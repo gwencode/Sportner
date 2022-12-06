@@ -1,2 +1,4 @@
 Photos du spot
-<%= cl_image_tag @spot.photos[0].key, class: "spot-photo" %>
+<% @spot.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, class: "spot-photo" %>
+<% end  %>
