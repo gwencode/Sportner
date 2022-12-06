@@ -14,10 +14,10 @@
      <% else %>
      <%= link_to raw("<i class='fa-solid fa-plus'></i>"), new_event_path%>
   <% end %>
-  <% if request.path == '#' %>
-     <%= link_to raw("<i class='fa-solid fa-comment page'></i>"), root_path%>
+  <% if request.path == chatrooms_path %>
+     <%= link_to raw("<i class='fa-solid fa-comment page'></i>"), chatrooms_path%>
      <% else %>
-     <%= link_to raw("<i class='fa-solid fa-comment'></i>"), root_path%>
+     <%= link_to raw("<i class='fa-solid fa-comment'></i>"), chatrooms_path%>
   <% end %>
   <% if request.path == events_map_path%>
      <%= link_to raw("<i class='fa-solid fa-location-dot page'></i>"), events_map_path%>
