@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :reviews, only: :create
   end
 
+  resource :profile, only: %i[show edit update]
   resources :run_details, only: %i[new create]
-  resources :profiles, only: %i[show edit update]
 
   resources :my_events, only: :index
   post "events/:id/duplicate", to: "events#duplicate"
