@@ -22,6 +22,9 @@ application.register("map", MapController)
 import PlacesController from "./places_controller"
 application.register("places", PlacesController)
 
+import PreviewInputController from "./preview_input_controller"
+application.register("preview-input", PreviewInputController)
+
 import SportsController from "./sports_controller"
 application.register("sports", SportsController)
 
