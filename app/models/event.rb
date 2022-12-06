@@ -22,11 +22,10 @@ class Event < ApplicationRecord
 
   EVENT_TYPES = ["running", "surf"]
   DIFFICULTIES = %i[débutant intermédiaire confirmé]
-  
+
   def call_weather_event_api
     url = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=85ca93f406684910b42131430220512&q=#{self.latitude},#{self.longitude}&format=json&num_of_days=1&date=#{self.date.year}-#{self.date.month}-#{self.date.day}&includelocation=yes&tp=6&lang=fr"
     weather_serialized = URI.open(url).read
     weather = JSON.parse(weather_serialized, symbolize_names: true)
   end
 end
-
