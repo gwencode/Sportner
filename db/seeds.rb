@@ -68,7 +68,7 @@ html_fileb = URI.open(urlb).read
 html_docb = Nokogiri::HTML(html_fileb)
 
 spots_data = []
-spots_photos_url = []
+spots_photos_urls = []
 list_href = []
 html_doca.search(".wanna-tabzonespot-item-title").each do |a|
   list_href << a.attribute("href").value
@@ -97,23 +97,48 @@ list_href.each do |ref|
   }]
   icon_photo_tag = doc.search(".wanna-photovideo-cell-img img")
   if icon_photo_tag == []
-    photo_url = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
+    photos_urls = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
   elsif icon_photo_tag[0].nil?
-    photo_url = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
+    photos_urls = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
   else
-    # Chercher le lien de redirection de la photo miniature
-    icon_photo_tag_url = doc.search(".wanna-photovideo-cell-img a")
-    # Récupérer et stocker le lien de redirection
-    photo_page_url = "https://fr.wannasurf.com#{icon_photo_tag_url[0].attributes["href"].value}"
-    # Ouvrir le lien avec open uri et Nogogirki
-    photo_page_html = URI.open(photo_page_url).read
-    photo_doc = Nokogiri::HTML(photo_page_html)
-    # Chercher et stocker l'url de la photo
-    photo_sub_url = photo_doc.search(".photo-frame")[0].attributes["src"].value
-    photo_url = "https://fr.wannasurf.com#{photo_sub_url}"
+    # Chercher lien de redirection de toutes les photos
+    index_photo = doc.search(".wanna-showall-link")[0].attributes["href"].value
+    # Recréer le lien de redirection et ouvrir le document
+    index_url = "#{url.delete_suffix('index.html')}#{index_photo}"
+    index_html = URI.open(index_url).read
+    index_doc = Nokogiri::HTML(index_html)
+    # Préparer le stockage de chaque url de photo
+    each_photos_sub_urls = []
+    # Récupérer chaque élement avec une photo
+    photo_tag_urls = index_doc.search(".wanna-sublink")
+    photo_tag_urls.each_with_index do |nog_element, index|
+      each_photo_url = nog_element.attributes["href"].value.delete_prefix("index.html")
+      each_photos_sub_urls << each_photo_url if index.even?
+    end
+
+    each_photos_urls = []
+    each_photos_sub_urls.each do |sub_url|
+      each_photos_urls << "#{index_url}#{sub_url}"
+    end
+
+    # Pour chaque lien, ouvrir le lien avec open uri et Nogogirki
+    photos_urls = []
+    each_photos_urls.each do |photo_page_url|
+      photo_page_html = URI.open(photo_page_url).read
+      photo_doc = Nokogiri::HTML(photo_page_html)
+      # Chercher et stocker l'url de la photo
+      photo_sub_url = photo_doc.search(".photo-frame")[0].attributes["src"].value
+      photo_url = "https://fr.wannasurf.com#{photo_sub_url}"
+      photos_urls << photo_url
+    end
   end
-  spots_photos_url << photo_url
+  spots_photos_urls << photos_urls
 end
+puts "Nombre de spots: "
+p spots_data.count
+# p spots_photos_urls
+puts "Nombre de spots urls: "
+p spots_photos_urls.count
 
 puts "Creating spots"
 
@@ -125,9 +150,28 @@ spots_data.each_with_index do |s, index|
   # file = File.open("db/fixtures/#{u.last}")
   # user.avatar.attach(io: file, filename: u.last)
   # user.save!
-  photo = URI.open(spots_photos_url[index])
-  spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
-  spot.save!
+  spot_photos_urls = spots_photos_urls[index]
+  if spot_photos_urls.class == Array
+    spot_photos_urls.each do |photo_url|
+      photo = ""
+      begin
+        photo = URI.open(photo_url)
+      rescue
+        next
+      end
+      spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
+      spot.save!
+    end
+  else
+    photo = ""
+    begin
+      photo = URI.open(spot_photos_urls)
+    rescue
+      next
+    end
+    spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
+    spot.save!
+  end
   spots << spot
 end
 
