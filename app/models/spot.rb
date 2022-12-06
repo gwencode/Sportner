@@ -13,7 +13,7 @@ class Spot < ApplicationRecord
 
 
   def call_weather_api
-    url = "https://api.worldweatheronline.com/premium/v1/marine.ashx?key=85ca93f406684910b42131430220512&q=#{self.latitude},#{self.longitude}&format=json&includelocation=yes&tide=yes&tp=6"
+    url = "https://api.worldweatheronline.com/premium/v1/marine.ashx?key=85ca93f406684910b42131430220512&q=#{self.latitude},#{self.longitude}&format=json&includelocation=yes&tide=yes&tp=6&lang=fr"
     weather_serialized = URI.open(url).read
     weather = JSON.parse(weather_serialized, symbolize_names: true)
   end
