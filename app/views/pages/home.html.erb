@@ -7,7 +7,7 @@
       <%= form_with url: events_path, method: :get, data: {controller: "disable-home"} do |f|%>
       <div class="mt-4">
         <div class="mt-2">
-          <%= label_tag(:event_type, "Sélectionne ton ou tes sports !", class: 'mb-2') %>
+          <%= label_tag(:event_type, "Sélectionne ton ou tes sports !", class: 'mb-4') %>
           <div class="event_type-wrapper">
             <% Event::EVENT_TYPES.each do |event| %>
               <div class="event_type-item">
@@ -20,13 +20,13 @@
         </div>
         <div class="mt-5">
           <div class="mt-1">
-            <%= f.text_field :meeting_point, 
-                  placeholder: "Rentre ton adresse", class: 'address-input' %>
+            <%= f.text_field :meeting_point,
+                  placeholder: "Rentre ta ville", class: 'address-input' %>
           </div>
           <div class="mt-5">
             <%= f.submit 'Découvrir les événements', class: 'btn btn-fullwide', data: { disable_home_target: "button"}%>
             <% end %>
           </div>
         </div>
-        
+
 </div>

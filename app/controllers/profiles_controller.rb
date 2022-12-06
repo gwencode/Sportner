@@ -1,15 +1,15 @@
 class ProfilesController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
 
     if user_params[:run_level].empty? && user_params[:surf_level].empty?
       flash.alert = "Vous devez définir votre niveau"

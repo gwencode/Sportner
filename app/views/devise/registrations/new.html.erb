@@ -1,13 +1,16 @@
 <div class="container text-center">
   <h2 class="m-4">Créer ton compte</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false, controller:"preview-input"}) do |f| %>
     <%= f.error_notification %>
+
+    <%= image_tag("icone-photo.jpg", :width=>73, :height=>70, class:"avatar_edit", data:{"preview-input-target": :image, action: "click->preview-input#openFile"})%>
 
     <div class="form-inputs">
       <%= f.input :avatar, as: :file,
                   required: true,
                   autofocus: true,
+                  input_html: {data: {"preview-input-target": :input, action: "change->preview-input#changeImage"},class:"d-none"},
                   label: "Photo de profil" %>
      <div class="name d-flex justify-content-between">
         <%= f.input :first_name,
