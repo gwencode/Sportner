@@ -8,15 +8,19 @@
 }
 #meteo-title {
   margin-left: 16px;
+  color: $black900;
 }
 .info-adresse {
   padding: 0 8px;
-  border-bottom: solid 1px $black600;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .info-meteo {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: solid 1px $black600;
+  padding: 8px 0;
 }
 .info-temps {
   width: 30%;

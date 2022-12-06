@@ -81,7 +81,7 @@ class EventsController < ApplicationController
     if @event.save!
       participation = Participation.new(event: @event, user: current_user)
       participation.save
-      redirect_to event_path(@event), success: "Evenement créé 👍"
+      redirect_to event_path(@event), notice: "Evenement créé 👍"
     else
       render :new, status: :unprocessable_entity
     end
