@@ -1,7 +1,7 @@
 .card-show {
   overflow: hidden;
   background: white;  // couleur de fond derriere la photo de l'event et du titre et infos de l'event
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px $black400;
 }
 .card-show > img {
   height: 185px;
@@ -17,7 +17,7 @@
   font-size: 12px;
   opacity: .7;
   margin: 2px 0;
-  color: black;
+  color: $black900;
 }
 
 .card-show .card-show-infos {
@@ -40,6 +40,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: white; //couleur de fond de la zone par user + photot (avatar)
+  box-shadow: 1px 0px 4px $black400;
   border-radius: 20px;
   gap: 8px;
 }
@@ -63,5 +64,8 @@
   font-size: 12px;
   opacity: .7;
   margin: 2px 0;
-  color: black;
+  color: $black900;
+}
+#show-event-title {
+  color: $black900;
 }

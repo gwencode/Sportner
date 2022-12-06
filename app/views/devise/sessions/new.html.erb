@@ -14,10 +14,12 @@
                   label: false,
                   placeholder: "Mot de passe",
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="remember-me">
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
     </div>
 
-     <button type="submit" class="btn btn-primary m-3">Je me connecte</button>
+     <button type="submit" class="btn btn-75wide">Je me connecte</button>
   <% end %>
    <h3>Vous n'avez pas de compte ?</h3>
      <%= render "devise/shared/links" %>

@@ -13,11 +13,25 @@
   height: 60px;
   background-color: $primary-surf;
   border-radius: 4px;
+  margin: 16px auto;
   display: flex;
   align-items: center;
   text-decoration: none;
   justify-content: center;
   color: white;
+}
+.btn-50wide {
+  width: 50%;
+  height: 40px;
+  background-color: $primary-surf;
+  border-radius: 4px;
+  margin: 16px auto;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
 }
 
 .btn-fullwide:hover {
@@ -34,4 +48,11 @@
 .btn-bottom-0 {
   position: absolute;
   bottom: 0;
+}
+
+.remember-me {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  color: $black900;
 }
