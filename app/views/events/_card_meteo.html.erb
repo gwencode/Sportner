@@ -10,7 +10,7 @@
       <%= @event.spot.location %>
     <% end %>
   </div>
-  <% if ((@event.date - Time.now) / (60 * 60 * 24)).round < 15 %>
+  <% if (((@event.date - Time.now) / (60 * 60 * 24)).round < 15) && (@event.date - Time.now.beginning_of_day).positive? && !@event.latitude.nil? %>
     <div class="info-meteo">
       <div class="info-temps">
         <%= image_tag @weathericonurl %>
@@ -27,7 +27,7 @@
       </div>
     <% else %>
     <div class="info-meteo">
-      <h5>Pas de données météo pour les évenements à plus de 15 jours !</h5>
+      <h5>Météo non disponible à cette date</h5>
     </div>
     <% end %>
   </div>

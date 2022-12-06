@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    set_weather_event_data if ((@event.date - Time.now) / (60 * 60 * 24)).round < 15
+    set_weather_event_data if (((@event.date - Time.now) / (60 * 60 * 24)).round < 15) && (@event.date - Time.now.beginning_of_day).positive? && !@event.latitude.nil?
   end
 
   def map
