@@ -95,14 +95,22 @@ list_href.each do |ref|
     tide_conditions: doc.at('span.wanna-item-label:contains("Condition de marée")').next_sibling&.text&.strip,
     danger: doc.at('h5:contains("Dangers")').next_sibling&.text&.strip
   }]
-  photo_tag = doc.search(".wanna-photovideo-cell-img img")
-  if photo_tag == []
+  icon_photo_tag = doc.search(".wanna-photovideo-cell-img img")
+  if icon_photo_tag == []
     photo_url = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
-  elsif photo_tag[0].nil?
+  elsif icon_photo_tag[0].nil?
     photo_url = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
   else
-    photo_sub_url = photo_tag[0].attributes["src"].value
-    photo_url = "https://fr.wannasurf.com/#{photo_sub_url}"
+    # Chercher le lien de redirection de la photo miniature
+    icon_photo_tag_url = doc.search(".wanna-photovideo-cell-img a")
+    # Récupérer et stocker le lien de redirection
+    photo_page_url = "https://fr.wannasurf.com#{icon_photo_tag_url[0].attributes["href"].value}"
+    # Ouvrir le lien avec open uri et Nogogirki
+    photo_page_html = URI.open(photo_page_url).read
+    photo_doc = Nokogiri::HTML(photo_page_html)
+    # Chercher et stocker l'url de la photo
+    photo_sub_url = photo_doc.search(".photo-frame")[0].attributes["src"].value
+    photo_url = "https://fr.wannasurf.com#{photo_sub_url}"
   end
   spots_photos_url << photo_url
 end
