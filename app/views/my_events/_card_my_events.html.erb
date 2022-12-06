@@ -20,7 +20,6 @@
         <% end %>
         <% if event.event_type == "surf" && event.car_pooling == true %>
           <p><%= image_tag "icons/car-pooling.svg" %> Covoiturage</p>
-        <% elsif event.event_type == "surf" && event.car_pooling == false %><p class="text-white">Texte caché</p>
         <% end %>
         <p class="small"><%= raw("<i class='fa-solid fa-calendar-check'></i>") %> <%= event.date.strftime("%d/%m/%y") %></p>
       </div>

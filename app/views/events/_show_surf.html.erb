@@ -1,5 +1,5 @@
 <div class="card-show">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <%= cl_image_tag @event.photos.first.key unless @event.photos.empty? %>
   <div class="card-show-infos">
     <div>
       <h2><%= @event.name %></h2>
@@ -12,7 +12,7 @@
       <i class="fa-solid fa-calendar-check"></i></i> <%= @event.date.day %>/<%= @event.date.month %>/<%= @event.date.year %>
       </p>
       <p>
-      <i class="fa-solid fa-users"></i> <%= @event.participations.count %>/<%= @event.max_people %>
+      <i class="fa-solid fa-users"></i> <%= @event.participations.count %><% if @event.max_people %>/<%= @event.max_people %><% end %>
       </p>
     </div>
     <div class="card-show-elements">
@@ -26,7 +26,7 @@
     </div>
     <div class="card-show-user">
     <p>Par <b><%= @event.organizer.first_name %></b> </p>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" />
+    <%= cl_image_tag @event.organizer.avatar.key, class: "avatar-bordered" %>
     </div>
   </div>
 </div>

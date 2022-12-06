@@ -1,0 +1,11 @@
+<div class="container even-run-detail-form">
+  <%= simple_form_for @run_detail do |f| %>
+    <%= f.input :run_type, collection: RunDetail::RUN_TYPES %>
+    <%= f.input :distance, label: "Distance", placeholder: "en km" %>
+    <%= f.input :pace, label: "Allure", placeholder: "ex : 4\"30" %>
+    <%= f.input :duration, label: "Durée", placeholder: "Temps en minutes" %>
+    <%= f.input :elevation, label: "Dénivelé", placeholder: "en m" %>
+    <%= f.input :location, label: "Point de départ", placeholder: "rue de l'exemple, XXXXX Ville" %>
+</div>
+    <%= f.submit "Valider les détails", class: "btn btn-fullwide" %>
+  <% end %>

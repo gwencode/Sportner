@@ -3,22 +3,26 @@ class EventsController < ApplicationController
 
   def index
     @event = Event.new
+
+    if params[:meeting_point].present?
+      events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
+    else
+      events = Event.all
+    end
+
     if params[:query].present?
-      level_events = Event.where(difficulty: params[:query])
+      level_events = events.where(difficulty: params[:query])
       @events = level_events.where("date > ?", DateTime.now)
     else
-      @events = Event.where("date > ?", DateTime.now)
+      @events = events.where("date > ?", DateTime.now)
     end
+
     if current_user
       @organized_events = current_user.organized_events
     else
       @organized_events = nil
     end
-    if params[:meeting_point].present?
-      @events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
-    else
-      @events = Event.all
-    end
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
@@ -31,6 +35,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # set_weather_data
   end
 
   def map
@@ -67,13 +72,15 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = Event.new.tap(&:build_run_detail)
   end
 
   def create
     @event = Event.new(event_params)
     @event.organizer = current_user
     if @event.save!
+      participation = Participation.new(event: @event, user: current_user)
+      participation.save
       redirect_to event_path(@event), success: "Evenement créé 👍"
     else
       render :new, status: :unprocessable_entity
@@ -93,12 +100,50 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:event_type,
-                                  :name, :date,
+                                  :name,
+                                  :date,
                                   :description,
                                   :max_people,
                                   :meeting_point,
                                   :car_pooling,
                                   :passengers,
-                                  :difficulty)
+                                  :spot_id,
+                                  :run_detail_id,
+                                  :difficulty,
+                                  photos: [],
+                                  run_detail_attributes: %i[run_type
+                                                            distance
+                                                            pace
+                                                            duration
+                                                            elevation
+                                                            location])
   end
+
+    # def set_weather_data
+    #   @weather_data = @spot.call_weather_api
+    #   if Time.now.hour >= 0 && Time.now.hour <= 9
+    #     @hourly_data = @weather_data[:data][:weather][0][:hourly].select { |i| i[:time] == "600" }.first
+    #   elsif Time.now.hour >= 10 && Time.now.hour <= 15
+    #     @hourly_data = @weather_data[:data][:weather][0][:hourly].select { |i| i[:time] == "1200" }.first
+    #   else
+    #     @hourly_data = @weather_data[:data][:weather][0][:hourly].select { |i| i[:time] == "1800" }.first
+    #   end
+    #   @temp_c = @hourly_data[:tempC]
+    #   @watertemp_c = @hourly_data[:waterTemp_C]
+    #   @windspeedkmph = @hourly_data[:windspeedKmph]
+    #   @winddirdegree = @hourly_data[:winddirDegree]
+    #   @winddir16point = @hourly_data[:winddir16Point]
+    #   @swellheight_m = @hourly_data[:swellHeight_m]
+    #   @swellperiod_secs = @hourly_data[:swellPeriod_secs]
+    #   @swelldir16point = @hourly_data[:swellDir16Point]
+
+    #   # @tidelow1 = @weather_data[:data][:weather][0][:tides][0][:tide_data][0][:tideDateTime]
+    #   @tide = [
+    #     [@weather_data[:data][:weather][0][:tides][0][:tide_data][0][:tideDateTime], @weather_data[:data][:weather][0][:tides][0][:tide_data][0][:tide_type]],
+    #     [@weather_data[:data][:weather][0][:tides][0][:tide_data][1][:tideDateTime], @weather_data[:data][:weather][0][:tides][0][:tide_data][1][:tide_type]],
+    #     [@weather_data[:data][:weather][0][:tides][0][:tide_data][2][:tideDateTime], @weather_data[:data][:weather][0][:tides][0][:tide_data][2][:tide_type]],
+    #     [@weather_data[:data][:weather][0][:tides][0][:tide_data][3][:tideDateTime], @weather_data[:data][:weather][0][:tides][0][:tide_data][3][:tide_type]]
+    # ]
+    # end
+
 end
