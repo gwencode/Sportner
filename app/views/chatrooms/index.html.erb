@@ -1,0 +1,8 @@
+<% @events.each do |event| %>
+  <%= event.name %>
+  <%= event.chatroom %>
+  <%= link_to chatroom_path(event.chatroom), class: "text-decoration-none" %>
+  <br>
+<% end %>
+  <%= Chatroom.all %>
+

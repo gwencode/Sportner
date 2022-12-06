@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   resources :itineratie, only: :create
   resources :places, only: :index
   resources :spots, only: %i[index show]
+
+  resources :chatrooms, only: %i[create index show] do
+    resources :messages, only: :create
+  end
 end
