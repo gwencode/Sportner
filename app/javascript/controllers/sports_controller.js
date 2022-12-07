@@ -7,17 +7,17 @@ export default class extends Controller {
   }
 
   displayRunLevel(e) {
-    if (e.currentTarget.value == "true") {
-      this.runLevelTarget.style.display = "block"
+    if (e.currentTarget.value === "true") {
+      this.runLevelTarget.classList.remove("d-none")
     }  else {
-      this.runLevelTarget.style.display = "none"
+      this.runLevelTarget.classList.add("d-none")
     }
   }
   displaySurfLevel(e) {
-    if (e.currentTarget.value == "true") {
-      this.surfLevelTarget.style.display = "block"
+    if (e.currentTarget.value === "true") {
+      this.surfLevelTarget.classList.remove("d-none")
     }  else {
-      this.surfLevelTarget.style.display = "none"
+      this.surfLevelTarget.classList.add("d-none")
     }
   }
 }

@@ -30,8 +30,24 @@
 }
 .surf_and_run {
   font-size: 16px;
-  background-color: lightblue;
+  background-color: $primary-surf;
   border: 5px solid $primary-surf;
   border-radius: 8px;
   padding: 15px;
+}
+.form-check-input.is-valid ~ .form-check-label {
+  color: $black900;
+}
+.form-check-input.is-valid:checked {
+  background-color: $primary-surf;
+}
+.form-check-input.is-valid {
+  border-color: $black900;
+}
+.form-check-input:checked {
+  background-color: $primary-surf;
+  border-color: $black900;
+}
+.form-check-input {
+  border: solid 1px $black900;
 }
