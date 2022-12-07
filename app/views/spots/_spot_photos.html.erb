@@ -1,4 +1,7 @@
-Photos du spot
-<% @spot.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, class: "spot-photo" %>
-<% end  %>
+<div class="container">
+  <% @spot.photos.each do |photo| %>
+    <div class="div my-4 card-spot-photo">
+      <%= cl_image_tag photo.key, class: "spot-all-photo" %>
+    </div>
+  <% end  %>
+</div>
