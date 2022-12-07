@@ -12,6 +12,7 @@ class Event < ApplicationRecord
   has_many_attached :photos
 
   has_one :itinerary, through: :run_detail
+  has_one :chatroom
 
   accepts_nested_attributes_for :run_detail
 
