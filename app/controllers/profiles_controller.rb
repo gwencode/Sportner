@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
       flash.alert = "Vous devez définir votre niveau"
       redirect_to edit_profile_path
     elsif @user.update(user_params)
-      redirect_to events_path
+      redirect_to profile_path
     else
       render :edit
     end
