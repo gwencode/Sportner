@@ -1,0 +1,5 @@
+<% events.each do |event| %>
+  <div data-filters-target="event"  data-date="<%= event.date.strftime("%Y-%m-%d") %>">
+    <%= render "card_event", event: event, organized_events: organized_events %>
+  </div>
+<% end %>
