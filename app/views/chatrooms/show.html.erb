@@ -1,9 +1,9 @@
 <div class="container chatroom"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <%= link_to "<", :back, class:"back-link" %>
-  <div class="sand-underline">
-    <h2 class="h2-black900 text-center mb-3"><%= @chatroom.name %></h2>
+  <%= link_to "<", :back, class:"fleche_retour back-link" %>
+  <div class="header-chat sand-underline">
+    <h2 class="h2-black900 text-center m-2"><%= @chatroom.name %></h2>
   </div>
 
   <div class="messages" data-chatroom-subscription-target="messages">

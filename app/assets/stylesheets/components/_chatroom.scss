@@ -1,0 +1,52 @@
+.header-chat{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.header h2{
+  margin-left: 40%;
+}
+
+.fleche_retour{
+  position: absolute;
+  left: auto;
+  color: $black900;
+  font-size: 30px;
+}
+.card_chatroom {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 120px;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card_chatroom .card_chatroom_infos{
+  padding: 10px 10px 5px 20px;
+  width: 100%;
+}
+
+.avatar-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 3px 2px 2px $black800;
+}
+
+.card_chatroom_infos .super_infos{
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-around;
+
+}
