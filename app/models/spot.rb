@@ -5,6 +5,8 @@ class Spot < ApplicationRecord
   validates :location, presence: true
 
   has_many :events
+  has_many :favorite_spots
+  # has_many :users, through: :favorite_spots
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?

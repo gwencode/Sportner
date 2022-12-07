@@ -1,0 +1,12 @@
+<div class="container">
+  <h2 class="text-center m-3 sand-underline">Mes spots favoris</h2>
+    <div class="favorite-surf-spots">
+      <% @fav_surf_spots.each do |fav_spot| %>
+        <div class="">
+          <% if fav_spot.spot %>
+            <%= link_to fav_spot.spot.location, spot_path(fav_spot.spot), class: "text-decoration-none btn btn-75wide" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+</div>

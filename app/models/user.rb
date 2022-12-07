@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :favorite_spots
+  # has_many :spots, through: :favorite_spots
   has_many :itineraries
   has_many :organized_events, class_name: "Event"
   has_many :participations

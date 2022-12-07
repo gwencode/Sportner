@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_144805) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_135633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,6 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_144805) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.bigint "spot_id"
+    t.index ["spot_id"], name: "index_favorite_spots_on_spot_id"
     t.index ["user_id"], name: "index_favorite_spots_on_user_id"
   end
 
@@ -210,6 +212,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_144805) do
   add_foreign_key "events", "run_details"
   add_foreign_key "events", "spots"
   add_foreign_key "events", "users"
+  add_foreign_key "favorite_spots", "spots"
   add_foreign_key "favorite_spots", "users"
   add_foreign_key "itineraries", "users"
   add_foreign_key "messages", "chatrooms"
