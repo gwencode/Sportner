@@ -40,6 +40,10 @@
 
 .pop-up-infos {
   padding: 0px 10px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .event-infos {

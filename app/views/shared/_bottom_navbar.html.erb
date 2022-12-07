@@ -19,9 +19,9 @@
      <% else %>
      <%= link_to raw("<i class='fa-solid fa-comment'></i>"), chatrooms_path%>
   <% end %>
-  <% if request.path == events_map_path%>
-     <%= link_to raw("<i class='fa-solid fa-location-dot page'></i>"), events_map_path%>
+  <% if request.path == spots_map_path%>
+     <%= link_to raw("<i class='fa-solid fa-location-dot page'></i>"), spots_map_path%>
      <% else %>
-     <%= link_to raw("<i class='fa-solid fa-location-dot'></i>"), events_map_path%>
+     <%= link_to raw("<i class='fa-solid fa-location-dot'></i>"), spots_map_path%>
   <% end %>
 </div>
