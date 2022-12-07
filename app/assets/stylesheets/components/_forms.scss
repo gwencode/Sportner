@@ -6,7 +6,12 @@
 .calendar {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  width: 30%;
+}
+
+.event_date {
+  display:flex;
+  height:35px;
 }
 
 .calendar i {

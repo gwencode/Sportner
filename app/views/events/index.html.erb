@@ -6,47 +6,51 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 <div data-controller="filters">
-  <div class="filters-events">
-    <div class="d-flex gap-2">
-      <button class="btn-small run select"
+  <div class="filters-events index-filters-events">
+    <div class="d-flex align-items-center justify-content-center">
+      <h2 class="h2-black900">Événements</h2>
+      
+    </div>
+    <div class="d-flex gap-2 mt-2">
+      <button class="btn-small run select col"
               data-filters-target="runbtn"
               data-action="click->filters#runfilter">
               <p>Running</p></button>
-      <button class="btn-small surf select"
+      <button class="btn-small surf select col"
               data-filters-target="surfbtn"
               data-action="click->filters#surffilter">
               <p>Surf</p></button>
     </div>
-    <div class="difficulty-calendar">
-      <div class="difficulty">
-        <form class="form-difficulty row row-cols-lg-auto g-2 align-items-center m-0">
+    <div class="d-flex mt-3">
+      <div class="difficulty col d-flex justify-content-between align-items-start gap-4">
+        <form class="form-difficulty d-flex gap-2 row-cols-lg-auto g-2 align-items-center m-0 col">
           <%= form_with url: events_path, method: :get, class: "" do |f| %>
-            <div class="form-difficulty-select col-9 m-0 p-0">
+            <div class="form-difficulty-select m-0 p-0 w-100">
               <%= select_tag :query,
                 options_for_select(Event::DIFFICULTIES, params[:query]),
                 class: "form-control",
                 prompt: "Difficulté ⬇"
               %>
             </div>
-            <div class="form-difficulty-submit col-3 m-0">
+            <div class="form-difficulty-submit m-0">
               <%= button_tag type: 'submit', class: "", id: "btn-search" do %>
                 <i class='fa-solid fa-magnifying-glass'></i>
               <% end %>
             </div>
           <% end %>
         </form>
+        <div class="calendar">
+          <%= simple_form_for @event, data: { controller: 'flatpickr' } do |f| %>
+            <%= f.input :date, label: "", placeholder: "Date",  as: :string, input_html: { data: { filters_target: "rangedate", action: "change->filters#datefilter ", flatpickr_target: "Calendar" }} %>
+          <% end %>
+        </div>
       </div>
-      <div class="calendar">
-        <%= simple_form_for @event, data: { controller: 'flatpickr' } do |f| %>
-          <%= f.input :date, label: "", placeholder: "Date",  as: :string, input_html: { data: { filters_target: "rangedate", action: "change->filters#datefilter ", flatpickr_target: "Calendar" }} %>
-        <% end %>
-      </div>
+      
     </div>
   </div>
   <div class="container">
-    <h2 class="h2-black900">Evénements</h2>
-      <% @events.each do |event, organized_events| %>
-        <%= render "card_event", event: event, organized_events: @organized_events %>
-      <% end %>
+    <div data-filters-target="events">
+      <%= render "cards_event", events: @events, organized_events: @organized_events %>
+    </div>
   </div>
 </div>

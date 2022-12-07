@@ -1,12 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static values = {
+    date: String
+  }
+
   static targets = ["runbtn", "surfbtn",
                     "runcard", "surfcard",
                     "rangedate",
                     "runform", "surfform",
                     "futurbtn", "pastbtn",
-                    "myfuturevents", "mypastevents"]
+                    "myfuturevents", "mypastevents", "event"]
   connect() {
     console.log("Hello from filter controler")
   }
@@ -22,14 +26,21 @@ export default class extends Controller {
   }
 
   datefilter() {
-    // console.log(this.rangedateTarget.value.split());
+
     const dates = this.rangedateTarget.value.split(' to ');
 
-    console.log(dates);
-    const startdate = dates[0];
-    const enddate = dates[1];
-    console.log(startdate);
-    console.log(enddate);
+    if (dates[0] && dates[1]) {
+      const startdate = Date.parse(dates[0])
+      const enddate = Date.parse(dates[1])
+  
+      this.eventTargets.forEach((event) => {
+        if (Date.parse(event.dataset.date) <= enddate && Date.parse(event.dataset.date) >= startdate) {
+          event.classList.remove('d-none')
+        } else {
+          event.classList.add('d-none')
+        }
+      })
+    }
   }
 
   formRunDisplay() {

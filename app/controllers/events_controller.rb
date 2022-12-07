@@ -17,6 +17,13 @@ class EventsController < ApplicationController
       @events = events.where("date > ?", DateTime.now)
     end
 
+    if params[:event_type]&.key?(:surf) && params[:event_type]&.key?(:running)
+    elsif params[:event_type]&.key?(:surf)
+      @events = @events.where(event_type: "surf")
+    elsif params[:event_type]&.key?(:running)
+      @events = @events.where(event_type: "running")
+    end
+
     if current_user
       @organized_events = current_user.organized_events
     else
