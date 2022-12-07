@@ -14,18 +14,32 @@
   position: absolute;
   left: auto;
   color: $black900;
-  font-size: 30px;
+  font-size: 20px;
+  left:16px;
 }
+
+.chatroom-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap:32px;
+}
+
 .card_chatroom {
   overflow: hidden;
   display: flex;
   align-items: center;
-  height: 120px;
   color: black;
 }
 
 a {
   text-decoration: none;
+}
+
+.card_chatroom {
+  padding:0 16px;
+  h2 {
+    margin-top:0px !important;
+  }
 }
 
 .card_chatroom .card_chatroom_infos{
@@ -37,11 +51,10 @@ a {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  box-shadow: 3px 2px 2px $black800;
 }
 
 .card_chatroom_infos .super_infos{
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
