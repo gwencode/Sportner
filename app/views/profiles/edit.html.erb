@@ -1,24 +1,32 @@
-<div class="container text-center">
- <h2 class="m-3">Créer ton compte</h2>
- <p>Sélectionner un sport :</p>
-  <div class="d-flex justify-content-around mt-2">
-    <div data-controller="sports">
-      <%= simple_form_for @user, input_html: {class: "form-edit"}, url: profile_path, method: :put do |f|%>
-        <div class="d-flex flex-column">
-          <%= f.input :runner, as: :radio_buttons, label: "Course", input_html: { "data-action" => "click->sports#displayRunLevel"} %>
-          <br>
-            <div id="level_runner" class="desc" data-sports-target="runLevel">
-              <%= f.input :run_level, as: :radio_buttons, collection: User::LEVELS  %>
-            </div>
-        </div>
-        <div class="d-flex flex-column">
-          <%= f.input :surfer, as: :radio_buttons, label: "Surf", input_html: { "data-action" => "click->sports#displaySurfLevel"} %>
-            <div id="level_surfer" class="desc" data-sports-target="surfLevel">
-              <%= f.input :surf_level, as: :radio_buttons, collection: User::LEVELS  %>
-          </div>
-        </div>
-           <button type="submit" class="btn btn-75wide">C'est partit !</button>
-      <% end %>
+<div class="container">
+  <%= link_to "Retour", :back, class:"back-link" %>
+  <h2 class="text-center m-3 sand-underline">Mettre à jour mes sports</h2>
+
+  <%= simple_form_for(@user, as: @user, url: registration_path(@user), html: { method: :put }) do |f| %>
+
+  <div data-controller="sports" class="d-flex justify-content-around form-sports">
+    <div class="col-5 ps-4">
+      <%= f.input :runner, as: :radio_buttons,
+                  label: "Course",
+                  collection: ["Oui", "Non"],
+                  input_html: { "data-action" => "click->sports#displayRunLevel"} %>
+      <div id="level_runner" class="desc" data-sports-target="runLevel">
+        <%= f.input :run_level, as: :radio_buttons, collection: User::LEVELS  %>
+      </div>
+    </div>
+    <div class="col-5 ps-4">
+      <%= f.input :surfer, as: :radio_buttons,
+                  label: "Surf",
+                  collection: ["Oui", "Non"],
+                  input_html: { "data-action" => "click->sports#displaySurfLevel"} %>
+      <div id="level_surfer" class="desc" data-sports-target="surfLevel">
+        <%= f.input :surf_level, as: :radio_buttons, collection: User::LEVELS %>
+      </div>
     </div>
   </div>
+
+  <div class="form-actions m-3">
+    <%= f.button :submit, "Mettre à jour mon profil", class: "btn btn-75wide"%>
+  </div>
+  <% end %>
 </div>

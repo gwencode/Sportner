@@ -5,7 +5,8 @@ h2 {
 .sand-underline {
   text-decoration: underline $sand;
   text-decoration-thickness: 9px;
-  // box-shadow: 10px 5px 5px $sand;
+  text-underline-offset: -6px;
+  text-decoration-skip-ink: none;
 }
 
 .card-event {
@@ -116,7 +117,7 @@ h2 {
   color: $black800;
 }
 .card-event .card-event-infos .card-event-adress {
-  width: 220px;
+  width: 81%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

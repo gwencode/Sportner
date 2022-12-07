@@ -1,0 +1,11 @@
+<% @events.each do |event| %>
+  <%= event.name %>
+  <% if event.chatroom %>
+   <%= event.chatroom.name %>
+   <%= link_to "coucou", chatroom_path(event.chatroom), class: "text-decoration-none" %>
+  <% end %>
+
+  <br>
+<% end %>
+  <%= Chatroom.all %>
+

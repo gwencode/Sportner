@@ -8,29 +8,54 @@
 }
 #meteo-title {
   margin-left: 16px;
+  color: $black900;
 }
 .info-adresse {
   padding: 0 8px;
-  border-bottom: solid 1px $black600;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .info-meteo {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: solid 1px $black600;
+  padding: 8px 0;
+  color: $black900;
 }
-.info-temps {
-  width: 30%;
+.info-meteo i {
+  font-size: 25px;
+}
+.info-meteo-none {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: solid 1px $black600;
+  padding: 8px 0;
+}
+.info-meteo-none h5 {
+  margin: 0;
 }
 .info-temperature {
+  width: 30%;
+  border-right: solid 1px $black600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-temps {
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: solid 1px $black600;
-  border-left: solid 1px $black600;
+  text-align: center;
+  gap: 4px;
+  margin: 0 8px;
 }
 .info-vent {
   width: 30%;
+  border-left: solid 1px $black600;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to "Retour", :back, class:"back-link" %>
+  <%= link_to "<", :back, class:"back-link" %>
   <h2 class="text-center mt-1 mb-3 sand-underline">Modifier mon profil</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -8,39 +8,15 @@
     <div class="form-inputs">
       <div class="row">
         <div class="col-6">
-          <%= f.input :first_name,
-                      label: "Prénom",
-                      placeholder: resource.first_name,
-                      hint: "Laissez vide si vous ne voulez pas le modifier",
-                      required: false,
-                      autofocus: true %>
+          <%= f.input :first_name, label: "Prénom", autofocus: true %>
         </div>
         <div class="col-6">
-          <%= f.input :last_name,
-                      label: "Nom",
-                      placeholder: resource.last_name,
-                      hint: "Laissez vide si vous ne voulez pas le modifier",
-                      required: false,
-                      autofocus: true %>
+          <%= f.input :last_name, label: "Nom", autofocus: true %>
         </div>
       </div>
-      <%= f.input :address,
-                    label: "Addresse",
-                    placeholder: resource.address,
-                    hint: "Laissez vide si vous ne voulez pas le modifier",
-                    required: false,
-                    autofocus: true %>
-      <%= f.input :birthday,
-                    label: "Date de naissance",
-                    placeholder: resource.birthday,
-                    hint: "Laissez vide si vous ne voulez pas le modifier",
-                    required: false,
-                    autofocus: true %>
-      <%= f.input :email,
-                placeholder: resource.email,
-                hint: "Laissez vide si vous ne voulez pas le modifier",
-                required: false,
-                autofocus: true %>
+      <%= f.input :address, label: "Addresse", autofocus: true %>
+      <%= f.input :birthday, label: "Date de naissance", autofocus: true %>
+      <%= f.input :email, autofocus: true %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -60,32 +36,9 @@
                   label: "Mot de passe actuel",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-
-    <h2 class="text-center m-3 sand-underline">Mettre à jour mes sports</h2>
-    <div data-controller="sports">
-      <div class="d-flex">
-        <div>
-          <%= f.input :runner, as: :radio_buttons,
-                      label: "Course",
-                      input_html: { "data-action" => "click->sports#displayRunLevel"} %>
-          <div id="level_runner" class="desc" data-sports-target="runLevel">
-            <%= f.input :run_level, as: :radio_buttons, collection: User::LEVELS  %>
-          </div>
-        </div>
-      <div>
-        <%= f.input :surfer, as: :radio_buttons,
-                    label: "Surf",
-                    input_html: { "data-action" => "click->sports#displaySurfLevel"} %>
-        <div id="level_surfer" class="desc" data-sports-target="surfLevel">
-          <%= f.input :surf_level, as: :radio_buttons, collection: User::LEVELS %>
-        </div>
-      </div>
     </div>
-
     <div class="form-actions">
-      <%= f.button :submit,
-                    "Mettre à jour mon profil",
-                    class: "btn btn-primary"%>
+      <%= f.button :submit, "Mettre à jour mon profil", class: "btn btn-primary"%>
     </div>
   <% end %>
 
