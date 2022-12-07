@@ -1,5 +1,5 @@
 <div class="container event-surf-form">
-  <%= simple_form_for @event, data: { controller: 'flatpickr', controller:"preview-input"} do |f| %>
+  <%= simple_form_for @event, data: { controller: "flatpickr preview-input"} do |f| %>
     <%= f.hidden_field :event_type, value: "surf" %>
     <%= f.input :name, label: "Nom de ton event" %>
     <%= f.input :date, label: "Date de l'event", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
@@ -27,24 +27,9 @@
       <%= f.input :photos, as: :file,
                   required: false,
                   autofocus: true,
-                  input_html: {data: {"preview-input-target": :input, action: "change->preview-input#changeImage"},class:"d-none"},
+                  input_html: {multiple: true, data: {"preview-input-target": :input, action: "change->preview-input#changeImage"},class:"d-none"},
                   label: false %>
-      <div>
-        <%= image_tag("icone-photo.jpg", :width=>90, :height=>90, class:"event_photo m-2", data:{"preview-input-target": :image2, action: "click->preview-input#openFile2"})%>
-      </div>
-      <%= f.input :photos, as: :file,
-                    required: false,
-                    autofocus: true,
-                    input_html: {data: {"preview-input-target": :input2, action: "change->preview-input#changeImage2"},class:"d-none"},
-                    label: false %>
-      <div>
-        <%= image_tag("icone-photo.jpg", :width=>90, :height=>90, class:"event_photo m-2", data:{"preview-input-target": :image3, action: "click->preview-input#openFile3"})%>
-      </div>
-      <%= f.input :photos, as: :file,
-                    required: false,
-                    autofocus: true,
-                    input_html: {data: {"preview-input-target": :input3, action: "change->preview-input#changeImage3"},class:"d-none"},
-                    label: false %>
+
   </div>
     <%= f.submit "Allons surfer", class: "btn btn-fullwide" %>
   <% end %>

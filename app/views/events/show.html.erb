@@ -9,4 +9,9 @@
   <% else %>
     <%= link_to "Participer", event_participations_path(@event.id), data: { turbo_method: :post } ,class: "btn-fullwide btn-bottom-50" %>
   <% end %>
+
+  <% @event.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 200, width: 280, crop: :fill %>
+  <%end%>
+
 </div>
