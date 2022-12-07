@@ -1,11 +1,24 @@
-<% @events.each do |event| %>
-  <%= event.name %>
-  <% if event.chatroom %>
-   <%= event.chatroom.name %>
-   <%= link_to "coucou", chatroom_path(event.chatroom), class: "text-decoration-none" %>
-  <% end %>
-
-  <br>
-<% end %>
-  <%= Chatroom.all %>
-
+<div class="container">
+<%= link_to "<", events_path, class:"fleche_retour" %>
+  <div class="header-chat">
+   <h2 class="sand-underline text-center m-2">Chatrooms</h2>
+  </div>
+  <div class="">
+    <% @events.each do |event| %>
+      <% if event.chatroom %>
+        <%= link_to chatroom_path(event.chatroom), class: "" do %>
+          <div class="card_chatroom m-1">
+            <%= cl_image_tag(event.photos.first.key, :quality=>"auto", class:"avatar-photo") %>
+            <div class="card_chatroom_infos">
+              <h2> <%= event.chatroom.name %> </h2>
+              <div class="super_infos">
+                <div><i class="fa-solid fa-people-group"></i> <%= event.participations.count %></div>
+                <div><i class="fa-solid fa-clock"></i> <%= event.date %></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
