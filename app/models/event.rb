@@ -30,4 +30,3 @@ class Event < ApplicationRecord
     weather = JSON.parse(weather_serialized, symbolize_names: true)
   end
 end
-

@@ -7,13 +7,27 @@
 .sports_profil {
   font-size: 16px;
   padding: 8px 16px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-
-
-.bonus_infos {
-  color: $black800;
+.edit-sport {
+  text-align: right;
 }
-
+.bonus-infos {
+  color: $black900;
+}
+.bonus-infos h5 {
+  font-size: 18px;
+  margin: 0;
+}
+.run-profile {
+  color: $black900;
+}
+.surf-profile {
+  color: $black900;
+  margin-top: 8px;
+}
 .surf_and_run {
   font-size: 16px;
   background-color: lightblue;

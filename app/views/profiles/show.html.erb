@@ -1,46 +1,57 @@
 <div class="container">
   <h2 class="text-center m-3 sand-underline">Mes infos</h2>
   <div class="infos_profil d-flex justify-content-between">
-    <div>
-      <p class="bonus_infos">Prénom<br> </p><%= @user.first_name%>
-      <p class="bonus_infos">Nom de famille <br> </p><%= @user.last_name%>
-      <p class="bonus_infos">E-MAIL <br> </p><%= @user.email%>
-      <p class="bonus_infos">ADRESSE <br> </p><%= @user.address%>
-      <p class="bonus_infos">DATE DE NAISSANCE <br> </p><%= @user.birthday%>
+    <div class='bonus-infos'>
+      <p>Prénom</p>
+      <h5><%= @user.first_name%></h5>
+      <p>Nom de famille</p>
+      <h5><%= @user.last_name%></h5>
+      <p>Email</p>
+      <h5><%= @user.email%></h5>
+      <p>Adresse</p>
+      <h5><%= @user.address%></h5>
+      <p>Date de naissance</p>
+      <h5><%= @user.birthday.day %> / <%= @user.birthday.month %> / <%= @user.birthday.year %>
     </div>
     <div>
-      <%= link_to "Modifier", edit_user_registration_path, class: 'text-decoration-none'%>
+      <%= link_to edit_user_registration_path, class: 'text-decoration-none' do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
     </div>
   </div>
 
   <h2 class="text-center m-3 sand-underline">Mes sports</h2>
-  <div class="sports_profil d-flex justify-content-between">
-    <div>
-      <div class="run_profil">
-        <p class="bonus_infos">Course <br> </p>
+  <div class="sports_profil">
+    <div class="edit-sport">
+      <%= link_to edit_profile_path, class: 'text-decoration-none' do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
+    </div>
+    <div class="run-profil">
+      <div class="bonus-infos">
+        <h5>Course</h5>
         <% if @user.runner == true%>
-          <%= "Vous êtes un runnner"%> <%= @user.run_level%><br>
           <div class="text-center">
+            <%= "Vous êtes un runnner"%> <%= @user.run_level%><br>
             <%= "XP :"%> <%= @user.run_xp%>
           </div>
         <% else %>
           <%= link_to "Devenez Runner", edit_profile_path,  class: 'btn btn-50wide' %>
         <%end%>
       </div>
-      <div class="surf_profil mt-2">
-      <p class="bonus_infos">Surf <br> </p>
+    </div>
+    <div class="surf-profil">
+      <div class="bonus-infos">
+        <h5>Surf</h5>
         <% if @user.surfer == true%>
-          <%= "Vous êtes un surfeur"%> <%= @user.surf_level%><br>
-          <div class="text-center"><%= "XP :"%>
-            <%= @user.surf_xp%>
+          <div class="text-center">
+            <%= "Vous êtes un surfeur"%> <%= @user.surf_level%><br>
+            <%= "XP :"%><%= @user.surf_xp%>
           </div>
         <% else %>
           <%= link_to "Devenez Surfeur", edit_profile_path,  class: 'btn btn-50wide' %>
         <%end%>
       </div>
-    </div>
-    <div>
-      <%= link_to "Modifier", edit_profile_path, class: 'text-decoration-none'%>
     </div>
   </div>
 </div>
