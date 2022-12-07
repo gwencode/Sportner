@@ -1,13 +1,127 @@
-TEMPERATURE <%= @temp_c %>°C <br>
-TEMPERATURE DE L'EAU <%= @watertemp_c %><br>
-VENT <%= @windspeedkmph %><br>
-DIRECTION DU VENT <%= @winddirdegree %><br>
-DIRECTION DU VENT POUR LES ANGLAIS <%= @winddir16point %><br>
-TAILLE DES VAGUES <%= @swellheight_m %><br>
-PERIODE <%= @swellperiod_secs %><br>
-DIRECTION HOULE <%= @swelldir16point %><br>
-MAREES DE LA JOURNEE:<br>
-<%= @tide[0][1] %><%= @tide[0][0] %> <br>
-<%= @tide[1][1] %><%= @tide[1][0] %><br>
-<%= @tide[2][1] %><%= @tide[2][0] %><br>  
-<%= @tide[3][1] %><%= @tide[3][0] %>
+<div class="container">
+  <div class="spot-meteo-title">
+    <h3>Météo du <%= Time.now.strftime('%d/%m/%Y') %></h3>
+  </div>
+  <div class="grid-2-col">
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <i class="fa-solid fa-temperature-half"></i>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Température</p>
+        <p class="spot-meteo-data"><%= @temp_c %> °C</p>
+      </div>
+    </div>
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <i class="fa-solid fa-water"></i>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Température de l'eau</p>
+        <p class="spot-meteo-data"><%= @watertemp_c %> °C</p>
+      </div>
+    </div>
+
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <i class="fa-solid fa-location-arrow" style="rotate: <%= @winddirdegree.to_i + 315 %>deg"></i>
+        <p class="spot-meteo-data"><%= @winddir16point %></p>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Vent</p>
+        <p class="spot-meteo-data"><%= @windspeedkmph %> km/h</p>
+      </div>
+    </div>
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <%= image_tag "wave-direction 1.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Direction de la houle</p>
+        <p class="spot-meteo-data"><%= @swelldir16point %></p>
+      </div>
+    </div>
+
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <%= image_tag "Vector.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Hauteur des vagues</p>
+        <p class="spot-meteo-data"><%= @swellheight_m %> m</p>
+      </div>
+    </div>
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <%= image_tag "period_wave_icon.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Periode des vagues</p>
+        <p class="spot-meteo-data"><%= @swellperiod_secs %> sec</p>
+      </div>
+    </div>
+
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <%= image_tag "noun-tide.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Marée
+        <% if @tide[0][1] == "HIGH" %>
+          <%= "haute" %>
+        <% else %>
+          <%= "basse" %>
+        <% end %>
+        </p>
+        <p class="spot-meteo-data"><%= @tide[0][0].split(" ").last %></p>
+      </div>
+    </div>
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <%= image_tag "noun-tide.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Marée
+        <% if @tide[1][1] == "HIGH" %>
+          <%= "haute" %>
+        <% else %>
+          <%= "basse" %>
+        <% end %>
+        </p>
+        <p class="spot-meteo-data"><%= @tide[1][0].split(" ").last %></p>
+      </div>
+    </div>
+
+    <div class="spot-meteo-block mb-5">
+      <div class="spot-meteo-icon">
+        <%= image_tag "noun-tide.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Marée
+        <% if @tide[2][1] == "HIGH" %>
+          <%= "haute" %>
+        <% else %>
+          <%= "basse" %>
+        <% end %>
+        </p>
+        <p class="spot-meteo-data"><%= @tide[2][0].split(" ").last %></p>
+      </div>
+    </div>
+    <div class="spot-meteo-block">
+      <div class="spot-meteo-icon">
+        <%= image_tag "noun-tide.svg" %>
+      </div>
+      <div class="spot-meteo-info">
+        <p class="strong">Marée
+        <% if @tide[3][1] == "HIGH" %>
+          <%= "haute" %>
+        <% else %>
+          <%= "basse" %>
+        <% end %>
+        </p>
+        <p class="spot-meteo-data"><%= @tide[3][0].split(" ").last %></p>
+      </div>
+    </div>
+
+  </div>
+</div>

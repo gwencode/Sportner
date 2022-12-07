@@ -1,5 +1,6 @@
+<%= cl_image_tag @spot.photos.first.key, class: "spot-photo" %>
 <div class="container" data-controller="places">
-  <h2 class="h2-black900 text-center mb-3"> <%= @spot.location %></h2>
+  <h2 class="h2-black900 text-center mb-3 sand-underline"> <%= @spot.location %></h2>
   <div class="d-flex justify-content-around mb-3">
     <button class="btn-place"
             data-controller="button-disable"
