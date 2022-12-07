@@ -1,28 +1,32 @@
 <div class="container even-run-form">
   <%= simple_form_for @event, method: :post, data: { controller: 'flatpickr preview-input' } do |f| %>
     <%= f.hidden_field :event_type, value: "running" %>
-    <%= f.input :name, label: "Nom de ton event" %>
-    <%= f.input :date, label: "Date de l'event", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
-    <%= f.input :description, label: "Dis-nous tout sur ton event" %>
-    <%= f.input :max_people, label: "Nbre max de participants" %>
-    <div class="row">
-      <div class="col">
-        <%= f.input :car_pooling %>
+    <%= f.input :name, label: "Nom de l'événement" %>
+    <%= f.input :date, label: "Date", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
+    <%= f.input :description, label: "Dis-nous tout sur l'événement" %>
+    <%= f.input :max_people, label: "Maximum de participants" %>
+    <div class="row align-items-center">
+      <div class="col-5">
+        <%= f.input :car_pooling, label: "Je covoiture" %>
       </div>
-      <div class="col">
-        <%= f.input :passengers %>
+      <div class="col-7">
+        <%= f.input :passengers, label: "Nombre de places" %>
       </div>
     </div>
-    <%= f.fields_for :run_detail do |g| %>
-      <%= g.input :run_type, collection: RunDetail::RUN_TYPES %>
-      <%= g.input :distance, label: "Distance", placeholder: "en km" %>
-      <%= g.input :pace, label: "Allure", placeholder: "ex : 4\"30" %>
-      <%= g.input :duration, label: "Durée", placeholder: "Temps en minutes" %>
-      <%= g.input :elevation, label: "Dénivelé", placeholder: "en m" %>
-      <%= g.input :location, label: "Point de départ", placeholder: "rue de l'exemple, XXXXX Ville" %>
-    <% end %>
-    <%= f.input :difficulty, collection: Event::DIFFICULTIES %>
-    <%= f.input :meeting_point, label: "Point de RDV", placeholder: "adresse,XXXX Ville" %>
+    <div data-controller="range">
+      <%= f.fields_for :run_detail do |g| %>
+        <%= g.input :run_type, label: "Type de course", collection: RunDetail::RUN_TYPES %>
+        <%= g.input :distance, as: :range, collection: 1..80, label: "Distance (en km)", input_html: { data: { range_target: "distance" }}  %>
+        <%= g.input :pace, label: "Allure", placeholder: "ex : 4\"30" %>
+        <%= g.input :duration, as: :range, collection: 1..180, label: "Durée (en min)", input_html: { data: { range_target: "time" }} %>
+        <%= g.input :elevation, label: "Dénivelé", placeholder: "en m" %>
+      <% end %>
+      <%= f.input :difficulty, label: "Difficulté", collection: Event::DIFFICULTIES %>
+      <%= f.input :meeting_point, label: "Point de RDV", hint: "4 Avenue des Gayeulles, 35700 Rennes" %>
+      <%= f.fields_for :run_detail do |g| %>
+        <%= g.input :location, label: "Départ du parcours", hint: "Parc des Gayeulles, 35700 Rennes" %>
+      <% end %>
+    </div>
     <div class="mt-3">
         <p>Ajoutez des photos</p>
     </div>

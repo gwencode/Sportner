@@ -43,3 +43,21 @@ button#btn-search {
 .form-sports {
   color: $black900;
 }
+
+.event_passengers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#event_passengers {
+  width: 30%;
+}
+
+label[for=event_passengers] {
+  margin: 0;
+}
+
+.event_car_pooling {
+  margin: 0;
+}

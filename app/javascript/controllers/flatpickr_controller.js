@@ -5,7 +5,7 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
   static targets = [ "Date", "Calendar" ]
   connect() {
-    console.log("hello")
+    // console.log("hello")
     if (this.hasCalendarTarget) {
       flatpickr(this.CalendarTarget, { mode: "range" })
     }

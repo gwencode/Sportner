@@ -33,3 +33,6 @@ application.register("sports", SportsController)
 
 import SpotsMapController from "./spots_map_controller"
 application.register("spots-map", SpotsMapController)
+
+import RangeController from "./range_controller"
+application.register("range", RangeController)
