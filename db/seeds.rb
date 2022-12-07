@@ -5,6 +5,10 @@ puts "cleaning DB..."
 puts "destroying participations..."
 Participation.destroy_all
 puts "destroying reviews..."
+Message.destroy_all
+puts "destroying messages..."
+Chatroom.destroy_all
+puts "destroying chatrooms..."
 Review.destroy_all
 puts "destroying favorite_spots..."
 FavoriteSpot.destroy_all
@@ -547,6 +551,7 @@ Participation.create!(event_id: events[1].id, user_id: users[6].id)
 Participation.create!(event_id: events[2].id, user_id: users[0].id)
 Participation.create!(event_id: events[5].id, user_id: users[1].id)
 Participation.create!(event_id: events[9].id, user_id: users[1].id)
+Participation.create!(event_id: events[10].id, user_id: users[3].id)
 Participation.create!(event_id: events[11].id, user_id: users[1].id)
 
 puts "Creating meteos.."
@@ -611,4 +616,106 @@ Review.create!(
   rating_difficulty: 3,
   rating_spot: 1,
   content: "Ouais...ok."
+)
+
+puts "Creating chatrooms..."
+
+sortie1 = Event.find_by(name: "Sortie longue")
+
+chat1 = Chatroom.create!(
+  event: sortie1,
+  name: sortie1.name,
+  created_at: DateTime.new(2022, 12, 4, 12, 20)
+)
+
+message1 = Message.create!(
+  chatroom: chat1,
+  user: User.find_by(first_name: "Gwendal"),
+  content: "Hello on se retrouve ou du coup ?",
+  created_at: DateTime.new(2022, 12, 3, 12, 30)
+)
+
+sortie2 = Event.find_by(name: "Session à Quiberon")
+
+chat2 = Chatroom.create!(
+  event: sortie2,
+  name: sortie2.name,
+  created_at: DateTime.new(2022, 11, 19, 8, 30)
+)
+
+message1 = Message.create!(
+  chatroom: chat2,
+  user: User.find_by(first_name: "Gwendal"),
+  content: "Hello les conditions sont top !",
+  created_at: DateTime.new(2022, 11, 16, 8, 30)
+)
+
+sortie3 = Event.find_by(name: "Session aux Rosaires")
+
+chat3 = Chatroom.create!(
+  event: sortie3,
+  name: sortie3.name,
+  created_at: DateTime.new(2022, 11, 24, 11, 32)
+)
+
+message1 = Message.create!(
+  chatroom: chat3,
+  user: User.find_by(first_name: "Clément"),
+  content: "Hello les conditions sont top !",
+  created_at: DateTime.new(2022, 11, 25, 11, 38)
+)
+
+sortie4 = Event.find_by(name: "Session à Fréhel")
+
+chat4 = Chatroom.create!(
+  event: sortie4,
+  name: sortie4.name,
+  created_at: DateTime.new(2022, 12, 6, 11, 40)
+)
+
+message1 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Clément"),
+  content: "Hello à tous j'ai encore des places dispo en covoiturage si ça vous tente !",
+  created_at: DateTime.new(2022, 12, 7, 11)
+)
+message2 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Olivier"),
+  content: "Salut ! Parfait ça m'intéresse",
+  created_at: DateTime.new(2022, 12, 7, 12, 35)
+)
+message3 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Clément"),
+  content: "Je pars de Rennes, quelle taille fait ta planche ?",
+  created_at: DateTime.new(2022, 12, 8, 13, 15)
+)
+
+message4 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Olivier"),
+  content: "J'ai une longboard c'est une 8.0",
+  created_at: DateTime.new(2022, 12, 8, 13, 45)
+)
+
+message5 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Clément"),
+  content: "Ok parfait j'ai une 8.0 aussi ça passe niquel dans ma voiture, envoie ton num !",
+  created_at: DateTime.new(2022, 12, 8, 13, 55)
+)
+
+message6 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Olivier"),
+  content: "06.34.32.34.53, j'habite 2 rue du grand olivier à Rennes !",
+  created_at: DateTime.new(2022, 12, 8, 14, 56)
+)
+
+message7 = Message.create!(
+  chatroom: chat4,
+  user: User.find_by(first_name: "Clément"),
+  content: "Ok parfait merci, je passerai te prendre !",
+  created_at: DateTime.new(2022, 12, 8, 14, 58)
 )
