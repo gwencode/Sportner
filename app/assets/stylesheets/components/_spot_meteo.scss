@@ -1,0 +1,30 @@
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap:32px;
+}
+
+.spot-meteo-block {
+  display:flex;
+  gap:8px;
+  color: $black900;
+}
+
+.spot-meteo-icon {
+  background:$black400;
+  display:flex;
+  flex-direction: column;
+  padding-top: 2px;
+  justify-content: center;
+  align-items: center;
+  width:48px;
+  height:48px;
+  i {
+    color:$black900
+  }
+}
+.spot-meteo-title {
+  color: $black900;
+  margin: 16px auto;
+  text-align: center;
+}
