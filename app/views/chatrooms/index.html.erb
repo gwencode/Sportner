@@ -11,7 +11,7 @@
             <h2> <%= event.chatroom.name %> </h2>
             <div class="super_infos">
               <div><i class="fa-solid fa-people-group"></i> <%= event.participations.count %></div>
-              <div><i class="fa-solid fa-clock"></i> <%= event.date %></div>
+              <div><i class="fa-solid fa-clock"></i> <%= event.date.strftime("%d/%m %l:%M") %></div>
             </div>
           </div>
         </div>
