@@ -4,7 +4,7 @@
   </div>
   <div class="pop-up-infos">
     <h3 class="mt-2"><%= spot.location %></h3>
-    <p class="strong my-1">Difficulté: <%=spot.spot_difficulty %></p>
+    <p class="strong my-1">Un spot pour <%= spot.spot_difficulty&.downcase %></p>
     <div class="d-flex justify-content-center my-1">
       <%= link_to "Voir plus d'infos", spot_path(spot), class: "btn btn-more-infos" %>
   </div>

@@ -2,31 +2,23 @@
   <%= image_tag 'sportnerhome.svg'%>
 </div>
 <div class="container text-center d-flex flex-wrap justify-content-center mt-5">
-    <h1>Trouve ton <div class="sand-underline">partenaire de sport</div> autour de chez toi </h1>
-    <div class="my-4">
-      <%= form_with url: events_path, method: :get, data: {controller: "disable-home"} do |f|%>
-      <div class="mt-4">
-        <div class="mt-2">
-          <%= label_tag(:event_type, "Sélectionne ton ou tes sports !", class: 'mb-4') %>
-          <div class="event_type-wrapper">
-            <% Event::EVENT_TYPES.each do |event| %>
-              <div class="event_type-item">
-                <%= check_box(:event_type, event, include_hidden: false, class: "event_type-selector", data: { disable_home_target: "checkbox", action: "change->disable-home#verifyCheckbox" })%>
-                <%= label_tag("event_type[#{event}]", event) %>
-                <label class="form-check-label collection_check_boxes" for="event_event_type_running">running</label>
-              </div>
-            <% end %>
+  <h1>Trouve ton <div class="sand-underline">partenaire de sport</div> autour de chez toi </h1>
+
+  <%= form_with url: events_path, method: :get, class:"mt-4", data: {controller: "disable-home"} do |f|%>
+    <div class="mt-2">
+      <%= label_tag(:event_type, "Sélectionne ton ou tes sports !", class: 'mb-4') %>
+      <div class="event_type-wrapper">
+        <% Event::EVENT_TYPES.each do |event| %>
+          <div class="event_type-item">
+            <%= check_box(:event_type, event, include_hidden: false, class: "event_type-selector", data: { disable_home_target: "checkbox", action: "change->disable-home#verifyCheckbox" })%>
+            <%= label_tag("event_type[#{event}]", event) %>
+            <label class="form-check-label collection_check_boxes" for="event_event_type_running">running</label>
           </div>
-        </div>
-        <div class="mt-5">
-          <div class="mt-1">
-            <%= f.text_field :meeting_point,
-                  placeholder: "Rentre ta ville", class: 'address-input' %>
-          </div>
-          <div class="mt-5">
-            <%= f.submit 'Découvrir les événements', class: 'btn btn-fullwide', data: { disable_home_target: "button"}%>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
+      </div>
+      <%= f.text_field :meeting_point, placeholder: "Cherche une ville", class: 'address-input mt-1' %>
+      <%= f.submit 'Découvrir les événements', class: 'btn btn-fullwide btn-home mt-5', data: { disable_home_target: "button"}%>
+    </div>
+  <% end %>
 
 </div>

@@ -3,7 +3,7 @@
 </div>
 <div class="card-meteo">
   <div class="info-adresse">
-    <i class="fa-solid fa-circle-half-stroke"></i>
+    <i class="fa-solid fa-location-pin"></i>
     <% if @event.event_type == "running" %>
       <%= @event.run_detail.location %>
     <% else %>
@@ -11,15 +11,17 @@
     <% end %>
   </div>
   <% if (((@event.date - Time.now) / (60 * 60 * 24)).round < 15) && (@event.date - Time.now.beginning_of_day).positive? && !@event.latitude.nil? %>
-    <div class="info-meteo">
+    <div class="info-meteo mt-2 rounded">
       <div class="info-temperature">
         <i class="fa-solid fa-temperature-half"></i>
         <%= @temp_c %>°C
       </div>
+      <div class="stroke"></div>
       <div class="info-temps">
         <%= image_tag @weathericonurl %>
         <%= @lang_fr %>
       </div>
+      <div class="stroke"></div>
       <div class="info-vent">
         <i class="fa-solid fa-location-arrow" style="rotate: <%= @winddirdegree.to_i + 315 %>deg"></i>
         <p><%= @windspeedkmph %> km/h</p>

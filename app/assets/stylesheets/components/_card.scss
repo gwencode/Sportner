@@ -14,17 +14,23 @@ h2 {
   margin: 16px auto;
   width: 100%;
   border-radius: 4px 4px 4px 4px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   position: relative;
+
+  .small  {
+    font-size:12px;
+    color:$black800;
+  }
 }
 
 .card-event.run {
-  border: 2px solid $sand;
+  border-right: 3px solid $sand;
+
 }
 
 .card-event.surf {
-  border: 2px solid $primary-surf;
+  border-right: 3px solid $primary-surf;
 }
 
 .card-event .card-image {
@@ -36,32 +42,32 @@ h2 {
 
 .card-event .card-avatar {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
+  top: 8px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
   border-radius: 50px;
+  box-shadow: 0px 2px 4px $black400;
 }
 
 .card-event .card-avatar-organizer {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50px;
   border: solid;
   border-color: $black900;
-  border-width: 2px;
+  border-width: 1px;
 }
 
 .card-event .card-event-infos {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 6px 10px;
+  padding: 16px;
   background: white;
-  width: 100%
+  width: 100%;
+
+  i {
+    color: $black400;
+    margin-right:4px;
+  }
 }
 
 .card-event .card-event-infos .card-event-title {
@@ -88,8 +94,7 @@ h2 {
 .card-event .card-event-infos .card-event-middle {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: $black600;
+  gap: 12px;
 
   p.small {
     color: $black800;
@@ -102,12 +107,8 @@ h2 {
   }
 }
 
-.card-event .card-event-infos .card-event-middle i {
- font-size: 12px;
-}
-
 .card-event .card-event-infos i {
-  color: $black900;
+  color: $black600;
 }
 
 .card-event .card-event-infos .card-event-end {
@@ -125,4 +126,10 @@ h2 {
 .card-event .card-event-infos .card-event-end a {
  text-decoration: none !important;
  color: $black800 !important;
+}
+
+.card-event-date {
+  display:flex;
+  gap:12px;
+  color:$black800;
 }
