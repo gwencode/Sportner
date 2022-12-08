@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @event = Event.new
 
-    @recommended_events = Event.recommended_for(current_user) if params[:event_type]&.key?(:running)
+    @recommended_events = Event.recommended_for(current_user) if params[:event_type]&.key?(:running) && user_signed_in?
 
     if params[:meeting_point].present?
       events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
       @organized_events = nil
     end
 
-    @events = @events.where.not(id: @recommended_events) if params[:event_type]&.key?(:running)
+    @events = @events.where.not(id: @recommended_events) if params[:event_type]&.key?(:running) && user_signed_in?
 
     @runmarkers = @events.where(event_type: "running").geocoded.map do |event|
       {
