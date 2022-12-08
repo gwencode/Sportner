@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @event = Event.new
 
-    @recommended_events = Event.recommended_for(current_user) if params[:event_type]&.key?(:running)
+    @recommended_events = Event.recommended_for(current_user) if params[:event_type]&.key?(:running) && user_signed_in?
 
     if params[:meeting_point].present?
       events = Event.where("meeting_point ILIKE ?", "%#{params[:meeting_point]}%")
@@ -32,14 +32,23 @@ class EventsController < ApplicationController
       @organized_events = nil
     end
 
-    @events = @events.where.not(id: @recommended_events) if params[:event_type]&.key?(:running)
+    @events = @events.where.not(id: @recommended_events) if params[:event_type]&.key?(:running) && user_signed_in?
 
-    @markers = @events.geocoded.map do |event|
+    @runmarkers = @events.where(event_type: "running").geocoded.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
         info_window: render_to_string(partial: "info_window", locals: { event: event }),
-        image_url: helpers.asset_url("event-flag.png")
+        image_url: helpers.asset_url("run-event-marker.svg")
+      }
+    end
+
+    @surfmarkers = @events.where(event_type: "surf").geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { event: event }),
+        image_url: helpers.asset_url("surf-event-marker.svg")
       }
     end
   end
@@ -50,40 +59,33 @@ class EventsController < ApplicationController
   end
 
   def map
-    @events = Event.all
-    @spots = Spot.all
-    @run_details = RunDetail.all
 
-    @markers = @events.geocoded.map do |event|
+    @runevents = Event.where(event_type: "running")
+    @surfevents = Event.where(event_type: "surf")
+
+    @runmarkers = @runevents.geocoded.map do |runevent|
       {
-        lat: event.latitude,
-        lng: event.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {event: event}),
-        image_url: helpers.asset_url("event-flag.png")
+        lat: runevent.latitude,
+        lng: runevent.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {runevent: runevent}),
+        image_url: helpers.asset_url("run-event.svg")
       }
     end
 
-    @spotmarkers = @spots.geocoded.map do |spot|
+    @surfmarkers = @surfevents.geocoded.map do |surfevent|
       {
-        lat: spot.latitude,
-        lng: spot.longitude,
-        info_window: render_to_string(partial: "spot_info_window", locals: {spot: spot}),
-        image_url: helpers.asset_url("vague.png")
-      }
-    end
-
-    @runmarkers = @run_details.geocoded.map do |run|
-      {
-        lat: run.latitude,
-        lng: run.longitude,
-        info_window: render_to_string(partial: "run_info_window", locals: {run: run}),
-        image_url: helpers.asset_url("run-flag.png")
+        lat: surfevent.latitude,
+        lng: surfevent.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {surfevent: surfevent}),
+        image_url: helpers.asset_url("run-event.svg")
       }
     end
   end
 
   def new
     @event = Event.new.tap(&:build_run_detail)
+
+    @event.spot = Spot.find(params[:spot_id]) if params[:spot_id].present?
   end
 
   def create

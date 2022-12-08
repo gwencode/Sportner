@@ -2,7 +2,8 @@
   data-controller="map"
   class="map"
   <%# data-action="click->map#toggleFullMap" %>
-  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-runmarkers-value="<%= @runmarkers.to_json %>"
+  data-map-surfmarkers-value="<%= @surfmarkers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 <div data-controller="filters">

@@ -7,7 +7,7 @@
       <i class="fa-solid fa-clock"></i></i> <%= @event.date.strftime('%Hh%M') %>
       </p>
       <p>
-      <i class="fa-solid fa-calendar-check"></i></i> <%= @event.date.day %>/<%= @event.date.month %>/<%= @event.date.year %>
+      <i class="fa-solid fa-calendar-check"></i></i> <%= @event.date.strftime('%d/%m/%y') %>
       </p>
     </div>
     <div id="show-event-title">
