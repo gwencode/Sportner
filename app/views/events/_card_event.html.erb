@@ -4,7 +4,11 @@
   <div class="card-event surf" data-filters-target="surfcard">
 <% end %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
-    <%= cl_image_tag event.photos.first.key, class: "card-image", crop: :thumb, width: 200 unless event.photos.first.nil? %>
+    <% if event.photos.first %>
+      <%= cl_image_tag event.photos.first.key, class: "card-image", crop: :thumb, width: 200 unless event.photos.first.nil? %>
+    <% else %>
+      <%= cl_image_tag event.spot.photos.first.key, class: "card-image", crop: :thumb, width: 200 unless event.photos.first.nil? %>
+    <% end %>
     <%= image_tag ('sportnerhome.svg'), class: "card-image" if event.photos.first.nil? %>
     <div class="card-event-infos">
       <div class="card-event-date">
