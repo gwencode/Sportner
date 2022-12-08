@@ -1,8 +1,11 @@
-<div class="">
-  <%= link_to spot_path(spot), class: "text-decoration-none" do  %>
-      <h3 class="text-center mt-3"><%= spot.location %></h3>
-        <div class="row align-items-center mx-1 mb-0">
-          <p><%= "Difficulté :"%> <%=spot.spot_difficulty %></p>
-    <% end %>
+<div class="popup">
+  <div class="popup-spot-img">
+    <%= cl_image_tag spot.photos.first.key, crop: :fill %>
+  </div>
+  <div class="pop-up-infos">
+    <h3 class="mt-2"><%= spot.location %></h3>
+    <p class="strong my-1">Difficulté: <%=spot.spot_difficulty %></p>
+    <div class="d-flex justify-content-center my-1">
+      <%= link_to "Voir plus d'infos", spot_path(spot), class: "btn btn-more-infos" %>
+  </div>
 </div>
-
