@@ -16,7 +16,7 @@ class RunDetail < ApplicationRecord
                "fractionné",
                "trail",
                "côtes",
-               "marche athlétique",
+               "marche nordique",
                "parcours d'obstacles"]
 
   # has_many_attached :photos

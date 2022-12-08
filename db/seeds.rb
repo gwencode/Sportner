@@ -21,8 +21,8 @@ Event.destroy_all
 puts "destroying run_details..."
 RunDetail.destroy_all
 # 2 lignes du dessous à commenter si besoin
-# puts "destroying spots..."
-# Spot.destroy_all
+puts "destroying spots..."
+Spot.destroy_all
 puts "destroying users..."
 User.destroy_all
 puts "...cleaning done!"
@@ -62,167 +62,167 @@ sleep 1
 fs5 = FavoriteSpot.create!(sport: "running", city_spot: "Brest", radius: 3, user_id: users[5].id)
 sleep 1
 
-# puts "Scraping spots..."
+puts "Scraping spots..."
 
-# urla = "https://fr.wannasurf.com/spot/Europe/France/Brittany_South/index.html"
-# html_filea = URI.open(urla).read
-# html_doca = Nokogiri::HTML(html_filea)
+urla = "https://fr.wannasurf.com/spot/Europe/France/Brittany_South/index.html"
+html_filea = URI.open(urla).read
+html_doca = Nokogiri::HTML(html_filea)
 
-# urlb = "https://fr.wannasurf.com/spot/Europe/France/Brittany_North/index.html"
-# html_fileb = URI.open(urlb).read
-# html_docb = Nokogiri::HTML(html_fileb)
+urlb = "https://fr.wannasurf.com/spot/Europe/France/Brittany_North/index.html"
+html_fileb = URI.open(urlb).read
+html_docb = Nokogiri::HTML(html_fileb)
 
-# spots_data = []
-# spots_photos_urls = []
-# spots_coord = []
-# list_href = []
-# html_doca.search(".wanna-tabzonespot-item-title").each do |a|
-#   list_href << a.attribute("href").value
-# end
-# html_docb.search(".wanna-tabzonespot-item-title").each do |a|
-#   list_href << a.attribute("href").value
-# end
-# list_href.each do |ref|
-#   html = ""
-#   begin
-#     url = "https://fr.wannasurf.com#{ref}"
-#     html = URI.open(url).read
-#   rescue
-#     next
-#   end
-#   doc = Nokogiri::HTML(html)
-#   spots_data << [{
-#     location: doc.search(".wanna-item-title-title a").text.strip,
-#     spot_difficulty: doc.at('span.wanna-item-label:contains("Experience")').next_sibling&.text&.strip,
-#     wave_type: doc.at('span.wanna-item-label:contains("Type")').next_sibling&.text&.strip,
-#     wave_direction: doc.at('span.wanna-item-label:contains("Direction")').next_sibling&.text&.strip,
-#     bottom: doc.at('span.wanna-item-label:contains("Fond")').next_sibling&.text&.strip,
-#     wave_height_infos: doc.at('span.wanna-item-label:contains("Taille de la houle")').next_sibling&.text&.strip,
-#     tide_conditions: doc.at('span.wanna-item-label:contains("Condition de marée")').next_sibling&.text&.strip,
-#     danger: doc.at('h5:contains("Dangers")').next_sibling&.text&.strip
-#   }]
-#   icon_photo_tag = doc.search(".wanna-photovideo-cell-img img")
-#   if icon_photo_tag == []
-#     photos_urls = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
-#   elsif icon_photo_tag[0].nil?
-#     photos_urls = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
-#   else
-#     # Chercher lien de redirection de toutes les photos
-#     index_photo = doc.search(".wanna-showall-link")[0].attributes["href"].value
-#     # Recréer le lien de redirection et ouvrir le document
-#     index_url = "#{url.delete_suffix('index.html')}#{index_photo}"
-#     index_html = URI.open(index_url).read
-#     index_doc = Nokogiri::HTML(index_html)
-#     # Préparer le stockage de chaque url de photo
-#     each_photos_sub_urls = []
-#     # Récupérer chaque élement avec une photo
-#     photo_tag_urls = index_doc.search(".wanna-sublink")
-#     photo_tag_urls.each_with_index do |nog_element, index|
-#       each_photo_url = nog_element.attributes["href"].value.delete_prefix("index.html")
-#       each_photos_sub_urls << each_photo_url if index.even?
-#     end
+spots_data = []
+spots_photos_urls = []
+spots_coord = []
+list_href = []
+html_doca.search(".wanna-tabzonespot-item-title").each do |a|
+  list_href << a.attribute("href").value
+end
+html_docb.search(".wanna-tabzonespot-item-title").each do |a|
+  list_href << a.attribute("href").value
+end
+list_href.each do |ref|
+  html = ""
+  begin
+    url = "https://fr.wannasurf.com#{ref}"
+    html = URI.open(url).read
+  rescue
+    next
+  end
+  doc = Nokogiri::HTML(html)
+  spots_data << [{
+    location: doc.search(".wanna-item-title-title a").text.strip,
+    spot_difficulty: doc.at('span.wanna-item-label:contains("Experience")').next_sibling&.text&.strip,
+    wave_type: doc.at('span.wanna-item-label:contains("Type")').next_sibling&.text&.strip,
+    wave_direction: doc.at('span.wanna-item-label:contains("Direction")').next_sibling&.text&.strip,
+    bottom: doc.at('span.wanna-item-label:contains("Fond")').next_sibling&.text&.strip,
+    wave_height_infos: doc.at('span.wanna-item-label:contains("Taille de la houle")').next_sibling&.text&.strip,
+    tide_conditions: doc.at('span.wanna-item-label:contains("Condition de marée")').next_sibling&.text&.strip,
+    danger: doc.at('h5:contains("Dangers")').next_sibling&.text&.strip
+  }]
+  icon_photo_tag = doc.search(".wanna-photovideo-cell-img img")
+  if icon_photo_tag == []
+    photos_urls = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
+  elsif icon_photo_tag[0].nil?
+    photos_urls = "https://img.freepik.com/premium-vector/car-woman-surfing-beach-icon_571469-360.jpg?w=2000"
+  else
+    # Chercher lien de redirection de toutes les photos
+    index_photo = doc.search(".wanna-showall-link")[0].attributes["href"].value
+    # Recréer le lien de redirection et ouvrir le document
+    index_url = "#{url.delete_suffix('index.html')}#{index_photo}"
+    index_html = URI.open(index_url).read
+    index_doc = Nokogiri::HTML(index_html)
+    # Préparer le stockage de chaque url de photo
+    each_photos_sub_urls = []
+    # Récupérer chaque élement avec une photo
+    photo_tag_urls = index_doc.search(".wanna-sublink")
+    photo_tag_urls.each_with_index do |nog_element, index|
+      each_photo_url = nog_element.attributes["href"].value.delete_prefix("index.html")
+      each_photos_sub_urls << each_photo_url if index.even?
+    end
 
-#     each_photos_urls = []
-#     each_photos_sub_urls.each do |sub_url|
-#       each_photos_urls << "#{index_url}#{sub_url}"
-#     end
+    each_photos_urls = []
+    each_photos_sub_urls.each do |sub_url|
+      each_photos_urls << "#{index_url}#{sub_url}"
+    end
 
-#     # Pour chaque lien, ouvrir le lien avec open uri et Nogogirki
-#     photos_urls = []
-#     each_photos_urls.each do |photo_page_url|
-#       photo_page_html = URI.open(photo_page_url).read
-#       photo_doc = Nokogiri::HTML(photo_page_html)
-#       # Chercher et stocker l'url de la photo
-#       photo_sub_url = photo_doc.search(".photo-frame")[0].attributes["src"].value
-#       photo_url = "https://fr.wannasurf.com#{photo_sub_url}"
-#       photos_urls << photo_url
-#     end
-#   end
-#   spots_photos_urls << photos_urls
+    # Pour chaque lien, ouvrir le lien avec open uri et Nogogirki
+    photos_urls = []
+    each_photos_urls.each do |photo_page_url|
+      photo_page_html = URI.open(photo_page_url).read
+      photo_doc = Nokogiri::HTML(photo_page_html)
+      # Chercher et stocker l'url de la photo
+      photo_sub_url = photo_doc.search(".photo-frame")[0].attributes["src"].value
+      photo_url = "https://fr.wannasurf.com#{photo_sub_url}"
+      photos_urls << photo_url
+    end
+  end
+  spots_photos_urls << photos_urls
 
-#   # Scraping des coordonnées
-#   lat = doc.at('span.wanna-item-label-gps:contains("Latitude")')&.next_sibling&.text
-#   # p lat
-#   # => " 48° 20.875' N" / ou nil si pas de coordonnées
-#   # latitude: 48.6526078,
-#   unless lat.nil?
-#     lat = lat.chop.chop.chop
-#     lat.slice!(0)
-#     # => "48° 20.875"
-#     lat_DMC = lat.split("° ")
-#     # => ["48", "20.875"]
-#     deg = lat_DMC.first.to_i
-#     lat_sec = lat_DMC.last.to_f
-#     # => ["20", "875"]
-#     sec = (lat_sec * 60 ).fdiv(3600)
-#     lat_DD = deg + sec
-#     # p lat_DD
-#   end
+  # Scraping des coordonnées
+  lat = doc.at('span.wanna-item-label-gps:contains("Latitude")')&.next_sibling&.text
+  # p lat
+  # => " 48° 20.875' N" / ou nil si pas de coordonnées
+  # latitude: 48.6526078,
+  unless lat.nil?
+    lat = lat.chop.chop.chop
+    lat.slice!(0)
+    # => "48° 20.875"
+    lat_DMC = lat.split("° ")
+    # => ["48", "20.875"]
+    deg = lat_DMC.first.to_i
+    lat_sec = lat_DMC.last.to_f
+    # => ["20", "875"]
+    sec = (lat_sec * 60 ).fdiv(3600)
+    lat_DD = deg + sec
+    # p lat_DD
+  end
 
-#   lng = doc.at('span.wanna-item-label-gps:contains("Longitude")')&.next_sibling&.text
-#   # p lng
-#   # => " 4° 42.139' W" / ou nil si pas de coordonnées
-#   # longitude: -4.3047966>
-#   unless lng.nil?
-#     lng = lng.chop.chop.chop
-#     lng.slice!(0)
-#     # => "48° 20.875"
-#     lng_DMC = lng.split("° ")
-#     # => ["48", "20.875"]
-#     deg = lng_DMC.first.to_i
-#     lng_sec = lng_DMC.last.to_f
-#     # => ["20", "875"]
-#     sec = (lng_sec * 60).fdiv(3600)
-#     lng_DD = - deg - sec
-#     # p lng_DD
-#   end
-#   spots_coord << [lat_DD, lng_DD]
-# end
-# puts "Nombre de spots: "
-# p spots_data.count
-# puts "Nombre de spots urls: "
-# p spots_photos_urls.count
-# puts "Nombre de coordonnées : "
-# p spots_coord.count
+  lng = doc.at('span.wanna-item-label-gps:contains("Longitude")')&.next_sibling&.text
+  # p lng
+  # => " 4° 42.139' W" / ou nil si pas de coordonnées
+  # longitude: -4.3047966>
+  unless lng.nil?
+    lng = lng.chop.chop.chop
+    lng.slice!(0)
+    # => "48° 20.875"
+    lng_DMC = lng.split("° ")
+    # => ["48", "20.875"]
+    deg = lng_DMC.first.to_i
+    lng_sec = lng_DMC.last.to_f
+    # => ["20", "875"]
+    sec = (lng_sec * 60).fdiv(3600)
+    lng_DD = - deg - sec
+    # p lng_DD
+  end
+  spots_coord << [lat_DD, lng_DD]
+end
+puts "Nombre de spots: "
+p spots_data.count
+puts "Nombre de spots urls: "
+p spots_photos_urls.count
+puts "Nombre de coordonnées : "
+p spots_coord.count
 
-# puts "Creating spots"
+puts "Creating spots"
 
-# sleep 1
-# spots = []
-# spots_data.each_with_index do |s, index|
-#   spot = Spot.create!(s.first)
-#   sleep 1
-#   # file = File.open("db/fixtures/#{u.last}")
-#   # user.avatar.attach(io: file, filename: u.last)
-#   # user.save!
-#   spot_photos_urls = spots_photos_urls[index]
-#   if spot_photos_urls.class == Array
-#     spot_photos_urls.each do |photo_url|
-#       photo = ""
-#       begin
-#         photo = URI.open(photo_url)
-#       rescue
-#         next
-#       end
-#       spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
-#       spot.save!
-#     end
-#   else
-#     photo = ""
-#     begin
-#       photo = URI.open(spot_photos_urls)
-#     rescue
-#       next
-#     end
-#     spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
-#     spot.save!
-#   end
-#   spot_coord = spots_coord[index]
-#   spot.latitude = spot_coord.first
-#   spot.longitude = spot_coord.last
-#   spot.save!
-#   spots << spot
-# end
+sleep 1
+spots = []
+spots_data.each_with_index do |s, index|
+  spot = Spot.create!(s.first)
+  sleep 1
+  # file = File.open("db/fixtures/#{u.last}")
+  # user.avatar.attach(io: file, filename: u.last)
+  # user.save!
+  spot_photos_urls = spots_photos_urls[index]
+  if spot_photos_urls.class == Array
+    spot_photos_urls.each do |photo_url|
+      photo = ""
+      begin
+        photo = URI.open(photo_url)
+      rescue
+        next
+      end
+      spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
+      spot.save!
+    end
+  else
+    photo = ""
+    begin
+      photo = URI.open(spot_photos_urls)
+    rescue
+      next
+    end
+    spot.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/jpg')
+    spot.save!
+  end
+  spot_coord = spots_coord[index]
+  spot.latitude = spot_coord.first
+  spot.longitude = spot_coord.last
+  spot.save!
+  spots << spot
+end
 
 puts "Creating run_details..."
 
@@ -250,7 +250,7 @@ rd3 = RunDetail.create!(
   pace: "5:30",
   duration: 55,
   elevation: 100,
-  location: "14 Rue Frain de la Gaulayrie, 35500 Vitré"
+  location: "11 Rue de Châtillon, 35000 Rennes"
 )
 
 rd4 = RunDetail.create!(
@@ -259,7 +259,7 @@ rd4 = RunDetail.create!(
   pace: "3:45",
   duration: 24,
   elevation: 10,
-  location: "2-24 Rue Vieille Voie, 44110 Châteaubriant"
+  location: "13 Rue Zacharie Roussin, 35700 Rennes"
 )
 
 rd5 = RunDetail.create!(
@@ -268,33 +268,33 @@ rd5 = RunDetail.create!(
   pace: "4:30",
   duration: 45,
   elevation: 20,
-  location: "Av. de Büdingen, 22600 Loudéac"
+  location: "8 Av. des Gayeulles, 35700 Rennes"
 )
 
 rd6 = RunDetail.create!(
   run_type: "trail",
   distance: 24,
-  pace: "5:30",
+  pace: "4:30",
   duration: 132,
   elevation: 600,
-  location: "72-90 Rte d'Ernée, 35300 Fougères"
+  location: "La Piverdière, 35000 Rennes"
 )
 
 rd7 = RunDetail.create!(
-  run_type: "marche athlétique",
+  run_type: "marche nordique",
   distance: 15,
   pace: "10:00",
   duration: 150,
   elevation: 150,
-  location: "15-11 Rue Léon Jouhaux, 29000 Quimper"
+  location: "2 b Rue Malaguti, 35000 Rennes"
 )
 rd8 = RunDetail.create!(
-  run_type: "parcours d'obstacles",
-  distance: 4,
-  pace: "4:00",
-  duration: 16,
-  elevation: 80,
-  location: "La Bidois, 35490 Romazy"
+  run_type: "footing",
+  distance: 8,
+  pace: "5:30",
+  duration: 44,
+  elevation: 20,
+  location: "68 Mail François Mitterrand, 35000 Rennes"
 )
 
 rd9 = RunDetail.create!(
@@ -303,7 +303,7 @@ rd9 = RunDetail.create!(
   pace: "5:15",
   duration: 42,
   elevation: 500,
-  location: "2 Rue Goasnou, 22970 Ploumagoar"
+  location: "Parc du Thabor, 35000 Rennes"
 )
 sleep 1
 puts "Creating running events..."
@@ -350,9 +350,9 @@ Participation.create(event: event2, user: event2.organizer)
 event3 = Event.new(
   event_type: "running",
   name: "10km nocture",
-  date: DateTime.new(2022, 12, 10, 10),
-  description: "Sortie nature à Vitré en soirée, pensez à votre lampe frontale 😉",
-  meeting_point: "14 Rue Frain de la Gaulayrie, 35500 Vitré",
+  date: DateTime.new(2022, 12, 10, 18),
+  description: "Sortie en soirée, pensez à votre lampe frontale 😉",
+  meeting_point: "11 Rue de Châtillon, 35000 Rennes",
   max_people: 10,
   difficulty: "intermédiaire",
   run_detail_id: rd3.id
@@ -369,9 +369,9 @@ Participation.create(event: event3, user: event3.organizer)
 event4 = Event.new(
   event_type: "running",
   name: "Entrainement 10km",
-  date: DateTime.new(2022, 12, 14, 14),
-  description: "Séance d'entrainement à la piste de Bréquigny en préparation de la course Tout Betton Court. 2 séries de 6 x 300m à 100% VMA 16km/h avec une récupération de 45 secondes entre les 300m et 3 minutes entre les séries.",
-  meeting_point: "2-24 Rue Vieille Voie, 44110 Châteaubriant",
+  date: DateTime.new(2022, 12, 11, 14),
+  description: "Séance d'entrainement à la piste du Stade Rennais Athéltisme en préparation de la course Tout Betton Court. 2 séries de 6 x 300m à 100% VMA 16km/h avec une récupération de 45 secondes entre les 300m et 3 minutes entre les séries.",
+  meeting_point: "13 Rue Zacharie Roussin, 35700 Rennes",
   max_people: 5,
   difficulty: "confirmé",
   run_detail_id: rd4.id
@@ -388,9 +388,9 @@ Participation.create(event: event4, user: event4.organizer)
 event5 = Event.new(
   event_type: "running",
   name: "Allure spécifique",
-  date: DateTime.new(2022, 12, 15, 16, 15),
-  description: "Entraînement à allure spécifique. Echauffement, puis 6 x 1km à 4:30/km, récupération 1min entre chaque série",
-  meeting_point: "Av. de Büdingen, 22600 Loudéac",
+  date: DateTime.new(2022, 12, 12, 12, 30),
+  description: "Entraînement à allure spécifique dans le Parc des Gayeulles. Echauffement, puis 6 x 1km à 4:30/km, récupération 1min entre chaque série",
+  meeting_point: "8 Av. des Gayeulles, 35700 Rennes",
   max_people: 30,
   difficulty: "intermédiaire",
   run_detail_id: rd5.id
@@ -406,10 +406,10 @@ Participation.create(event: event5, user: event5.organizer)
 
 event6 = Event.new(
   event_type: "running",
-  name: "Trail en forêt",
-  date: DateTime.new(2022, 12, 23, 14),
-  description: "Trail assez difficile pour éliminer avant les fêtes, venez motivés et bien équipés !",
-  meeting_point: "72-90 Rte d'Ernée, 35300 Fougères",
+  name: "Trail aux étangs",
+  date: DateTime.new(2022, 12, 10, 10),
+  description: "Trail aux étangs d'Apignés pour éliminer avant les fêtes, venez motivés et bien équipés !",
+  meeting_point: "La Piverdière, 35000 Rennes",
   max_people: 7,
   difficulty: "confirmé",
   run_detail_id: rd6.id
@@ -425,16 +425,16 @@ Participation.create(event: event6, user: event6.organizer)
 
 event7 = Event.new(
   event_type: "running",
-  name: "Marche athlétique",
-  date: DateTime.new(2022, 12, 28, 10, 30),
-  description: "Venez essayer la marche athlétique à Quimper.",
-  meeting_point: "15-11 Rue Léon Jouhaux, 29000 Quimper",
+  name: "Marche nordique",
+  date: DateTime.new(2022, 12, 11, 10, 30),
+  description: "Venez essayer la marche nordique à Rennes.",
+  meeting_point: "2 b Rue Malaguti, 35000 Rennes",
   max_people: 10,
   difficulty: "débutant",
   run_detail_id: rd7.id
 )
-file = File.open("db/fixtures/photo-quimper.jpg")
-event7.photos.attach(io: file, filename: "photo-quimper.jpg")
+file = File.open("db/fixtures/marche.jpeg")
+event7.photos.attach(io: file, filename: "marche.jpeg")
 
 event7.organizer = users[4]
 event7.save!
@@ -444,16 +444,16 @@ Participation.create(event: event7, user: event7.organizer)
 
 event8 = Event.new(
   event_type: "running",
-  name: "Parcours d'obstacles",
-  date: DateTime.new(2022, 11, 6, 10),
-  description: "Parcours d'obstacles dans la forêt, ramenez des affaires de rechange 🌲",
-  meeting_point: "La Bidois, 35490 Romazy",
+  name: "Footing tranquille",
+  date: DateTime.new(2022, 12, 11, 15),
+  description: "Footing tranquille le long de la Vilaine, rdv au bout du Mail",
+  meeting_point: "68 Mail François Mitterrand, 35000 Rennes",
   max_people: 10,
-  difficulty: "intermédiaire",
+  difficulty: "débutant",
   run_detail_id: rd8.id
 )
-file = File.open("db/fixtures/photo-obstacle.jpg")
-event8.photos.attach(io: file, filename: "photo-obstacle.jpg")
+file = File.open("db/fixtures/tranquille-vilaine.jpeg")
+event8.photos.attach(io: file, filename: "tranquille-vilaine.jpeg")
 
 event8.organizer = users[5]
 event8.save!
@@ -464,9 +464,9 @@ Participation.create(event: event8, user: event8.organizer)
 event9 = Event.new(
   event_type: "running",
   name: "Entraînement côtes",
-  date: DateTime.new(2022, 12, 14, 12, 45),
-  description: "Entraînement côtes, plusieurs pentes raides et escaliers.",
-  meeting_point: "2 Rue Goasnou, 22970 Ploumagoar",
+  date: DateTime.new(2022, 12, 13, 17, 45),
+  description: "Entraînement côtes au parc du Thabor.",
+  meeting_point: "Parc du Thabor, 35000 Rennes",
   max_people: 5,
   difficulty: "confirmé",
   run_detail_id: rd9.id
@@ -488,8 +488,8 @@ event10 = Event.new(
   event_type: "surf",
   name: "Session à Quiberon",
   date: DateTime.new(2022, 11, 19, 8, 30),
-  description: "Session surf à Quiberon au départ de Vannes",
-  meeting_point: "Quai Bernard Moitessier, 56000 Vannes",
+  description: "Session surf à Quiberon au départ de Rennes, rdv au métro Villejean",
+  meeting_point: "10 rue du Rue Doyen Denis Leroy, 35000 Rennes",
   car_pooling: true,
   passengers: 2,
   difficulty: "débutant",
@@ -594,7 +594,7 @@ Participation.create!(event_id: events[0].id, user_id: users[5].id)
 Participation.create!(event_id: events[1].id, user_id: users[1].id)
 Participation.create!(event_id: events[1].id, user_id: users[6].id)
 Participation.create!(event_id: events[2].id, user_id: users[0].id)
-Participation.create!(event_id: events[5].id, user_id: users[1].id)
+Participation.create!(event_id: events[7].id, user_id: users[0].id)
 Participation.create!(event_id: events[9].id, user_id: users[1].id)
 Participation.create!(event_id: events[10].id, user_id: users[3].id)
 Participation.create!(event_id: events[11].id, user_id: users[1].id)
@@ -768,3 +768,33 @@ message7 = Message.create!(
   content: "Ok parfait merci, je passerai te prendre !",
   created_at: DateTime.new(2022, 12, 8, 14, 58)
 )
+
+sortie5 = Event.find_by(name: "Footing tranquille")
+
+chat5 = Chatroom.create!(
+  event: sortie5,
+  name: sortie5.name,
+  created_at: DateTime.new(2022, 12, 8, 12)
+)
+
+message1 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Justine"),
+  content: "Hello à tous ! On se retrouve 10min avant pour s'échauffer ?",
+  created_at: DateTime.new(2022, 12, 8, 12, 30)
+)
+
+message2 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Clément"),
+  content: "Salut ! Yes carrément !",
+  created_at: DateTime.new(2022, 12, 8, 12, 45)
+)
+
+message3 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Justine"),
+  content: "Top, à dimanche !",
+  created_at: DateTime.new(2022, 12, 8, 13)
+)
+
