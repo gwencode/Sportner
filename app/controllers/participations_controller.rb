@@ -4,7 +4,7 @@ class ParticipationsController < ApplicationController
   def create
     participation = Participation.new(event: @event, user: current_user)
     if participation.save!
-      redirect_to events_path, notice: "Participation enregistrée"
+      redirect_to chatroom_path(@event.chatroom), notice: "Participation enregistrée"
     else
       redirect_to event_path(@event), notice: "Vous participez déjà à l'event"
     end
