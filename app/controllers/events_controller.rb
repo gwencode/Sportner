@@ -84,6 +84,8 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new.tap(&:build_run_detail)
+
+    @event.spot = Spot.find(params[:spot_id]) if params[:spot_id].present?
   end
 
   def create
