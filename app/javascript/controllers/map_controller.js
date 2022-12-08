@@ -4,9 +4,8 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array,
-    spotmarkers: Array,
-    runmarkers: Array
+    runmarkers: Array,
+    surfmarkers: Array
   }
 
   connect() {
@@ -16,9 +15,8 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/corpsdheros/clbewkdju003014o3aytpl754"
     })
-    this.#addMarkersToMap()
-    this.#addSpotMarkersToMap()
     this.#addRunMarkersToMap()
+    this.#addSurfMarkersToMap()
     this.#fitMapToMarkers()
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
@@ -30,17 +28,17 @@ export default class extends Controller {
   //   this.#addMarkersToMap()
   //   this.#fitMapToMarkers()
   // }
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
+  #addRunMarkersToMap() {
+    this.runmarkersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customEventMarker = document.createElement("div")
-      customEventMarker.className = "marker"
+      customEventMarker.className = "runmarker"
       customEventMarker.style.backgroundImage = `url('${marker.image_url}')`
       customEventMarker.style.backgroundSize = "contain"
       customEventMarker.style.backgroundColor = "transparent"
       customEventMarker.style.backgroundRepeat = "no-repeat"
-      customEventMarker.style.width = "40px"
-      customEventMarker.style.height = "40px"
+      customEventMarker.style.width = "50px"
+      customEventMarker.style.height = "50px"
 
       new mapboxgl.Marker(customEventMarker)
         .setLngLat([ marker.lng, marker.lat ])
@@ -48,44 +46,25 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
-
-  #addSpotMarkersToMap() {
-    this.spotmarkersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      const customSpotMarker = document.createElement("div")
-      customSpotMarker.className = "marker"
-      customSpotMarker.style.backgroundImage = `url('${marker.image_url}')`
-      customSpotMarker.style.backgroundSize = "contain"
-      customSpotMarker.style.backgroundColor = "transparent"
-      customSpotMarker.style.backgroundRepeat = "no-repeat"
-      customSpotMarker.style.width = "30px"
-      customSpotMarker.style.height = "30px"
-
-      new mapboxgl.Marker(customSpotMarker)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map)
-    })
-  }
-
-  #addRunMarkersToMap() {
-    this.runmarkersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      const customRunMarker = document.createElement("div")
-      customRunMarker.className = "marker"
-      customRunMarker.style.backgroundImage = `url('${marker.image_url}')`
-      customRunMarker.style.backgroundSize = "contain"
-      customRunMarker.style.backgroundColor = "transparent"
-      customRunMarker.style.backgroundRepeat = "no-repeat"
-      customRunMarker.style.width = "30px"
-      customRunMarker.style.height = "30px"
-
-      new mapboxgl.Marker(customRunMarker)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map)
-    })
-  }
+  
+    #addSurfMarkersToMap() {
+      this.surfmarkersValue.forEach((marker) => {
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+        const customSurfMarker = document.createElement("div")
+        customSurfMarker.className = "surfmarker"
+        customSurfMarker.style.backgroundImage = `url('${marker.image_url}')`
+        customSurfMarker.style.backgroundSize = "contain"
+        customSurfMarker.style.backgroundColor = "transparent"
+        customSurfMarker.style.backgroundRepeat = "no-repeat"
+        customSurfMarker.style.width = "40px"
+        customSurfMarker.style.height = "40px"
+  
+        new mapboxgl.Marker(customSurfMarker)
+          .setLngLat([ marker.lng, marker.lat ])
+          .setPopup(popup)
+          .addTo(this.map)
+      })
+    }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
