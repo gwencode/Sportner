@@ -94,3 +94,24 @@
 .full-height {
   height:80vh !important;
 }
+
+
+.runmarker {
+  animation: pinPoint 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@for $i from 1 through 50 {
+  .marker-#{$i} {
+    animation-delay: #{$i/5}s ;
+  }
+}
+@keyframes pinPoint {
+  0% {
+    top:-40px;
+    opacity:0;
+  } 100% {
+    top:0px;
+    opacity:1;
+  }
+}
