@@ -32,7 +32,7 @@ puts "Create users..."
 users = []
 user_data = [
   [{first_name: "Clément", last_name: "Cordeiro", email: "clement@me.com", password: "secret", runner: true, surfer: true, run_level: "confirmé", surf_level: "confirmé", address: "9 avenue du président Edouard Heriot, 56000 Vannes", birthday: "26/11/1994"}, "clement.jpeg"],
-  [{first_name: "Gwendal", last_name: "Le Bris", email: "gwendal@me.com", password: "secret", runner: true, surfer: true, run_level: "confirmé", surf_level: "débutant", address: "135 rue Lamarck, 75018 Paris", birthday: "12/06/1995"}, "gwendal.jpeg"],
+  [{first_name: "Gwendal", last_name: "Le Bris", email: "gwendal@me.com", password: "secret", runner: true, surfer: true, run_level: "confirmé", surf_level: "débutant", address: "10 allée de Guichen, 35000 Rennes", birthday: "12/06/1995"}, "gwendal.jpeg"],
   [{first_name: "Matthieu", last_name: "Nourry", email: "matthieu@me.com", password: "secret", runner: true, surfer: false, run_level: "intermédiaire", address: "labidois, 35490 Romazy", birthday: "29/07/2000"}, "matthieu.jpg"],
   [{first_name: "Olivier", last_name: "Kermoal", email: "olivier@me.com", password: "secret", runner: true, surfer: false, run_level: "intermédiaire", address: "4 avenue de la mare Guesclin, 35230 Saint-Erblon", birthday: "17/09/1990"}, "olivier.jpeg"],
   [{first_name: "Ewena", last_name: "Bressa", email: "ewena@me.com", password: "secret", runner: false, surfer: true, surf_level: "confirmé", address: "15 rue Vanneau, 35230 Orgères", birthday: "13/05/1995"}, "ewena.jpg"],
