@@ -406,9 +406,9 @@ Participation.create(event: event5, user: event5.organizer)
 
 event6 = Event.new(
   event_type: "running",
-  name: "Trail aux étangs d'Apigné",
+  name: "Trail aux étangs",
   date: DateTime.new(2022, 12, 10, 10),
-  description: "Trail assez difficile pour éliminer avant les fêtes, venez motivés et bien équipés !",
+  description: "Trail aux étangs d'Apignés pour éliminer avant les fêtes, venez motivés et bien équipés !",
   meeting_point: "La Piverdière, 35000 Rennes",
   max_people: 7,
   difficulty: "confirmé",
@@ -594,7 +594,7 @@ Participation.create!(event_id: events[0].id, user_id: users[5].id)
 Participation.create!(event_id: events[1].id, user_id: users[1].id)
 Participation.create!(event_id: events[1].id, user_id: users[6].id)
 Participation.create!(event_id: events[2].id, user_id: users[0].id)
-Participation.create!(event_id: events[5].id, user_id: users[1].id)
+Participation.create!(event_id: events[7].id, user_id: users[0].id)
 Participation.create!(event_id: events[9].id, user_id: users[1].id)
 Participation.create!(event_id: events[10].id, user_id: users[3].id)
 Participation.create!(event_id: events[11].id, user_id: users[1].id)
@@ -768,3 +768,33 @@ message7 = Message.create!(
   content: "Ok parfait merci, je passerai te prendre !",
   created_at: DateTime.new(2022, 12, 8, 14, 58)
 )
+
+sortie5 = Event.find_by(name: "Footing tranquille")
+
+chat5 = Chatroom.create!(
+  event: sortie5,
+  name: sortie5.name,
+  created_at: DateTime.new(2022, 12, 8, 12)
+)
+
+message1 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Justine"),
+  content: "Hello à tous ! On se retrouve 10min avant pour s'échauffer ?",
+  created_at: DateTime.new(2022, 12, 8, 12, 30)
+)
+
+message2 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Clément"),
+  content: "Salut ! Yes carrément !",
+  created_at: DateTime.new(2022, 12, 8, 12, 45)
+)
+
+message3 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Justine"),
+  content: "Top, à dimanche !",
+  created_at: DateTime.new(2022, 12, 8, 13)
+)
+
