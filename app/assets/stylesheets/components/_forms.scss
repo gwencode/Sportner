@@ -4,17 +4,14 @@
   appearance: auto;
   padding: 9px;
   color:$black800;
+  background-color:white !important;
+  border:1px solid $black400;
 }
 
 .calendar {
   display: flex;
   justify-content: flex-end;
   width: 30%;
-}
-
-.event_date {
-  display:flex;
-  height:35px;
 }
 
 .calendar i {
@@ -41,6 +38,18 @@ button#btn-search {
   color: $black900;
   text-decoration: none;
   font-size: 24px;
+}
+
+.form-select {
+  color:$black800;
+  border:1px solid $black400;
+  font-size:14px;
+  height:41px !important;
+  background:white !important;
+}
+
+.new-event-main-infos .mb-3 {
+  width:100%;
 }
 
 .form-sports {
