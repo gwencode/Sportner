@@ -1,22 +1,21 @@
 <h2 class="text-center sand-underline">Créer ton event</h2>
 <div data-controller="filters">
 	<div class="d-flex justify-content-center gap-3">
-		<button class="btn-small run select"
+		<button class="btn-small run"
 						data-controller="button-disable"
             data-button-disable-target="btndisable"
-
 						data-filters-target="runbtn"
 						data-action="click->filters#formRunDisplay">
 						<p>Running</p></button>
-		<button class="btn-small surf"
+		<button class="btn-small surf select"
 						data-filters-target="surfbtn"
 						data-action="click->filters#formSurfDisplay">
 						<p>Surf</p></button>
   </div>
-	<div data-filters-target="runform">
+	<div class="d-none" data-filters-target="runform">
 	  <%= render "event_run_form"  %>
 	</div>
-	<div class="d-none" data-filters-target="surfform">
+	<div data-filters-target="surfform">
   	<%= render "event_surf_form" %>
 	</div>
 </div>

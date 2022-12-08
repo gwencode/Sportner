@@ -22,7 +22,7 @@
     <%= render "spot_info"  %>
     <%# <% if current_user.favorite_spots.spots.include?(@spot) %>
     <%# <% else %>
-      <%= link_to "Ajouter à mes favoris", spot_my_spots_path(@spot), data: { turbo_method: :post }, class: "btn btn-50wide" %>
+      <%= link_to "Créer un event", new_event_path(spot_id: @spot), class: "btn btn-50wide" %>
     <%# <% end %>
   </div>
   <div class="meteo d-none" data-places-target="meteo">
