@@ -7,7 +7,7 @@
     </div>
     <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Selectionne ton spot", label: false %>
     <div class="d-flex gap-2 mt-3">
-      <div class="w-50">
+      <div class="w-50 create-event-date">
         <%= f.input :date, label: "Date et heure", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
       </div>
       <div class="w-50">

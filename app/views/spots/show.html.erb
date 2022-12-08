@@ -20,10 +20,7 @@
   </div>
   <div class="info" data-places-target="info">
     <%= render "spot_info"  %>
-    <%# <% if current_user.favorite_spots.spots.include?(@spot) %>
-    <%# <% else %>
-      <%= link_to "Créer un event", new_event_path(spot_id: @spot), class: "btn btn-50wide" %>
-    <%# <% end %>
+      <%= link_to "Créer un event à partir de ce spot", new_event_path(spot_id: @spot), class: "btn btn-75wide" %>
   </div>
   <div class="meteo d-none" data-places-target="meteo">
     <%= render "spot_meteo"  %>
