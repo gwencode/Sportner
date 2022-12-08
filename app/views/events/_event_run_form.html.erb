@@ -1,10 +1,11 @@
-<div class="container even-run-form">
+<div class="container even-run-form mt-4">
   <%= simple_form_for @event, method: :post, data: { controller: 'flatpickr preview-input' } do |f| %>
     <%= f.hidden_field :event_type, value: "running" %>
-    <%= f.input :name, label: "Nom de l'événement" %>
-    <%= f.input :date, label: "Date", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
-    <%= f.input :description, label: "Dis-nous tout sur l'événement" %>
-    <%= f.input :max_people, label: "Maximum de participants" %>
+    <%= f.input :name, label: "Nom de l'événement", placeholder:"Course à ..." %>
+    <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
+    <%= f.input :description, label: "Description de ton événement" %>
+    <%= f.input :max_people, label: "Nombre maximum de participants" %>
+    <%= f.input :meeting_point, label: "Point de RDV", hint: "4 Avenue des Gayeulles, 35700 Rennes" %>
     <div class="row align-items-center">
       <div class="col-5">
         <%= f.input :car_pooling, label: "Je covoiture" %>
@@ -15,16 +16,14 @@
     </div>
     <div data-controller="range">
       <%= f.fields_for :run_detail do |g| %>
-        <%= g.input :run_type, label: "Type de course", collection: RunDetail::RUN_TYPES %>
+        <%= g.input :run_type, label: false, collection: RunDetail::RUN_TYPES, prompt: "Type de course" %>
         <%= g.input :distance, as: :range, collection: 1..80, label: "Distance (en km)", input_html: { data: { range_target: "distance" }}  %>
         <%= g.input :pace, label: "Allure", placeholder: "ex : 4\"30" %>
         <%= g.input :duration, as: :range, collection: 1..180, label: "Durée (en min)", input_html: { data: { range_target: "time" }} %>
         <%= g.input :elevation, label: "Dénivelé", placeholder: "en m" %>
       <% end %>
-      <%= f.input :difficulty, label: "Difficulté", collection: Event::DIFFICULTIES %>
-      <%= f.input :meeting_point, label: "Point de RDV", hint: "4 Avenue des Gayeulles, 35700 Rennes" %>
+      <%= f.input :difficulty, label: "Difficulté", collection: Event::DIFFICULTIES, prompt:"Selctionne la difficulté de la course" %>
       <%= f.fields_for :run_detail do |g| %>
-        <%= g.input :location, label: "Départ du parcours", hint: "Parc des Gayeulles, 35700 Rennes" %>
       <% end %>
     </div>
     <div class="mt-3">

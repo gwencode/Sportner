@@ -1,10 +1,11 @@
-<div class="container event-surf-form">
+<div class="container event-surf-form mt-4">
   <%= simple_form_for @event, method: :post, data: { controller: "flatpickr preview-input"} do |f| %>
     <%= f.hidden_field :event_type, value: "surf" %>
-    <%= f.input :name, label: "Nom de l'événement" %>
-    <%= f.input :date, label: "Date", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
-    <%= f.input :description, label: "Dis-nous tout sur l'événement" %>
-    <%= f.input :max_people, label: "Maximum de participants" %>
+    <%= f.input :name, label: "Nom de l'événement", placeholder:"Session à ..."%>
+    <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
+    <%= f.input :description, label: "Description de ton événement" %>
+    <%= f.input :max_people, label: "Nombre maximum de participants" %>
+    <%= f.input :meeting_point, label: "Point de RDV", hint: "19 Place de la Gare, 35005 Rennes" %>
     <div class="row align-items-center">
       <div class="col-5">
         <%= f.input :car_pooling, label: "Je covoiture" %>
@@ -13,10 +14,8 @@
         <%= f.input :passengers, label: "Nombre de places" %>
       </div>
     </div>
-    <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Choisis ton spot" %>
-    <%= f.input :difficulty, label: "Difficulté", collection: Event::DIFFICULTIES %>
-    <%= f.input :meeting_point, label: "Point de RDV", hint: "19 Place de la Gare, 35005 Rennes" %>
-
+      <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Selectionne ton spot", label: false %>
+      <%= f.input :difficulty, label: false, collection: Event::DIFFICULTIES, prompt:"Selctionne la difficulté du spot" %>
     <div class="mt-3">
         <p>Ajoutez des photos</p>
     </div>
