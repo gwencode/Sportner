@@ -8,15 +8,7 @@
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
-      <% if message.user == current_user %>
-        <div class="d-flex justify-content-end">
-          <%= render "messages/message", message: message %>
-        </div>
-      <% else %>
-        <div class="d-flex justify-content-start">
-          <%= render "messages/message", message: message %>
-        </div>
-      <% end %>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
 

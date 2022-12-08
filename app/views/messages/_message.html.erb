@@ -1,7 +1,34 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.first_name %></strong>
-    <i><%= message.created_at.strftime("%d/%m/%y at %l:%M") %></i>
-  </small>
-  <p><%= message.content %></p>
-</div>
+ <% if message.user == current_user %>
+
+  <div class="my-3" id="message-<%= message.id %>">
+    <div class="message-current-user mb-1">
+      <p class="ps-1"><%= message.user.first_name %></strong>
+      <%= cl_image_tag message.user.avatar.key, class: "avatar-chat" %>
+    </div>
+    <div class="message-current-user-content">
+      <p><%= message.content %></p>
+      <div class="message-time">
+        <i><%= message.created_at.strftime("%l:%M") %></i>
+      </div>
+    </div>
+    <%# <i><%= message.created_at.strftime("%d/%m/%y at %l:%M") %>
+  </div>
+
+<% else %>
+
+  <div class="my-3" id="message-<%= message.id %>">
+    <div class="message-user mb-1">
+      <%= cl_image_tag message.user.avatar.key, class: "avatar-chat" %>
+      <p class="ps-1"><%= message.user.first_name %></strong>
+    </div>
+    <div class="message-content">
+      <p><%= message.content %></p>
+      <div class="message-time">
+        <i><%= message.created_at.strftime("%l:%M") %></i>
+      </div>
+    </div>
+    <%# <i><%= message.created_at.strftime("%d/%m/%y at %l:%M") %>
+  </div>
+
+<% end %>
+
