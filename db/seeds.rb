@@ -303,7 +303,7 @@ rd9 = RunDetail.create!(
   pace: "5:15",
   duration: 42,
   elevation: 500,
-  location: "Pl. Saint-Mélaine, 35000 Rennes"
+  location: "Parc du Thabor, 35000 Rennes"
 )
 sleep 1
 puts "Creating running events..."
@@ -388,7 +388,7 @@ Participation.create(event: event4, user: event4.organizer)
 event5 = Event.new(
   event_type: "running",
   name: "Allure spécifique",
-  date: DateTime.new(2022, 12, 11, 10, 15, 30),
+  date: DateTime.new(2022, 12, 12, 12, 30),
   description: "Entraînement à allure spécifique dans le Parc des Gayeulles. Echauffement, puis 6 x 1km à 4:30/km, récupération 1min entre chaque série",
   meeting_point: "8 Av. des Gayeulles, 35700 Rennes",
   max_people: 30,
@@ -433,8 +433,8 @@ event7 = Event.new(
   difficulty: "débutant",
   run_detail_id: rd7.id
 )
-file = File.open("db/fixtures/marche.jpg")
-event7.photos.attach(io: file, filename: "marche.jpg")
+file = File.open("db/fixtures/marche.jpeg")
+event7.photos.attach(io: file, filename: "marche.jpeg")
 
 event7.organizer = users[4]
 event7.save!
@@ -452,7 +452,7 @@ event8 = Event.new(
   difficulty: "débutant",
   run_detail_id: rd8.id
 )
-file = File.open("db/fixtures/tranquille-vilaine.jepg")
+file = File.open("db/fixtures/tranquille-vilaine.jpeg")
 event8.photos.attach(io: file, filename: "tranquille-vilaine.jpeg")
 
 event8.organizer = users[5]
@@ -464,9 +464,9 @@ Participation.create(event: event8, user: event8.organizer)
 event9 = Event.new(
   event_type: "running",
   name: "Entraînement côtes",
-  date: DateTime.new(2022, 12, 10, 15, 45),
+  date: DateTime.new(2022, 12, 13, 17, 45),
   description: "Entraînement côtes au parc du Thabor.",
-  meeting_point: "Pl. Saint-Mélaine, 35000 Rennes",
+  meeting_point: "Parc du Thabor, 35000 Rennes",
   max_people: 5,
   difficulty: "confirmé",
   run_detail_id: rd9.id
@@ -488,8 +488,8 @@ event10 = Event.new(
   event_type: "surf",
   name: "Session à Quiberon",
   date: DateTime.new(2022, 11, 19, 8, 30),
-  description: "Session surf à Quiberon au départ de Vannes",
-  meeting_point: "Quai Bernard Moitessier, 56000 Vannes",
+  description: "Session surf à Quiberon au départ de Rennes, rdv au métro Villejean",
+  meeting_point: "10 rue du Rue Doyen Denis Leroy, 35000 Rennes",
   car_pooling: true,
   passengers: 2,
   difficulty: "débutant",

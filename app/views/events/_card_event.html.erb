@@ -4,12 +4,12 @@
   <div class="card-event surf" data-filters-target="surfcard">
 <% end %>
   <% if organized_events && organized_events.include?(event) %>
-    <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar-organizer" %>
+    <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar-organizer", crop: :thumb, width: 200 %>
   <% else %>
-    <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
+    <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar", crop: :thumb, width: 200 %>
   <% end %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
-    <%= cl_image_tag event.photos.first.key, class: "card-image" unless event.photos.first.nil? %>
+    <%= cl_image_tag event.photos.first.key, class: "card-image", crop: :thumb, width: 200 unless event.photos.first.nil? %>
     <%= image_tag ('sportnerhome.svg'), class: "card-image" if event.photos.first.nil? %>
     <div class="card-event-infos">
       <div class="card-event-title">
