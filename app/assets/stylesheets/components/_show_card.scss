@@ -1,7 +1,6 @@
 .card-show {
   overflow: hidden;
   background: white;  // couleur de fond derriere la photo de l'event et du titre et infos de l'event
-  box-shadow: 0 0 15px $black400;
 }
 .card-show > img {
   height: 185px;
@@ -27,6 +26,9 @@
   position: relative;
   align-items: flex-start;
   flex-direction: column;
+  i {
+    color:$black600;
+  }
 }
 
 .card-show-infos .card-show-user {
@@ -53,7 +55,7 @@
 }
 
 .card-desc {
-  margin: 4px 16px;
+  padding: 16px;
 }
 .card-desc h2 {
   font-size: 16px;

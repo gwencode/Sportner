@@ -3,44 +3,64 @@
 <% else %>
   <div class="card-event surf" data-filters-target="surfcard">
 <% end %>
-  <% if organized_events && organized_events.include?(event) %>
-    <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar-organizer" %>
-  <% else %>
-    <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
-  <% end %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
     <%= cl_image_tag event.photos.first.key, class: "card-image" unless event.photos.first.nil? %>
     <%= image_tag ('sportnerhome.svg'), class: "card-image" if event.photos.first.nil? %>
     <div class="card-event-infos">
-      <div class="card-event-title">
+      <div class="card-event-date">
+        <div class="small">
+          <i class='fa-solid fa-calendar-check'></i>
+          <span><%= event.date.strftime("%d/%m/%y") %></span>
+        </div>
+        <span class="small">
+          <%= raw("<i class='fa-solid fa-clock'></i>") %> <%= event.date.strftime("%kh%M") %>
+        </span>
+        <% if organized_events && organized_events.include?(event) %>
+          <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar avatar-organizer" %>
+        <% else %>
+          <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
+        <% end %>
+      </div>
+      <div class="card-event-title mt-2">
         <h3><%= event.name %></h3>
         <p class="tag"><%= event.difficulty.upcase %></p>
       </div>
       <div class="card-event-middle">
         <% if event.event_type == "running" %>
-          <p><%= raw("<i class='fa-solid fa-person-running'></i>") %> <%= event.run_detail.pace %>/km</p>
-          <p><%= raw("<i class='fa-solid fa-arrows-left-right'></i>") %> <%= event.run_detail.distance %>km</p>
+          <div class="d-flex gap-3">
+            <div>
+              <i class='fa-solid fa-person-running'></i>
+              <span class="small"> <%= event.run_detail.pace %>/km</span>
+            </div>
+
+            <div>
+              <i class='fa-solid fa-arrows-left-right'></i>
+              <span class="small"><%= event.run_detail.distance %>km</span>
+            </div>
+          </div>
         <% end %>
         <% if event.event_type == "surf" && event.car_pooling == true %>
-          <p><%= image_tag "icons/car-pooling.svg" %> Covoiturage</p>
+          <%= image_tag "icons/car-pooling.svg" %>
+          <span class="small">Covoiturage</span>
         <% end %>
-        <p class="small"><%= raw("<i class='fa-solid fa-calendar-check'></i>") %> <%= event.date.strftime("%d/%m/%y") %></p>
       </div>
     <% end %>
       <div class="card-event-end">
         <p class="small card-event-adress">
-          <%= raw("<i class='fa-solid fa-location-pin'></i>") %>
+
           <% if current_user %>
+            <i class='fa-solid fa-location-pin'></i>
             <% if event.event_type == "running" %>
               <%= event.run_detail.location %>
             <% else %>
               <%= event.spot.location %>
           <% end %>
           <% else %>
-            <%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path %>
+            <i class='fa-solid fa-lock'></i>
+            <%= link_to "Connectez-vous pour voir l'addresse", new_user_session_path, class:"small" %>
           <% end %>
         </p>
-        <p class="small"><%= raw("<i class='fa-solid fa-clock'></i>") %> <%= event.date.strftime("%kh%M") %></p>
+
       </div>
     </div>
 </div>

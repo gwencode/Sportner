@@ -71,6 +71,26 @@
   bottom: 8px !important;
 }
 
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl  {
+  width: 40%;
+  margin: 24px -16px 0 0 !important;
+}
+
+.mapboxgl-ctrl {
+
+  svg {
+    top:7px;
+    fill: $black400
+  }
+
+  .mapboxgl-ctrl-geocoder--input {
+    font-size:14px;
+    font-family: $body-font;
+    height:auto;
+    color:$black600;
+  }
+}
+
 .full-height {
   height:80vh !important;
 }

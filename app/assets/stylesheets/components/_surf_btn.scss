@@ -18,7 +18,7 @@
   cursor: pointer;
   margin:0 24px;
   box-sizing: border-box;
-  box-shadow: 0px 0px 8px $black400;
+  box-shadow: 0px 0px 20px $black400;
   width: 120px;
   height:120px;
   background-size: 80%;
@@ -27,14 +27,12 @@
   font-size: 0px;
   text-align: left;
   padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 4px;
+  border-radius: 0 16px 0 16px;
   background-color: white;
 }
 
 .event_type-selector:checked + label {
   color: white !important;
-  background-color: $primary-surf;
 }
 
 label[for=event_type_running] {
@@ -46,10 +44,14 @@ label[for=event_type_surf] {
 }
 
 #event_type_running:checked + label {
+  box-shadow: 0px 0px 20px $sand;
+  background-color: $sand;
   background-image: image-url('run-white.svg') !important;
 }
 
 #event_type_surf:checked + label {
+  box-shadow: 0px 0px 20px $primary-surf;
+  background-color: $primary-surf;
   background-image: image-url('surf-white.svg') !important;
 }
 
@@ -65,7 +67,10 @@ abbr {
 }
 
 .address-input {
-  text-align: center;
-  width: 90%;
+  text-align: left;
+  width: 86%;
   height: 40px;
+  border:none;
+  border-bottom:1px solid $black600;
+  background:transparent;
 }

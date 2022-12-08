@@ -11,7 +11,7 @@
       <h2 class="h2-black900">Événements</h2>
 
     </div>
-    <div class="d-flex gap-2 mt-2">
+    <div class="d-flex gap-3 mt-2">
       <button class="btn-small run select col"
               data-filters-target="runbtn"
               data-action="click->filters#runfilter">
@@ -22,17 +22,17 @@
               <p>Surf</p></button>
     </div>
     <div class="d-flex mt-3">
-      <div class="difficulty col d-flex justify-content-between align-items-start gap-4">
+      <div class="difficulty col d-flex justify-content-between align-items-start gap-3">
         <form class="form-difficulty d-flex gap-2 row-cols-lg-auto g-2 align-items-center m-0 col">
           <%= form_with url: events_path, method: :get, class: "" do |f| %>
             <div class="form-difficulty-select m-0 p-0 w-100">
               <%= select_tag :query,
                 options_for_select(Event::DIFFICULTIES, params[:query]),
                 class: "form-control",
-                prompt: "Difficulté ⬇"
+                prompt: "Choisissez une difficulté"
               %>
             </div>
-            <div class="form-difficulty-submit m-0">
+            <div class="form-difficulty-submit m-0 d-none">
               <%= button_tag type: 'submit', class: "", id: "btn-search" do %>
                 <i class='fa-solid fa-magnifying-glass'></i>
               <% end %>

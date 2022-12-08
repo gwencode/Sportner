@@ -7,6 +7,6 @@
   <%= render "card_meteo" %>
   <% if @event.participants.include?(current_user) %>
   <% else %>
-    <%= link_to "Participer", event_participations_path(@event.id), data: { turbo_method: :post } ,class: "btn-fullwide btn-bottom-50" %>
+    <%= link_to "Participer", event_participations_path(@event.id), data: { turbo_method: :post } ,class: "btn-fullwide btn-bottom-0" %>
   <% end %>
 </div>

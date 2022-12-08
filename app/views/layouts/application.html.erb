@@ -5,7 +5,7 @@
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
 
-  
+
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
@@ -13,7 +13,7 @@
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
-    
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:title" content="<%= meta_title %>">
@@ -40,7 +40,7 @@
         <%= render "shared/navbar" unless current_page?(root_path) %>
         <%= render "shared/flashes" %>
       </div>
-      <div style="overflow-y:scroll">
+      <div style="overflow-y:scroll; position:relative;">
         <%= yield %>
       </div>
       <%= render "shared/bottom_navbar" unless current_page?(root_path)%>
