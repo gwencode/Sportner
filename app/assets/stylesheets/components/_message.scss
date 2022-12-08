@@ -1,56 +1,58 @@
-.message-user {
+// To style the wrapping div
+.message-row {
+  margin-bottom: 10px;
+  padding: 4px;
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  max-width: 90%;
+  // border-radius: 4px;
+  display: flex;
+  p {
+    width: 100%;
+  }
+}
+
+.receiver-style .message-content {
+  border-left: 3px solid $sand;
+}
+
+.sender-style .message-content {
+  border-right: 3px solid $primary-surf;
+}
+
+.message {
   font-size: 14px;
   line-height: 20px;
   color: $black600;
   display: flex;
 }
 
-.message-current-user {
-  font-size: 14px;
-  line-height: 20px;
-  color: $black600;
-  display: flex;
-  justify-content: flex-end;
-}
 
 .message-content {
-  font-size: 10px;
+  font-size: 12px;
   color: black;
-  max-width: 90%;
   width: fit-content;
+  min-width: 90px;;
   min-height: 55px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 8px 8px 2px;
-  display: flex;
-  p {
-    width: 100%;
   }
-}
 
-.message-current-user-content {
-  font-size: 10px;
-  color: black;
-  max-width: 90%;
-  width: fit-content;
-  min-height: 55px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 8px 8px 2px;
-  display: flex;
-  justify-content: flex-end;
-  p {
-    width: 100%;
+  .sender-style .message-time {
+    display: flex;
+    justify-content: flex-end;
   }
-}
 
-.message-time {
-  position: relative;
-  font-size: 10px;
-  color: $black600;
-  i {
-    position: absolute;
-    bottom: 0;
-    right: 6px;
-  }
-}
+// .message-time {
+//   position: relative;
+//   font-size: 10px;
+//   color: $black600;
+//   i {
+//     position: absolute;
+//     bottom: 0;
+//     right: 6px;
+//   }
+// }

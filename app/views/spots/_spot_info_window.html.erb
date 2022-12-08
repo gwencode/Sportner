@@ -1,6 +1,6 @@
 <div class="popup">
   <div class="popup-spot-img">
-    <%= cl_image_tag spot.photos.first.key, crop: :fill %>
+    <%= cl_image_tag spot.photos.first.key, crop: :thumb, width: 400 %>
   </div>
   <div class="pop-up-infos">
     <h3 class="mt-2"><%= spot.location %></h3>
