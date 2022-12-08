@@ -250,7 +250,7 @@ rd3 = RunDetail.create!(
   pace: "5:30",
   duration: 55,
   elevation: 100,
-  location: "14 Rue Frain de la Gaulayrie, 35500 Vitré"
+  location: "11 Rue de Châtillon, 35000 Rennes"
 )
 
 rd4 = RunDetail.create!(
@@ -259,7 +259,7 @@ rd4 = RunDetail.create!(
   pace: "3:45",
   duration: 24,
   elevation: 10,
-  location: "2-24 Rue Vieille Voie, 44110 Châteaubriant"
+  location: "13 Rue Zacharie Roussin, 35700 Rennes"
 )
 
 rd5 = RunDetail.create!(
@@ -268,33 +268,33 @@ rd5 = RunDetail.create!(
   pace: "4:30",
   duration: 45,
   elevation: 20,
-  location: "Av. de Büdingen, 22600 Loudéac"
+  location: "8 Av. des Gayeulles, 35700 Rennes"
 )
 
 rd6 = RunDetail.create!(
   run_type: "trail",
   distance: 24,
-  pace: "5:30",
+  pace: "4:30",
   duration: 132,
   elevation: 600,
-  location: "72-90 Rte d'Ernée, 35300 Fougères"
+  location: "La Piverdière, 35000 Rennes"
 )
 
 rd7 = RunDetail.create!(
-  run_type: "marche athlétique",
+  run_type: "marche nordique",
   distance: 15,
   pace: "10:00",
   duration: 150,
   elevation: 150,
-  location: "15-11 Rue Léon Jouhaux, 29000 Quimper"
+  location: "2 b Rue Malaguti, 35000 Rennes"
 )
 rd8 = RunDetail.create!(
-  run_type: "parcours d'obstacles",
-  distance: 4,
-  pace: "4:00",
-  duration: 16,
-  elevation: 80,
-  location: "La Bidois, 35490 Romazy"
+  run_type: "footing",
+  distance: 8,
+  pace: "5:30",
+  duration: 44,
+  elevation: 20,
+  location: "68 Mail François Mitterrand, 35000 Rennes"
 )
 
 rd9 = RunDetail.create!(
@@ -303,7 +303,7 @@ rd9 = RunDetail.create!(
   pace: "5:15",
   duration: 42,
   elevation: 500,
-  location: "2 Rue Goasnou, 22970 Ploumagoar"
+  location: "Parc du Thabor, 35000 Rennes"
 )
 sleep 1
 puts "Creating running events..."
@@ -350,9 +350,9 @@ Participation.create(event: event2, user: event2.organizer)
 event3 = Event.new(
   event_type: "running",
   name: "10km nocture",
-  date: DateTime.new(2022, 12, 10, 10),
-  description: "Sortie nature à Vitré en soirée, pensez à votre lampe frontale 😉",
-  meeting_point: "14 Rue Frain de la Gaulayrie, 35500 Vitré",
+  date: DateTime.new(2022, 12, 10, 18),
+  description: "Sortie en soirée, pensez à votre lampe frontale 😉",
+  meeting_point: "11 Rue de Châtillon, 35000 Rennes",
   max_people: 10,
   difficulty: "intermédiaire",
   run_detail_id: rd3.id
@@ -369,9 +369,9 @@ Participation.create(event: event3, user: event3.organizer)
 event4 = Event.new(
   event_type: "running",
   name: "Entrainement 10km",
-  date: DateTime.new(2022, 12, 14, 14),
-  description: "Séance d'entrainement à la piste de Bréquigny en préparation de la course Tout Betton Court. 2 séries de 6 x 300m à 100% VMA 16km/h avec une récupération de 45 secondes entre les 300m et 3 minutes entre les séries.",
-  meeting_point: "2-24 Rue Vieille Voie, 44110 Châteaubriant",
+  date: DateTime.new(2022, 12, 11, 14),
+  description: "Séance d'entrainement à la piste du Stade Rennais Athéltisme en préparation de la course Tout Betton Court. 2 séries de 6 x 300m à 100% VMA 16km/h avec une récupération de 45 secondes entre les 300m et 3 minutes entre les séries.",
+  meeting_point: "13 Rue Zacharie Roussin, 35700 Rennes",
   max_people: 5,
   difficulty: "confirmé",
   run_detail_id: rd4.id
@@ -388,9 +388,9 @@ Participation.create(event: event4, user: event4.organizer)
 event5 = Event.new(
   event_type: "running",
   name: "Allure spécifique",
-  date: DateTime.new(2022, 12, 15, 16, 15),
-  description: "Entraînement à allure spécifique. Echauffement, puis 6 x 1km à 4:30/km, récupération 1min entre chaque série",
-  meeting_point: "Av. de Büdingen, 22600 Loudéac",
+  date: DateTime.new(2022, 12, 12, 12, 30),
+  description: "Entraînement à allure spécifique dans le Parc des Gayeulles. Echauffement, puis 6 x 1km à 4:30/km, récupération 1min entre chaque série",
+  meeting_point: "8 Av. des Gayeulles, 35700 Rennes",
   max_people: 30,
   difficulty: "intermédiaire",
   run_detail_id: rd5.id
@@ -406,10 +406,10 @@ Participation.create(event: event5, user: event5.organizer)
 
 event6 = Event.new(
   event_type: "running",
-  name: "Trail en forêt",
-  date: DateTime.new(2022, 12, 23, 14),
-  description: "Trail assez difficile pour éliminer avant les fêtes, venez motivés et bien équipés !",
-  meeting_point: "72-90 Rte d'Ernée, 35300 Fougères",
+  name: "Trail aux étangs",
+  date: DateTime.new(2022, 12, 10, 10),
+  description: "Trail aux étangs d'Apignés pour éliminer avant les fêtes, venez motivés et bien équipés !",
+  meeting_point: "La Piverdière, 35000 Rennes",
   max_people: 7,
   difficulty: "confirmé",
   run_detail_id: rd6.id
@@ -425,16 +425,16 @@ Participation.create(event: event6, user: event6.organizer)
 
 event7 = Event.new(
   event_type: "running",
-  name: "Marche athlétique",
-  date: DateTime.new(2022, 12, 28, 10, 30),
-  description: "Venez essayer la marche athlétique à Quimper.",
-  meeting_point: "15-11 Rue Léon Jouhaux, 29000 Quimper",
+  name: "Marche nordique",
+  date: DateTime.new(2022, 12, 11, 10, 30),
+  description: "Venez essayer la marche nordique à Rennes.",
+  meeting_point: "2 b Rue Malaguti, 35000 Rennes",
   max_people: 10,
   difficulty: "débutant",
   run_detail_id: rd7.id
 )
-file = File.open("db/fixtures/photo-quimper.jpg")
-event7.photos.attach(io: file, filename: "photo-quimper.jpg")
+file = File.open("db/fixtures/marche.jpeg")
+event7.photos.attach(io: file, filename: "marche.jpeg")
 
 event7.organizer = users[4]
 event7.save!
@@ -444,16 +444,16 @@ Participation.create(event: event7, user: event7.organizer)
 
 event8 = Event.new(
   event_type: "running",
-  name: "Parcours d'obstacles",
-  date: DateTime.new(2022, 11, 6, 10),
-  description: "Parcours d'obstacles dans la forêt, ramenez des affaires de rechange 🌲",
-  meeting_point: "La Bidois, 35490 Romazy",
+  name: "Footing tranquille",
+  date: DateTime.new(2022, 12, 11, 15),
+  description: "Footing tranquille le long de la Vilaine, rdv au bout du Mail",
+  meeting_point: "68 Mail François Mitterrand, 35000 Rennes",
   max_people: 10,
-  difficulty: "intermédiaire",
+  difficulty: "débutant",
   run_detail_id: rd8.id
 )
-file = File.open("db/fixtures/photo-obstacle.jpg")
-event8.photos.attach(io: file, filename: "photo-obstacle.jpg")
+file = File.open("db/fixtures/tranquille-vilaine.jpeg")
+event8.photos.attach(io: file, filename: "tranquille-vilaine.jpeg")
 
 event8.organizer = users[5]
 event8.save!
@@ -464,9 +464,9 @@ Participation.create(event: event8, user: event8.organizer)
 event9 = Event.new(
   event_type: "running",
   name: "Entraînement côtes",
-  date: DateTime.new(2022, 12, 14, 12, 45),
-  description: "Entraînement côtes, plusieurs pentes raides et escaliers.",
-  meeting_point: "2 Rue Goasnou, 22970 Ploumagoar",
+  date: DateTime.new(2022, 12, 13, 17, 45),
+  description: "Entraînement côtes au parc du Thabor.",
+  meeting_point: "Parc du Thabor, 35000 Rennes",
   max_people: 5,
   difficulty: "confirmé",
   run_detail_id: rd9.id
@@ -488,8 +488,8 @@ event10 = Event.new(
   event_type: "surf",
   name: "Session à Quiberon",
   date: DateTime.new(2022, 11, 19, 8, 30),
-  description: "Session surf à Quiberon au départ de Vannes",
-  meeting_point: "Quai Bernard Moitessier, 56000 Vannes",
+  description: "Session surf à Quiberon au départ de Rennes, rdv au métro Villejean",
+  meeting_point: "10 rue du Rue Doyen Denis Leroy, 35000 Rennes",
   car_pooling: true,
   passengers: 2,
   difficulty: "débutant",
@@ -594,7 +594,7 @@ Participation.create!(event_id: events[0].id, user_id: users[5].id)
 Participation.create!(event_id: events[1].id, user_id: users[1].id)
 Participation.create!(event_id: events[1].id, user_id: users[6].id)
 Participation.create!(event_id: events[2].id, user_id: users[0].id)
-Participation.create!(event_id: events[5].id, user_id: users[1].id)
+Participation.create!(event_id: events[7].id, user_id: users[0].id)
 Participation.create!(event_id: events[9].id, user_id: users[1].id)
 Participation.create!(event_id: events[10].id, user_id: users[3].id)
 Participation.create!(event_id: events[11].id, user_id: users[1].id)
@@ -768,3 +768,33 @@ message7 = Message.create!(
   content: "Ok parfait merci, je passerai te prendre !",
   created_at: DateTime.new(2022, 12, 8, 14, 58)
 )
+
+sortie5 = Event.find_by(name: "Footing tranquille")
+
+chat5 = Chatroom.create!(
+  event: sortie5,
+  name: sortie5.name,
+  created_at: DateTime.new(2022, 12, 8, 12)
+)
+
+message1 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Justine"),
+  content: "Hello à tous ! On se retrouve 10min avant pour s'échauffer ?",
+  created_at: DateTime.new(2022, 12, 8, 12, 30)
+)
+
+message2 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Clément"),
+  content: "Salut ! Yes carrément !",
+  created_at: DateTime.new(2022, 12, 8, 12, 45)
+)
+
+message3 = Message.create!(
+  chatroom: chat5,
+  user: User.find_by(first_name: "Justine"),
+  content: "Top, à dimanche !",
+  created_at: DateTime.new(2022, 12, 8, 13)
+)
+

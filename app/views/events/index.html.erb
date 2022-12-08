@@ -12,11 +12,11 @@
 
     </div>
     <div class="d-flex gap-2 mt-2">
-      <button class="btn-small run select col"
+      <button class="btn-small run col <%= 'select' if params[:event_type]&.key?(:running) %>"
               data-filters-target="runbtn"
               data-action="click->filters#runfilter">
               <p>Running</p></button>
-      <button class="btn-small surf select col"
+      <button class="btn-small surf col <%= 'select' if params[:event_type]&.key?(:surf) %>"
               data-filters-target="surfbtn"
               data-action="click->filters#surffilter">
               <p>Surf</p></button>
@@ -50,6 +50,11 @@
   </div>
   <div class="container">
     <div data-filters-target="events">
+      <% if @recommended_events&.any? %>
+        <h6>Recommandées pour vous...</h6>
+        <%= render "cards_event", events: @recommended_events, organized_events: @organized_events %>
+      <% end %>
+      <h6>Tous les events</h6>
       <%= render "cards_event", events: @events, organized_events: @organized_events %>
     </div>
   </div>
