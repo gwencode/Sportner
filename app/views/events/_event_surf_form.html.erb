@@ -1,23 +1,39 @@
-<div class="container event-surf-form mt-4">
+<div class="container event-surf-form mt-3">
   <%= simple_form_for @event, method: :post, data: { controller: "flatpickr preview-input"} do |f| %>
     <%= f.hidden_field :event_type, value: "surf" %>
-    <%= f.input :name, label: "Nom de l'événement", placeholder:"Session à ..."%>
-    <%= f.input :date, label: false, as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
-    <%= f.input :description, label: "Description de ton événement" %>
-    <%= f.input :max_people, label: "Nombre maximum de participants" %>
-    <%= f.input :meeting_point, label: "Point de RDV", hint: "19 Place de la Gare, 35005 Rennes" %>
-    <div class="row align-items-center">
-      <div class="col-5">
-        <%= f.input :car_pooling, label: "Je covoiture" %>
+    <div class="d-flex gap-2 justify-content-between align-items-end new-event-main-infos">
+      <%= f.input :name, label: "Infos de l'event", placeholder:"Session à ...", class:"mt-4"%>
+      <%= f.input :difficulty, label: false, collection: Event::DIFFICULTIES, prompt:"Pour quel niveau ?" %>
+    </div>
+    <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Selectionne ton spot", label: false %>
+    <div class="d-flex gap-2 mt-3">
+      <div class="w-50">
+        <%= f.input :date, label: "Date et heure", as: :string, input_html: { data: { flatpickr_target: "Date" }} %>
       </div>
-      <div class="col-7">
+      <div class="w-50">
+        <%= f.input :max_people, label: "Participants max" %>
+      </div>
+    </div>
+    <div class="mt-3">
+      <%= f.input :description, label: "Description de ton event", placeholder:"Dis nous tout sur ton event" %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.input :meeting_point, label: "Point de RDV", placeholder: "Ex. 19 Place de la Gare, 35005 Rennes" %>
+    </div>
+
+    <div class="row align-items-center mt-3">
+      <div class="col-5 d-flex align-items-center" style="height:60px;">
+        <%= f.input :car_pooling, label: "Je covoiture", input_html: { data: { action: "click->preview-input#checkCarpooling" }}  %>
+      </div>
+      <div class="col-7 d-none" data-preview-input-target="carpoolingField">
         <%= f.input :passengers, label: "Nombre de places" %>
       </div>
     </div>
-      <%= f.association :spot, collection: Spot.order(:location), label_method: :location, prompt: "Selectionne ton spot", label: false %>
-      <%= f.input :difficulty, label: false, collection: Event::DIFFICULTIES, prompt:"Selctionne la difficulté du spot" %>
-    <div class="mt-3">
-        <p>Ajoutez des photos</p>
+
+
+    <div class="mt-4">
+        <p class="fs-6">Ajoutez des photos</p>
     </div>
     <div class="d-flex">
       <div>
