@@ -3,7 +3,7 @@
 <% else %>
   <div class="card-event surf" data-filters-target="surfcard">
 <% end %>
-  <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar" %>
+  <%= cl_image_tag event.organizer.avatar.key, class: "card-avatar", crop: :thumb, width: 200 %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
     <%= cl_image_tag event.photos.first.key, class: "card-image" %>
     <div class="card-event-infos">

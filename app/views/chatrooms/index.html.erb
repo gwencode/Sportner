@@ -6,7 +6,7 @@
     <% if event.chatroom %>
       <%= link_to chatroom_path(event.chatroom), class: "" do %>
         <div class="card_chatroom">
-          <%= cl_image_tag(event.photos.first.key, :quality=>"auto", class:"avatar-photo") %>
+          <%= cl_image_tag(event.photos.first.key, :quality=>"auto", class:"avatar-photo", crop: :thumb, width: 200) %>
           <div class="card_chatroom_infos">
             <h2> <%= event.chatroom.name %> </h2>
             <div class="super_infos">
