@@ -9,6 +9,7 @@ export default class extends Controller {
     console.log(this.timeTarget)
   }
 
-  displayValue()
+  displayValue() {
     // console.log()
+  }
 }
