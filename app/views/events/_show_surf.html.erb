@@ -1,5 +1,9 @@
 <div class="card-show">
-  <%= cl_image_tag @event.photos.first.key unless @event.photos.empty? %>
+  <% if @event.photos.empty? %>
+    <%= cl_image_tag @event.spot.photos.first.key %>
+  <% else %>
+    <%= cl_image_tag @event.photos.first.key %>
+  <% end %>
   <div class="card-show-infos">
     <div id="show-event-title">
       <h2><%= @event.name %></h2>
