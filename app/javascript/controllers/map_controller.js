@@ -37,8 +37,8 @@ export default class extends Controller {
       customEventMarker.style.backgroundSize = "contain"
       customEventMarker.style.backgroundColor = "transparent"
       customEventMarker.style.backgroundRepeat = "no-repeat"
-      customEventMarker.style.width = "50px"
-      customEventMarker.style.height = "50px"
+      customEventMarker.style.width = "40px"
+      customEventMarker.style.height = "40px"
 
       new mapboxgl.Marker(customEventMarker)
         .setLngLat([ marker.lng, marker.lat ])
