@@ -5,11 +5,10 @@
 <% end %>
   <%= link_to event_path(event), class: "text-decoration-none" do %>
     <% if event.photos.first %>
-      <%= cl_image_tag event.photos.first.key, class: "card-image", crop: :thumb, width: 200 unless event.photos.first.nil? %>
+      <%= cl_image_tag event.photos.first.key, class: "card-image", crop: :thumb, width: 200 %>
     <% else %>
-      <%= cl_image_tag event.spot.photos.first.key, class: "card-image", crop: :thumb, width: 200 unless event.photos.first.nil? %>
+      <%= cl_image_tag event.spot.photos.first.key, class: "card-image", crop: :thumb, width: 200, style: "transform: scaleY(1.3)" %>
     <% end %>
-    <%= image_tag ('sportnerhome.svg'), class: "card-image" if event.photos.first.nil? %>
     <div class="card-event-infos">
       <div class="card-event-date">
         <div class="small">
