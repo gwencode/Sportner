@@ -18,6 +18,8 @@ This Web-App was the final project made at the end of the 9-weeks coding bootcam
 - [Olivier Kermoal](https://github.com/Satomishi)
 - [Matthieu Nourry](https://github.com/MatthieuNO)
 
+At the end of the 2 weeks, I pitched the project in front of 70 people (tech firms, Le Wagon's students, former students and teachers).
+
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
 
