@@ -31,7 +31,7 @@
         data-filters-target="myfuturevents">
       <% next_events = @events.where("date >= ?", Date.today) %>
       <% next_events.each do |event| %>
-        <%= render "card_my_events", event: event %>
+        <%= render "card_my_events", event: event, organized_events: @organized_events %>
       <% end %>
     </div>
     <div class="d-none"
